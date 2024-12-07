@@ -12,7 +12,10 @@ interface RuleOptions {
   biome?: boolean;
 }
 
-export function createConfig(options: RuleOptions) {
+export type FlatConfig = ReturnType<typeof tseslint.config>;
+export type ExtendsList = Parameters<typeof tseslint.config>[0];
+
+export function createConfig(options: RuleOptions): FlatConfig {
   const { root, react, strict, style, biome } = options;
 
   const rulesList: Linter.RulesRecord = {
@@ -20,7 +23,6 @@ export function createConfig(options: RuleOptions) {
     "prettier/prettier": ["error"],
   };
 
-  type ExtendsList = Parameters<typeof tseslint.config>[0];
   const extendsList: ExtendsList = [eslint.configs.recommended];
 
   extendsList.push(
