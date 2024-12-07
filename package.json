@@ -1,5 +1,5 @@
 {
-  "name": "effective-eslint-next",
+  "name": "@effective/eslint-next",
   "version": "1.0.0",
   "description": "A library for generating ESLint Flat Configs with React and TypeScript support.",
   "main": "dist/index.js",
@@ -16,7 +16,9 @@
   "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
   "devDependencies": {
     "@eslint/js": "^9.16.0",
+    "@types/node": "^22.10.1",
     "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.37.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.17.0",

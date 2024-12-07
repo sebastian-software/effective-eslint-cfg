@@ -1,4 +1,4 @@
-import { buildRules } from "./builder";
+import { createConfig } from "./builder";
 
 interface ConfigOptions {
   react?: boolean;
@@ -15,5 +15,5 @@ export function createConfig(options: ConfigOptions) {
     biome = false,
   } = options;
 
-  return buildRules({ react, strict, style, biome }),
+  return createConfig({ react, strict, style, biome }),
 }

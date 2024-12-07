@@ -6,13 +6,13 @@ import eslintConfigPrettier from "eslint-config-prettier";
 interface RuleOptions {
   root: string;
 
-  react: boolean;
-  strict: boolean;
-  style: boolean;
-  biome: boolean;
+  react?: boolean;
+  strict?: boolean;
+  style?: boolean;
+  biome?: boolean;
 }
 
-export function buildRules(options: RuleOptions) {
+export function createConfig(options: RuleOptions) {
   const { root, react, strict, style, biome } = options;
 
   const rulesList: Linter.RulesRecord = {
