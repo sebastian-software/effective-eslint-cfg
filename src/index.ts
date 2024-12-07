@@ -50,8 +50,6 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
     rules: rulesList,
   });
 
-  console.log("CONFIG:", config);
-
   const linter = new ESLint({
     overrideConfigFile: true,
     overrideConfig: config as ESLint.Options["overrideConfig"],
