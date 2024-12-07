@@ -1,6 +1,6 @@
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
-import { Linter } from "eslint";
+import { ESLint, Linter } from "eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 interface RuleOptions {
@@ -15,13 +15,10 @@ interface RuleOptions {
 export type FlatConfig = ReturnType<typeof tseslint.config>;
 export type ExtendsList = Parameters<typeof tseslint.config>[0];
 
-export function createConfig(options: RuleOptions): FlatConfig {
+export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
   const { root, react, strict, style, biome } = options;
 
-  const rulesList: Linter.RulesRecord = {
-    "no-unused-vars": ["error"],
-    "prettier/prettier": ["error"],
-  };
+  const rulesList: Linter.RulesRecord = {};
 
   const extendsList: ExtendsList = [eslint.configs.recommended];
 
@@ -44,18 +41,23 @@ export function createConfig(options: RuleOptions): FlatConfig {
     },
   });
 
-  // Disable type-aware linting for pure JS files
-  extendsList.push({
-    files: ["**/*.js", "**/*.mjs"],
-    extends: [tseslint.configs.disableTypeChecked],
-  });
-
   extendsList.push(eslintConfigPrettier);
 
-  return tseslint.config({
+  const config = tseslint.config({
     ignores: ["node_modules/**", "dist/**"],
     files: ["**/*.ts", "**/*.tsx"],
     extends: extendsList,
     rules: rulesList,
   });
+
+  console.log("CONFIG:", config);
+
+  const linter = new ESLint({
+    overrideConfigFile: true,
+    overrideConfig: config as ESLint.Options["overrideConfig"],
+  });
+
+  const generatedConfig = await linter.calculateConfigForFile("test.tsx");
+
+  return generatedConfig;
 }
