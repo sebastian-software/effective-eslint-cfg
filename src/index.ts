@@ -6,9 +6,19 @@ import eslintConfigPrettier from "eslint-config-prettier";
 interface RuleOptions {
   root: string;
 
+  /* enable React related rules */
   react?: boolean;
+
+  /* enable strict checks - recommended */
   strict?: boolean;
+
+  /* optionated, best practise, preferring simpler code bases */
   style?: boolean;
+
+  /** disable type-based rules for fast execution */
+  fast?: boolean;
+
+  /* remove all rules which are supported by Biome to make everything faster */
   biome?: boolean;
 }
 
@@ -17,7 +27,7 @@ export type ExtendsList = Parameters<typeof tseslint.config>[0];
 export type ConfigParam = ESLint.Options["overrideConfig"];
 
 export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
-  const { root, react, strict, style, biome } = options;
+  const { root, fast, react, strict, style, biome } = options;
 
   const rulesList: Linter.RulesRecord = {};
 
@@ -25,14 +35,26 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
 
   extendsList.push(
     strict
-      ? tseslint.configs.strictTypeChecked
-      : tseslint.configs.recommendedTypeChecked
+      ? // Contains all of recommended, recommended-type-checked, and strict,
+        // along with additional strict rules that require type information.
+        tseslint.configs.strictTypeChecked
+      : // Contains all of recommended along with additional recommended rules
+        // that require type information. Rules newly added in this configuration
+        // are similarly useful to those in recommended.
+        tseslint.configs.recommendedTypeChecked
   );
 
   if (style) {
+    // Rules considered to be best practice for modern TypeScript codebases,
+    // but that do not impact program logic. These rules are generally opinionated
+    // about enforcing simpler code patterns.
     extendsList.push(tseslint.configs.stylisticTypeChecked);
   }
 
+  // Disable all type checked rules for faster runtime of the config e.g. for editor usage etc.
+  if (fast) {
+    extendsList.push(tseslint.configs.disableTypeChecked);
+  }
   extendsList.push({
     languageOptions: {
       parserOptions: {
