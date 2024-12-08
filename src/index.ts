@@ -33,15 +33,13 @@ interface RuleOptions {
 }
 
 export type FlatConfig = ReturnType<typeof tseslint.config>;
-export type ExtendsList = Parameters<typeof tseslint.config>[0];
+export type ExtendsList = Parameters<typeof tseslint.config>;
 export type ConfigParam = ESLint.Options["overrideConfig"];
 
 const reactFlat = eslintReact.configs.flat;
 
 export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
   const { root, fast, node, react, strict, style, biome } = options;
-
-  const rulesList: Linter.RulesRecord = {};
 
   const extendsList: ExtendsList = [eslint.configs.recommended];
 
@@ -116,12 +114,7 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
     extendsList.push(eslintBiome);
   }
 
-  const config = tseslint.config({
-    ignores: ["node_modules/**", "dist/**"],
-    files: ["**/*.ts", "**/*.tsx"],
-    extends: extendsList,
-    rules: rulesList,
-  });
+  const config = tseslint.config(extendsList);
 
   const linter = new ESLint({
     overrideConfigFile: true,
