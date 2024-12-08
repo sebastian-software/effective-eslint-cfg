@@ -2,6 +2,7 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import { ESLint, Linter } from "eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
+import eslintReact from "eslint-plugin-react";
 
 interface RuleOptions {
   root: string;
@@ -25,6 +26,8 @@ interface RuleOptions {
 export type FlatConfig = ReturnType<typeof tseslint.config>;
 export type ExtendsList = Parameters<typeof tseslint.config>[0];
 export type ConfigParam = ESLint.Options["overrideConfig"];
+
+const reactFlat = eslintReact.configs.flat;
 
 export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
   const { root, fast, react, strict, style, biome } = options;
@@ -55,6 +58,20 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
   if (fast) {
     extendsList.push(tseslint.configs.disableTypeChecked);
   }
+
+  if (react && reactFlat) {
+    extendsList.push({
+      plugins: {
+        react: eslintReact,
+      },
+      rules: {
+        ...reactFlat.recommended.rules,
+        ...reactFlat["jsx-runtime"].rules,
+      },
+      languageOptions: reactFlat.recommended.languageOptions,
+    });
+  }
+
   extendsList.push({
     languageOptions: {
       parserOptions: {
