@@ -3,6 +3,9 @@ import tseslint from "typescript-eslint";
 import { ESLint, Linter } from "eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintReact from "eslint-plugin-react";
+import eslintReactHooks from "eslint-plugin-react-hooks";
+import eslintBiome from "eslint-config-biome";
+import eslintReactCompiler from "eslint-plugin-react-compiler";
 
 interface RuleOptions {
   root: string;
@@ -63,10 +66,15 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
     extendsList.push({
       plugins: {
         react: eslintReact,
+        "react-hooks": eslintReactHooks,
+        "react-compiler": eslintReactCompiler,
       },
       rules: {
         ...reactFlat.recommended.rules,
         ...reactFlat["jsx-runtime"].rules,
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "react-compiler/react-compiler": "error",
       },
       languageOptions: reactFlat.recommended.languageOptions,
     });
@@ -81,7 +89,15 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
     },
   });
 
+  // Always disable rules which are better enforced by Prettier
   extendsList.push(eslintConfigPrettier);
+
+  // When users switch to Biome (for performance) it makes sense to
+  // move these rules from the plate of ESLint to focus on running
+  // complex or type-based rules only.
+  if (biome) {
+    extendsList.push(eslintBiome);
+  }
 
   const config = tseslint.config({
     ignores: ["node_modules/**", "dist/**"],

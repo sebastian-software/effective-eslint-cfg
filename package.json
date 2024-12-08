@@ -25,6 +25,9 @@
     "vitest": "^2.1.8"
   },
   "dependencies": {
+    "eslint-config-biome": "^1.9.4",
+    "eslint-plugin-react-compiler": "19.0.0-beta-df7b47d-20241124",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "npm-check-updates": "^17.1.11"
   }
 }
