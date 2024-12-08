@@ -6,6 +6,7 @@ import eslintReact from "eslint-plugin-react";
 import eslintReactHooks from "eslint-plugin-react-hooks";
 import eslintBiome from "eslint-config-biome";
 import eslintReactCompiler from "eslint-plugin-react-compiler";
+import eslintJsdoc from "eslint-plugin-jsdoc";
 
 interface RuleOptions {
   root: string;
@@ -57,11 +58,6 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
     extendsList.push(tseslint.configs.stylisticTypeChecked);
   }
 
-  // Disable all type checked rules for faster runtime of the config e.g. for editor usage etc.
-  if (fast) {
-    extendsList.push(tseslint.configs.disableTypeChecked);
-  }
-
   if (react && reactFlat) {
     extendsList.push({
       plugins: {
@@ -80,14 +76,22 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
     });
   }
 
-  extendsList.push({
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: root,
+  // We like JSDoc but for nothing which can be done better with TypeScript
+  extendsList.push(eslintJsdoc.configs["flat/recommended-typescript-error"]);
+
+  // Disable all type checked rules for faster runtime of the config e.g. for editor usage etc.
+  if (fast) {
+    extendsList.push(tseslint.configs.disableTypeChecked);
+  } else {
+    extendsList.push({
+      languageOptions: {
+        parserOptions: {
+          projectService: true,
+          tsconfigRootDir: root,
+        },
       },
-    },
-  });
+    });
+  }
 
   // Always disable rules which are better enforced by Prettier
   extendsList.push(eslintConfigPrettier);
