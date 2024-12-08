@@ -62,15 +62,17 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
   return generatedConfig;
 }
 
-function cleanupRules(generatedConfig: ConfigParam) {
-  const { rules } = generatedConfig;
+function cleanupRules(generatedConfig: FlatConfig[number]) {
+  const rules = generatedConfig.rules;
   for (const rule in rules) {
     const value = rules[rule];
-    const level = value[0];
-    if (level === 0) {
-      delete rules[rule];
-    } else if (value.length === 1) {
-      rules[rule] = level === 2 ? "error" : "warn";
+    if (value != null && Array.isArray(value)) {
+      const level = value[0];
+      if (level === 0) {
+        delete rules[rule];
+      } else if (value.length === 1) {
+        rules[rule] = level === 2 ? "error" : "warn";
+      }
     }
   }
   return generatedConfig;
