@@ -62,18 +62,46 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
   return generatedConfig;
 }
 
+export function ruleSorter(a: string, b: string) {
+  if (a.includes("/") && !b.includes("/")) {
+    return 1;
+  }
+
+  if (!a.includes("/") && b.includes("/")) {
+    return -1;
+  }
+
+  return a.localeCompare(b);
+}
+
 function cleanupRules(generatedConfig: FlatConfig[number]) {
   const rules = generatedConfig.rules;
-  for (const rule in rules) {
-    const value = rules[rule];
+  if (!rules) {
+    return generatedConfig;
+  }
+
+  const ruleNames = Object.keys(rules).sort(ruleSorter);
+
+  const cleanRules: typeof rules = {};
+  for (const ruleName of ruleNames) {
+    const value = rules[ruleName];
     if (value != null && Array.isArray(value)) {
       const level = value[0];
       if (level === 0) {
-        delete rules[rule];
-      } else if (value.length === 1) {
-        rules[rule] = level === 2 ? "error" : "warn";
+        // pass, ignore
+      } else {
+        const levelStr = level === 2 ? "error" : "warn";
+
+        if (value.length === 1) {
+          cleanRules[ruleName] = levelStr;
+        } else {
+          cleanRules[ruleName] = [levelStr, ...value.slice(1)];
+        }
       }
     }
   }
+
+  generatedConfig.rules = cleanRules;
+
   return generatedConfig;
 }

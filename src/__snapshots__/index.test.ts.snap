@@ -32,7 +32,7 @@ exports[`createConfig > applies style rules 1`] = `
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/consistent-type-definitions": "error",
     "@typescript-eslint/dot-notation": [
-      2,
+      "error",
       {
         "allowIndexSignaturePropertyAccess": false,
         "allowKeywords": true,
@@ -48,7 +48,7 @@ exports[`createConfig > applies style rules 1`] = `
     "@typescript-eslint/no-duplicate-enum-values": "error",
     "@typescript-eslint/no-duplicate-type-constituents": "error",
     "@typescript-eslint/no-empty-function": [
-      2,
+      "error",
       {
         "allow": [],
       },
@@ -79,7 +79,7 @@ exports[`createConfig > applies style rules 1`] = `
     "@typescript-eslint/no-unsafe-return": "error",
     "@typescript-eslint/no-unsafe-unary-minus": "error",
     "@typescript-eslint/no-unused-expressions": [
-      2,
+      "error",
       {
         "allowShortCircuit": false,
         "allowTaggedTemplates": false,
@@ -111,12 +111,12 @@ exports[`createConfig > applies style rules 1`] = `
     "no-case-declarations": "error",
     "no-compare-neg-zero": "error",
     "no-cond-assign": [
-      2,
+      "error",
       "except-parens",
     ],
     "no-constant-binary-expression": "error",
     "no-constant-condition": [
-      2,
+      "error",
       {
         "checkLoops": "allExceptWhileTrue",
       },
@@ -127,14 +127,14 @@ exports[`createConfig > applies style rules 1`] = `
     "no-dupe-else-if": "error",
     "no-duplicate-case": "error",
     "no-empty": [
-      2,
+      "error",
       {
         "allowEmptyCatch": false,
       },
     ],
     "no-empty-character-class": "error",
     "no-empty-pattern": [
-      2,
+      "error",
       {
         "allowObjectPatternsAsParameters": false,
       },
@@ -142,28 +142,28 @@ exports[`createConfig > applies style rules 1`] = `
     "no-empty-static-block": "error",
     "no-ex-assign": "error",
     "no-extra-boolean-cast": [
-      2,
+      "error",
       {},
     ],
     "no-fallthrough": [
-      2,
+      "error",
       {
         "allowEmptyCase": false,
         "reportUnusedFallthroughComment": false,
       },
     ],
     "no-global-assign": [
-      2,
+      "error",
       {
         "exceptions": [],
       },
     ],
     "no-invalid-regexp": [
-      2,
+      "error",
       {},
     ],
     "no-irregular-whitespace": [
-      2,
+      "error",
       {
         "skipComments": false,
         "skipJSXText": false,
@@ -179,7 +179,7 @@ exports[`createConfig > applies style rules 1`] = `
     "no-prototype-builtins": "error",
     "no-regex-spaces": "error",
     "no-self-assign": [
-      2,
+      "error",
       {
         "props": true,
       },
@@ -188,7 +188,7 @@ exports[`createConfig > applies style rules 1`] = `
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
-      2,
+      "error",
       {
         "disallowArithmeticOperators": false,
       },
@@ -201,7 +201,7 @@ exports[`createConfig > applies style rules 1`] = `
     "no-var": "error",
     "no-with": "error",
     "prefer-const": [
-      2,
+      "error",
       {
         "destructuring": "any",
         "ignoreReadBeforeAssign": false,
@@ -211,14 +211,14 @@ exports[`createConfig > applies style rules 1`] = `
     "prefer-spread": "error",
     "require-yield": "error",
     "use-isnan": [
-      2,
+      "error",
       {
         "enforceForIndexOf": false,
         "enforceForSwitchCase": true,
       },
     ],
     "valid-typeof": [
-      2,
+      "error",
       {
         "requireStringLiterals": false,
       },
@@ -252,7 +252,7 @@ exports[`createConfig > combines all options 1`] = `
     "@typescript-eslint/array-type": "error",
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/ban-ts-comment": [
-      2,
+      "error",
       {
         "minimumDescriptionLength": 10,
       },
@@ -264,7 +264,7 @@ exports[`createConfig > combines all options 1`] = `
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/consistent-type-definitions": "error",
     "@typescript-eslint/dot-notation": [
-      2,
+      "error",
       {
         "allowIndexSignaturePropertyAccess": false,
         "allowKeywords": true,
@@ -283,7 +283,7 @@ exports[`createConfig > combines all options 1`] = `
     "@typescript-eslint/no-duplicate-type-constituents": "error",
     "@typescript-eslint/no-dynamic-delete": "error",
     "@typescript-eslint/no-empty-function": [
-      2,
+      "error",
       {
         "allow": [],
       },
@@ -325,7 +325,7 @@ exports[`createConfig > combines all options 1`] = `
     "@typescript-eslint/no-unsafe-return": "error",
     "@typescript-eslint/no-unsafe-unary-minus": "error",
     "@typescript-eslint/no-unused-expressions": [
-      2,
+      "error",
       {
         "allowShortCircuit": false,
         "allowTaggedTemplates": false,
@@ -354,7 +354,7 @@ exports[`createConfig > combines all options 1`] = `
     "@typescript-eslint/related-getter-setter-pairs": "error",
     "@typescript-eslint/require-await": "error",
     "@typescript-eslint/restrict-plus-operands": [
-      2,
+      "error",
       {
         "allowAny": false,
         "allowBoolean": false,
@@ -364,7 +364,7 @@ exports[`createConfig > combines all options 1`] = `
       },
     ],
     "@typescript-eslint/restrict-template-expressions": [
-      2,
+      "error",
       {
         "allowAny": false,
         "allowBoolean": false,
@@ -375,7 +375,7 @@ exports[`createConfig > combines all options 1`] = `
       },
     ],
     "@typescript-eslint/return-await": [
-      2,
+      "error",
       "error-handling-correctness-only",
     ],
     "@typescript-eslint/triple-slash-reference": "error",
@@ -387,12 +387,12 @@ exports[`createConfig > combines all options 1`] = `
     "no-case-declarations": "error",
     "no-compare-neg-zero": "error",
     "no-cond-assign": [
-      2,
+      "error",
       "except-parens",
     ],
     "no-constant-binary-expression": "error",
     "no-constant-condition": [
-      2,
+      "error",
       {
         "checkLoops": "allExceptWhileTrue",
       },
@@ -403,14 +403,14 @@ exports[`createConfig > combines all options 1`] = `
     "no-dupe-else-if": "error",
     "no-duplicate-case": "error",
     "no-empty": [
-      2,
+      "error",
       {
         "allowEmptyCatch": false,
       },
     ],
     "no-empty-character-class": "error",
     "no-empty-pattern": [
-      2,
+      "error",
       {
         "allowObjectPatternsAsParameters": false,
       },
@@ -418,28 +418,28 @@ exports[`createConfig > combines all options 1`] = `
     "no-empty-static-block": "error",
     "no-ex-assign": "error",
     "no-extra-boolean-cast": [
-      2,
+      "error",
       {},
     ],
     "no-fallthrough": [
-      2,
+      "error",
       {
         "allowEmptyCase": false,
         "reportUnusedFallthroughComment": false,
       },
     ],
     "no-global-assign": [
-      2,
+      "error",
       {
         "exceptions": [],
       },
     ],
     "no-invalid-regexp": [
-      2,
+      "error",
       {},
     ],
     "no-irregular-whitespace": [
-      2,
+      "error",
       {
         "skipComments": false,
         "skipJSXText": false,
@@ -455,7 +455,7 @@ exports[`createConfig > combines all options 1`] = `
     "no-prototype-builtins": "error",
     "no-regex-spaces": "error",
     "no-self-assign": [
-      2,
+      "error",
       {
         "props": true,
       },
@@ -464,7 +464,7 @@ exports[`createConfig > combines all options 1`] = `
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
-      2,
+      "error",
       {
         "disallowArithmeticOperators": false,
       },
@@ -477,7 +477,7 @@ exports[`createConfig > combines all options 1`] = `
     "no-var": "error",
     "no-with": "error",
     "prefer-const": [
-      2,
+      "error",
       {
         "destructuring": "any",
         "ignoreReadBeforeAssign": false,
@@ -487,14 +487,14 @@ exports[`createConfig > combines all options 1`] = `
     "prefer-spread": "error",
     "require-yield": "error",
     "use-isnan": [
-      2,
+      "error",
       {
         "enforceForIndexOf": false,
         "enforceForSwitchCase": true,
       },
     ],
     "valid-typeof": [
-      2,
+      "error",
       {
         "requireStringLiterals": false,
       },
@@ -526,7 +526,7 @@ exports[`createConfig > enables strict rules 1`] = `
   "rules": {
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/ban-ts-comment": [
-      2,
+      "error",
       {
         "minimumDescriptionLength": 10,
       },
@@ -575,7 +575,7 @@ exports[`createConfig > enables strict rules 1`] = `
     "@typescript-eslint/no-unsafe-return": "error",
     "@typescript-eslint/no-unsafe-unary-minus": "error",
     "@typescript-eslint/no-unused-expressions": [
-      2,
+      "error",
       {
         "allowShortCircuit": false,
         "allowTaggedTemplates": false,
@@ -595,7 +595,7 @@ exports[`createConfig > enables strict rules 1`] = `
     "@typescript-eslint/related-getter-setter-pairs": "error",
     "@typescript-eslint/require-await": "error",
     "@typescript-eslint/restrict-plus-operands": [
-      2,
+      "error",
       {
         "allowAny": false,
         "allowBoolean": false,
@@ -605,7 +605,7 @@ exports[`createConfig > enables strict rules 1`] = `
       },
     ],
     "@typescript-eslint/restrict-template-expressions": [
-      2,
+      "error",
       {
         "allowAny": false,
         "allowBoolean": false,
@@ -616,7 +616,7 @@ exports[`createConfig > enables strict rules 1`] = `
       },
     ],
     "@typescript-eslint/return-await": [
-      2,
+      "error",
       "error-handling-correctness-only",
     ],
     "@typescript-eslint/triple-slash-reference": "error",
@@ -628,12 +628,12 @@ exports[`createConfig > enables strict rules 1`] = `
     "no-case-declarations": "error",
     "no-compare-neg-zero": "error",
     "no-cond-assign": [
-      2,
+      "error",
       "except-parens",
     ],
     "no-constant-binary-expression": "error",
     "no-constant-condition": [
-      2,
+      "error",
       {
         "checkLoops": "allExceptWhileTrue",
       },
@@ -644,14 +644,14 @@ exports[`createConfig > enables strict rules 1`] = `
     "no-dupe-else-if": "error",
     "no-duplicate-case": "error",
     "no-empty": [
-      2,
+      "error",
       {
         "allowEmptyCatch": false,
       },
     ],
     "no-empty-character-class": "error",
     "no-empty-pattern": [
-      2,
+      "error",
       {
         "allowObjectPatternsAsParameters": false,
       },
@@ -659,28 +659,28 @@ exports[`createConfig > enables strict rules 1`] = `
     "no-empty-static-block": "error",
     "no-ex-assign": "error",
     "no-extra-boolean-cast": [
-      2,
+      "error",
       {},
     ],
     "no-fallthrough": [
-      2,
+      "error",
       {
         "allowEmptyCase": false,
         "reportUnusedFallthroughComment": false,
       },
     ],
     "no-global-assign": [
-      2,
+      "error",
       {
         "exceptions": [],
       },
     ],
     "no-invalid-regexp": [
-      2,
+      "error",
       {},
     ],
     "no-irregular-whitespace": [
-      2,
+      "error",
       {
         "skipComments": false,
         "skipJSXText": false,
@@ -696,7 +696,7 @@ exports[`createConfig > enables strict rules 1`] = `
     "no-prototype-builtins": "error",
     "no-regex-spaces": "error",
     "no-self-assign": [
-      2,
+      "error",
       {
         "props": true,
       },
@@ -705,7 +705,7 @@ exports[`createConfig > enables strict rules 1`] = `
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
-      2,
+      "error",
       {
         "disallowArithmeticOperators": false,
       },
@@ -718,7 +718,7 @@ exports[`createConfig > enables strict rules 1`] = `
     "no-var": "error",
     "no-with": "error",
     "prefer-const": [
-      2,
+      "error",
       {
         "destructuring": "any",
         "ignoreReadBeforeAssign": false,
@@ -728,14 +728,14 @@ exports[`createConfig > enables strict rules 1`] = `
     "prefer-spread": "error",
     "require-yield": "error",
     "use-isnan": [
-      2,
+      "error",
       {
         "enforceForIndexOf": false,
         "enforceForSwitchCase": true,
       },
     ],
     "valid-typeof": [
-      2,
+      "error",
       {
         "requireStringLiterals": false,
       },
@@ -797,7 +797,7 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
     "@typescript-eslint/no-unsafe-return": "error",
     "@typescript-eslint/no-unsafe-unary-minus": "error",
     "@typescript-eslint/no-unused-expressions": [
-      2,
+      "error",
       {
         "allowShortCircuit": false,
         "allowTaggedTemplates": false,
@@ -820,12 +820,12 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
     "no-case-declarations": "error",
     "no-compare-neg-zero": "error",
     "no-cond-assign": [
-      2,
+      "error",
       "except-parens",
     ],
     "no-constant-binary-expression": "error",
     "no-constant-condition": [
-      2,
+      "error",
       {
         "checkLoops": "allExceptWhileTrue",
       },
@@ -836,14 +836,14 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
     "no-dupe-else-if": "error",
     "no-duplicate-case": "error",
     "no-empty": [
-      2,
+      "error",
       {
         "allowEmptyCatch": false,
       },
     ],
     "no-empty-character-class": "error",
     "no-empty-pattern": [
-      2,
+      "error",
       {
         "allowObjectPatternsAsParameters": false,
       },
@@ -851,28 +851,28 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
     "no-empty-static-block": "error",
     "no-ex-assign": "error",
     "no-extra-boolean-cast": [
-      2,
+      "error",
       {},
     ],
     "no-fallthrough": [
-      2,
+      "error",
       {
         "allowEmptyCase": false,
         "reportUnusedFallthroughComment": false,
       },
     ],
     "no-global-assign": [
-      2,
+      "error",
       {
         "exceptions": [],
       },
     ],
     "no-invalid-regexp": [
-      2,
+      "error",
       {},
     ],
     "no-irregular-whitespace": [
-      2,
+      "error",
       {
         "skipComments": false,
         "skipJSXText": false,
@@ -888,7 +888,7 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
     "no-prototype-builtins": "error",
     "no-regex-spaces": "error",
     "no-self-assign": [
-      2,
+      "error",
       {
         "props": true,
       },
@@ -897,7 +897,7 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
-      2,
+      "error",
       {
         "disallowArithmeticOperators": false,
       },
@@ -910,7 +910,7 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
     "no-var": "error",
     "no-with": "error",
     "prefer-const": [
-      2,
+      "error",
       {
         "destructuring": "any",
         "ignoreReadBeforeAssign": false,
@@ -920,14 +920,14 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
     "prefer-spread": "error",
     "require-yield": "error",
     "use-isnan": [
-      2,
+      "error",
       {
         "enforceForIndexOf": false,
         "enforceForSwitchCase": true,
       },
     ],
     "valid-typeof": [
-      2,
+      "error",
       {
         "requireStringLiterals": false,
       },
@@ -989,7 +989,7 @@ exports[`createConfig > generates a base configuration 1`] = `
     "@typescript-eslint/no-unsafe-return": "error",
     "@typescript-eslint/no-unsafe-unary-minus": "error",
     "@typescript-eslint/no-unused-expressions": [
-      2,
+      "error",
       {
         "allowShortCircuit": false,
         "allowTaggedTemplates": false,
@@ -1012,12 +1012,12 @@ exports[`createConfig > generates a base configuration 1`] = `
     "no-case-declarations": "error",
     "no-compare-neg-zero": "error",
     "no-cond-assign": [
-      2,
+      "error",
       "except-parens",
     ],
     "no-constant-binary-expression": "error",
     "no-constant-condition": [
-      2,
+      "error",
       {
         "checkLoops": "allExceptWhileTrue",
       },
@@ -1028,14 +1028,14 @@ exports[`createConfig > generates a base configuration 1`] = `
     "no-dupe-else-if": "error",
     "no-duplicate-case": "error",
     "no-empty": [
-      2,
+      "error",
       {
         "allowEmptyCatch": false,
       },
     ],
     "no-empty-character-class": "error",
     "no-empty-pattern": [
-      2,
+      "error",
       {
         "allowObjectPatternsAsParameters": false,
       },
@@ -1043,28 +1043,28 @@ exports[`createConfig > generates a base configuration 1`] = `
     "no-empty-static-block": "error",
     "no-ex-assign": "error",
     "no-extra-boolean-cast": [
-      2,
+      "error",
       {},
     ],
     "no-fallthrough": [
-      2,
+      "error",
       {
         "allowEmptyCase": false,
         "reportUnusedFallthroughComment": false,
       },
     ],
     "no-global-assign": [
-      2,
+      "error",
       {
         "exceptions": [],
       },
     ],
     "no-invalid-regexp": [
-      2,
+      "error",
       {},
     ],
     "no-irregular-whitespace": [
-      2,
+      "error",
       {
         "skipComments": false,
         "skipJSXText": false,
@@ -1080,7 +1080,7 @@ exports[`createConfig > generates a base configuration 1`] = `
     "no-prototype-builtins": "error",
     "no-regex-spaces": "error",
     "no-self-assign": [
-      2,
+      "error",
       {
         "props": true,
       },
@@ -1089,7 +1089,7 @@ exports[`createConfig > generates a base configuration 1`] = `
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
-      2,
+      "error",
       {
         "disallowArithmeticOperators": false,
       },
@@ -1102,7 +1102,7 @@ exports[`createConfig > generates a base configuration 1`] = `
     "no-var": "error",
     "no-with": "error",
     "prefer-const": [
-      2,
+      "error",
       {
         "destructuring": "any",
         "ignoreReadBeforeAssign": false,
@@ -1112,14 +1112,14 @@ exports[`createConfig > generates a base configuration 1`] = `
     "prefer-spread": "error",
     "require-yield": "error",
     "use-isnan": [
-      2,
+      "error",
       {
         "enforceForIndexOf": false,
         "enforceForSwitchCase": true,
       },
     ],
     "valid-typeof": [
-      2,
+      "error",
       {
         "requireStringLiterals": false,
       },
@@ -1181,7 +1181,7 @@ exports[`createConfig > includes React-specific rules 1`] = `
     "@typescript-eslint/no-unsafe-return": "error",
     "@typescript-eslint/no-unsafe-unary-minus": "error",
     "@typescript-eslint/no-unused-expressions": [
-      2,
+      "error",
       {
         "allowShortCircuit": false,
         "allowTaggedTemplates": false,
@@ -1204,12 +1204,12 @@ exports[`createConfig > includes React-specific rules 1`] = `
     "no-case-declarations": "error",
     "no-compare-neg-zero": "error",
     "no-cond-assign": [
-      2,
+      "error",
       "except-parens",
     ],
     "no-constant-binary-expression": "error",
     "no-constant-condition": [
-      2,
+      "error",
       {
         "checkLoops": "allExceptWhileTrue",
       },
@@ -1220,14 +1220,14 @@ exports[`createConfig > includes React-specific rules 1`] = `
     "no-dupe-else-if": "error",
     "no-duplicate-case": "error",
     "no-empty": [
-      2,
+      "error",
       {
         "allowEmptyCatch": false,
       },
     ],
     "no-empty-character-class": "error",
     "no-empty-pattern": [
-      2,
+      "error",
       {
         "allowObjectPatternsAsParameters": false,
       },
@@ -1235,28 +1235,28 @@ exports[`createConfig > includes React-specific rules 1`] = `
     "no-empty-static-block": "error",
     "no-ex-assign": "error",
     "no-extra-boolean-cast": [
-      2,
+      "error",
       {},
     ],
     "no-fallthrough": [
-      2,
+      "error",
       {
         "allowEmptyCase": false,
         "reportUnusedFallthroughComment": false,
       },
     ],
     "no-global-assign": [
-      2,
+      "error",
       {
         "exceptions": [],
       },
     ],
     "no-invalid-regexp": [
-      2,
+      "error",
       {},
     ],
     "no-irregular-whitespace": [
-      2,
+      "error",
       {
         "skipComments": false,
         "skipJSXText": false,
@@ -1272,7 +1272,7 @@ exports[`createConfig > includes React-specific rules 1`] = `
     "no-prototype-builtins": "error",
     "no-regex-spaces": "error",
     "no-self-assign": [
-      2,
+      "error",
       {
         "props": true,
       },
@@ -1281,7 +1281,7 @@ exports[`createConfig > includes React-specific rules 1`] = `
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
-      2,
+      "error",
       {
         "disallowArithmeticOperators": false,
       },
@@ -1294,7 +1294,7 @@ exports[`createConfig > includes React-specific rules 1`] = `
     "no-var": "error",
     "no-with": "error",
     "prefer-const": [
-      2,
+      "error",
       {
         "destructuring": "any",
         "ignoreReadBeforeAssign": false,
@@ -1304,14 +1304,14 @@ exports[`createConfig > includes React-specific rules 1`] = `
     "prefer-spread": "error",
     "require-yield": "error",
     "use-isnan": [
-      2,
+      "error",
       {
         "enforceForIndexOf": false,
         "enforceForSwitchCase": true,
       },
     ],
     "valid-typeof": [
-      2,
+      "error",
       {
         "requireStringLiterals": false,
       },
