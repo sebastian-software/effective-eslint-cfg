@@ -7,6 +7,7 @@ import eslintReactHooks from "eslint-plugin-react-hooks";
 import eslintBiome from "eslint-config-biome";
 import eslintReactCompiler from "eslint-plugin-react-compiler";
 import eslintJsdoc from "eslint-plugin-jsdoc";
+import eslintRegexp from "eslint-plugin-regexp";
 
 interface RuleOptions {
   root: string;
@@ -78,6 +79,9 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
 
   // We like JSDoc but for nothing which can be done better with TypeScript
   extendsList.push(eslintJsdoc.configs["flat/recommended-typescript-error"]);
+
+  // Check some validity related to usage and definition of regular expressions
+  extendsList.push(eslintRegexp.configs["flat/recommended"]);
 
   // Disable all type checked rules for faster runtime of the config e.g. for editor usage etc.
   if (fast) {

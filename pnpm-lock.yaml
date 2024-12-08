@@ -20,6 +20,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^5.1.0
         version: 5.1.0(eslint@9.16.0)
+      eslint-plugin-regexp:
+        specifier: ^2.7.0
+        version: 2.7.0(eslint@9.16.0)
       typescript-eslint:
         specifier: ^8.17.0
         version: 8.17.0(eslint@9.16.0)(typescript@5.7.2)
@@ -838,6 +841,12 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
 
+  eslint-plugin-regexp@2.7.0:
+    resolution: {integrity: sha512-U8oZI77SBtH8U3ulZ05iu0qEzIizyEDXd+BWHvyVxTOjGwcDcvy/kEpgFG4DYca2ByRLiVPFZ2GeH7j1pdvZTA==}
+    engines: {node: ^18 || >=20}
+    peerDependencies:
+      eslint: '>=8.44.0'
+
   eslint-scope@8.2.0:
     resolution: {integrity: sha512-PHlWUfG6lvPc3yvP5A4PNyBL1W8fkDUccmI21JUu/+GKZBoH/W5u6usENXUrWFRsyoW5ACUjFGgAFQp5gUlb/A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -1329,9 +1338,17 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
+  refa@0.12.1:
+    resolution: {integrity: sha512-J8rn6v4DBb2nnFqkqwy6/NnTYMcgLA+sLr0iIO41qpv0n+ngb7ksag2tMRl0inb1bbO/esUwzW1vbJi7K0sI0g==}
+    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+
   reflect.getprototypeof@1.0.8:
     resolution: {integrity: sha512-B5dj6usc5dkk8uFliwjwDHM8To5/QwdKz9JcBZ8Ic4G1f0YmeeJTtE/ZTdgRFPAfxZFiUaPhZ1Jcs4qeagItGQ==}
     engines: {node: '>= 0.4'}
+
+  regexp-ast-analysis@0.7.1:
+    resolution: {integrity: sha512-sZuz1dYW/ZsfG17WSAG7eS85r5a0dDsvg+7BiiYR5o6lKCAtUrEwdmRmaGF6rwVj3LcmAeYkOWKEPlbPzN3Y3A==}
+    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
 
   regexp.prototype.flags@1.5.3:
     resolution: {integrity: sha512-vqlC04+RQoFalODCbCumG2xIOvapzVMHwsyIGM/SIE8fRhFFsXeH8/QQ+s0T0kDAhKc4k30s73/0ydkHQz6HlQ==}
@@ -1364,6 +1381,10 @@ packages:
   safe-regex-test@1.0.3:
     resolution: {integrity: sha512-CdASjNJPvRa7roO6Ra/gLYBTzYzzPyyBXxIMdGW3USQLyjWEls2RgW5UBTXaQVp+OrpeCK3bLem8smtmheoRuw==}
     engines: {node: '>= 0.4'}
+
+  scslre@0.3.0:
+    resolution: {integrity: sha512-3A6sD0WYP7+QrjbfNA2FN3FsOaGGFoekCVgTyypy53gPxhbkCIjtO6YWgdrfM+n/8sI8JeXZOIxsHjMTNxQ4nQ==}
+    engines: {node: ^14.0.0 || >=16.0.0}
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -2537,6 +2558,17 @@ snapshots:
       string.prototype.matchall: 4.0.11
       string.prototype.repeat: 1.0.0
 
+  eslint-plugin-regexp@2.7.0(eslint@9.16.0):
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.1(eslint@9.16.0)
+      '@eslint-community/regexpp': 4.12.1
+      comment-parser: 1.4.1
+      eslint: 9.16.0
+      jsdoc-type-pratt-parser: 4.1.0
+      refa: 0.12.1
+      regexp-ast-analysis: 0.7.1
+      scslre: 0.3.0
+
   eslint-scope@8.2.0:
     dependencies:
       esrecurse: 4.3.0
@@ -3029,6 +3061,10 @@ snapshots:
 
   react-is@16.13.1: {}
 
+  refa@0.12.1:
+    dependencies:
+      '@eslint-community/regexpp': 4.12.1
+
   reflect.getprototypeof@1.0.8:
     dependencies:
       call-bind: 1.0.8
@@ -3039,6 +3075,11 @@ snapshots:
       get-intrinsic: 1.2.5
       gopd: 1.2.0
       which-builtin-type: 1.2.0
+
+  regexp-ast-analysis@0.7.1:
+    dependencies:
+      '@eslint-community/regexpp': 4.12.1
+      refa: 0.12.1
 
   regexp.prototype.flags@1.5.3:
     dependencies:
@@ -3098,6 +3139,12 @@ snapshots:
       call-bind: 1.0.8
       es-errors: 1.3.0
       is-regex: 1.2.0
+
+  scslre@0.3.0:
+    dependencies:
+      '@eslint-community/regexpp': 4.12.1
+      refa: 0.12.1
+      regexp-ast-analysis: 0.7.1
 
   semver@6.3.1: {}
 
