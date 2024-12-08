@@ -59,16 +59,18 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
   const generatedConfig = await linter.calculateConfigForFile("test.tsx");
   cleanupRules(generatedConfig);
 
-  console.log(generatedConfig);
-
   return generatedConfig;
 }
 
 function cleanupRules(generatedConfig: ConfigParam) {
   const { rules } = generatedConfig;
   for (const rule in rules) {
-    if (rules[rule][0] === 0) {
+    const value = rules[rule];
+    const level = value[0];
+    if (level === 0) {
       delete rules[rule];
+    } else if (value.length === 1) {
+      rules[rule] = level === 2 ? "error" : "warn";
     }
   }
   return generatedConfig;
