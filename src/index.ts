@@ -8,9 +8,13 @@ import eslintBiome from "eslint-config-biome";
 import eslintReactCompiler from "eslint-plugin-react-compiler";
 import eslintJsdoc from "eslint-plugin-jsdoc";
 import eslintRegexp from "eslint-plugin-regexp";
+import nodePlugin from "eslint-plugin-n";
 
 interface RuleOptions {
   root: string;
+
+  /** enable NodeJS checks */
+  node?: boolean;
 
   /* enable React related rules */
   react?: boolean;
@@ -35,7 +39,7 @@ export type ConfigParam = ESLint.Options["overrideConfig"];
 const reactFlat = eslintReact.configs.flat;
 
 export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
-  const { root, fast, react, strict, style, biome } = options;
+  const { root, fast, node, react, strict, style, biome } = options;
 
   const rulesList: Linter.RulesRecord = {};
 
@@ -82,6 +86,11 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
 
   // Check some validity related to usage and definition of regular expressions
   extendsList.push(eslintRegexp.configs["flat/recommended"]);
+
+  // Check NodeJS things (ESM mode)
+  if (node) {
+    extendsList.push(nodePlugin.configs["flat/recommended-module"]);
+  }
 
   // Disable all type checked rules for faster runtime of the config e.g. for editor usage etc.
   if (fast) {
