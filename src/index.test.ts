@@ -9,20 +9,42 @@ describe("createConfig", () => {
     expect(config).toMatchSnapshot();
   });
 
+  //
+  // ENABLING...
+  //
+
+  it("includes Node-specific rules", async () => {
+    const config = await createConfig({ root: cwd, node: true });
+    expect(config).toMatchSnapshot();
+  });
+
   it("includes React-specific rules", async () => {
     const config = await createConfig({ root: cwd, react: true });
     expect(config).toMatchSnapshot();
   });
+
+  //
+  // GLOBAL SETTINGS...
+  //
 
   it("enables strict rules", async () => {
     const config = await createConfig({ root: cwd, strict: true });
     expect(config).toMatchSnapshot();
   });
 
-  it("applies style rules", async () => {
+  it("applies stylistic rules", async () => {
     const config = await createConfig({ root: cwd, style: true });
     expect(config).toMatchSnapshot();
   });
+
+  it("disable type-based rules", async () => {
+    const config = await createConfig({ root: cwd, fast: true });
+    expect(config).toMatchSnapshot();
+  });
+
+  //
+  // DISABLING...
+  //
 
   it("excludes rules covered by Biome", async () => {
     const config = await createConfig({ root: cwd, biome: true });
@@ -32,10 +54,10 @@ describe("createConfig", () => {
   it("combines all options", async () => {
     const config = await createConfig({
       root: cwd,
+      node: true,
       react: true,
       strict: true,
       style: true,
-      biome: true,
     });
     expect(config).toMatchSnapshot();
   });
