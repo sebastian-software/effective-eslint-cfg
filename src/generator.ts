@@ -36,7 +36,9 @@ export type ConfigParam = ESLint.Options["overrideConfig"];
 
 const reactFlat = eslintReact.configs.flat;
 
-export async function buildConfig(options: RuleOptions): Promise<FlatConfig> {
+export async function buildConfig(
+  options: RuleOptions
+): Promise<Linter.Config> {
   const { fast, node, react, strict, style, biome } = options;
 
   const extendsList: ExtendsList = [eslint.configs.recommended];
@@ -118,8 +120,11 @@ export async function buildConfig(options: RuleOptions): Promise<FlatConfig> {
     overrideConfig: config as ConfigParam,
   });
 
-  const generatedConfig = await linter.calculateConfigForFile("test.tsx");
+  const generatedConfig = (await linter.calculateConfigForFile(
+    "test.tsx"
+  )) as Linter.Config;
   cleanupRules(generatedConfig);
+  cleanupPlugins(generatedConfig);
 
   return generatedConfig;
 }
@@ -136,7 +141,7 @@ export function ruleSorter(a: string, b: string) {
   return a.localeCompare(b);
 }
 
-function cleanupRules(generatedConfig: FlatConfig[number]) {
+function cleanupRules(generatedConfig: Linter.Config) {
   const rules = generatedConfig.rules;
   if (!rules) {
     return generatedConfig;
@@ -164,6 +169,12 @@ function cleanupRules(generatedConfig: FlatConfig[number]) {
   }
 
   generatedConfig.rules = cleanRules;
+
+  return generatedConfig;
+}
+
+function cleanupPlugins(generatedConfig: Linter.Config) {
+  console.log("OLD PLUGINS:", Object.keys(generatedConfig.plugins));
 
   return generatedConfig;
 }
