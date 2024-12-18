@@ -1,33 +1,10 @@
 import { buildConfig } from "./generator.js";
 import { promises as fs } from "fs";
 import { join } from "path";
-import { createHash } from "crypto";
-
-type Options = {
-  node?: boolean;
-  react?: boolean;
-  strict?: boolean;
-  style?: boolean;
-  fast?: boolean;
-  biome?: boolean;
-};
-
-const flags = ["node", "react", "strict", "style", "fast", "biome"] as const;
-
-function optionsToKey(opts: Options) {
-  return flags.map((f) => `${f}=${opts[f] ? 1 : 0}`).join(",");
-}
-
-function keyToHash(key: string) {
-  return createHash("md5").update(key).digest("hex");
-}
-
-const cwd = process.cwd();
+import { flags, numberToShortHash, Options } from "./util.js";
 
 async function main() {
-  const outputDir = join(cwd, "dist", "configs");
-
-  // Ensure the directory structure exists
+  const outputDir = join(process.cwd(), "dist", "configs");
   await fs.mkdir(outputDir, { recursive: true });
 
   const numPermutations = 1 << flags.length;
@@ -35,17 +12,13 @@ async function main() {
   for (let i = 0; i < numPermutations; i++) {
     const opts: Options = {};
     for (let bit = 0; bit < flags.length; bit++) {
-      const isSet = (i & (1 << bit)) !== 0;
-      opts[flags[bit]] = isSet;
+      opts[flags[bit]] = (i & (1 << bit)) !== 0;
     }
 
-    const key = optionsToKey(opts);
-    const hash = keyToHash(key);
-
     const config = await buildConfig(opts);
+    const hash = numberToShortHash(i);
     const filePath = join(outputDir, `${hash}.json`);
 
-    // Write the config file
     await fs.writeFile(filePath, JSON.stringify(config, null, 2), "utf8");
   }
 
