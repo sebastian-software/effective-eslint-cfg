@@ -6,8 +6,7 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "start": "tsx src/index.js",
+    "build": "tsx src/build.ts",
     "test": "vitest",
     "check": "tsc --noEmit",
     "lint": "eslint --flag unstable_ts_config .",
@@ -32,6 +31,7 @@
     "npm-check-updates": "^17.1.11",
     "prettier": "^3.4.2",
     "release-it": "^17.10.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   },
