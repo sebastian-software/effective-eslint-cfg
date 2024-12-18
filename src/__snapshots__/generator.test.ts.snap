@@ -8,7 +8,6 @@ exports[`createConfig > applies stylistic rules 1`] = `
     "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
-      "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
     },
     "sourceType": "module",
   },
@@ -468,7 +467,6 @@ exports[`createConfig > combines all options 1`] = `
         "jsx": true,
       },
       "projectService": true,
-      "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
     },
     "sourceType": "module",
   },
@@ -1150,7 +1148,6 @@ exports[`createConfig > enables strict rules 1`] = `
     "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
-      "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
     },
     "sourceType": "module",
   },
@@ -1485,7 +1482,6 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
     "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
-      "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
     },
     "sourceType": "module",
   },
@@ -1661,7 +1657,6 @@ exports[`createConfig > generates a base configuration 1`] = `
     "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
-      "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
     },
     "sourceType": "module",
   },
@@ -2083,7 +2078,6 @@ exports[`createConfig > includes Node-specific rules 1`] = `
     "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
-      "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
     },
     "sourceType": "module",
   },
@@ -2395,7 +2389,6 @@ exports[`createConfig > includes React-specific rules 1`] = `
         "jsx": true,
       },
       "projectService": true,
-      "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
     },
     "sourceType": "module",
   },
