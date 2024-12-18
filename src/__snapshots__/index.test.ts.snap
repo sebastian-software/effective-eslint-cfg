@@ -5,7 +5,7 @@ exports[`createConfig > applies stylistic rules 1`] = `
   "language": "@/js",
   "languageOptions": {
     "ecmaVersion": 2025,
-    "parser": "typescript-eslint/parser@8.17.0",
+    "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
       "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
@@ -17,7 +17,7 @@ exports[`createConfig > applies stylistic rules 1`] = `
   },
   "plugins": [
     "@",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.17.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.18.1",
     "jsdoc",
     "regexp:eslint-plugin-regexp@2.7.0",
   ],
@@ -462,7 +462,7 @@ exports[`createConfig > combines all options 1`] = `
       "undefined": false,
       "unescape": false,
     },
-    "parser": "typescript-eslint/parser@8.17.0",
+    "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "ecmaFeatures": {
         "jsx": true,
@@ -477,13 +477,13 @@ exports[`createConfig > combines all options 1`] = `
   },
   "plugins": [
     "@",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.17.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.18.1",
     "react",
     "react-hooks",
     "react-compiler",
     "jsdoc",
     "regexp:eslint-plugin-regexp@2.7.0",
-    "n:eslint-plugin-n@17.14.0",
+    "n:eslint-plugin-n@17.15.0",
   ],
   "processor": undefined,
   "rules": {
@@ -883,7 +883,7 @@ exports[`createConfig > disable type-based rules 1`] = `
   "language": "@/js",
   "languageOptions": {
     "ecmaVersion": 2025,
-    "parser": "typescript-eslint/parser@8.17.0",
+    "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "program": null,
       "project": false,
@@ -896,7 +896,7 @@ exports[`createConfig > disable type-based rules 1`] = `
   },
   "plugins": [
     "@",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.17.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.18.1",
     "jsdoc",
     "regexp:eslint-plugin-regexp@2.7.0",
   ],
@@ -1147,7 +1147,7 @@ exports[`createConfig > enables strict rules 1`] = `
   "language": "@/js",
   "languageOptions": {
     "ecmaVersion": 2025,
-    "parser": "typescript-eslint/parser@8.17.0",
+    "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
       "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
@@ -1159,7 +1159,7 @@ exports[`createConfig > enables strict rules 1`] = `
   },
   "plugins": [
     "@",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.17.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.18.1",
     "jsdoc",
     "regexp:eslint-plugin-regexp@2.7.0",
   ],
@@ -1482,7 +1482,7 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
   "language": "@/js",
   "languageOptions": {
     "ecmaVersion": 2025,
-    "parser": "typescript-eslint/parser@8.17.0",
+    "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
       "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
@@ -1494,7 +1494,7 @@ exports[`createConfig > excludes rules covered by Biome 1`] = `
   },
   "plugins": [
     "@",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.17.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.18.1",
     "jsdoc",
     "regexp:eslint-plugin-regexp@2.7.0",
   ],
@@ -1658,7 +1658,7 @@ exports[`createConfig > generates a base configuration 1`] = `
   "language": "@/js",
   "languageOptions": {
     "ecmaVersion": 2025,
-    "parser": "typescript-eslint/parser@8.17.0",
+    "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
       "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
@@ -1670,7 +1670,7 @@ exports[`createConfig > generates a base configuration 1`] = `
   },
   "plugins": [
     "@",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.17.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.18.1",
     "jsdoc",
     "regexp:eslint-plugin-regexp@2.7.0",
   ],
@@ -2080,7 +2080,7 @@ exports[`createConfig > includes Node-specific rules 1`] = `
       "undefined": false,
       "unescape": false,
     },
-    "parser": "typescript-eslint/parser@8.17.0",
+    "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "projectService": true,
       "tsconfigRootDir": "/Users/sebastian/Workspace/effective-eslint-cfg",
@@ -2092,10 +2092,10 @@ exports[`createConfig > includes Node-specific rules 1`] = `
   },
   "plugins": [
     "@",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.17.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.18.1",
     "jsdoc",
     "regexp:eslint-plugin-regexp@2.7.0",
-    "n:eslint-plugin-n@17.14.0",
+    "n:eslint-plugin-n@17.15.0",
   ],
   "processor": undefined,
   "rules": {
@@ -2389,7 +2389,7 @@ exports[`createConfig > includes React-specific rules 1`] = `
   "language": "@/js",
   "languageOptions": {
     "ecmaVersion": 2025,
-    "parser": "typescript-eslint/parser@8.17.0",
+    "parser": "typescript-eslint/parser@8.18.1",
     "parserOptions": {
       "ecmaFeatures": {
         "jsx": true,
@@ -2404,7 +2404,7 @@ exports[`createConfig > includes React-specific rules 1`] = `
   },
   "plugins": [
     "@",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.17.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.18.1",
     "react",
     "react-hooks",
     "react-compiler",
