@@ -22,7 +22,7 @@ interface RuleOptions {
   /* enable strict checks - recommended */
   strict?: boolean;
 
-  /* optionated, best practise, preferring simpler code bases */
+  /* opinionated, best practice, preferring simpler code bases */
   style?: boolean;
 
   /** disable type-based rules for fast execution */
