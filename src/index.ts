@@ -11,8 +11,6 @@ import eslintRegexp from "eslint-plugin-regexp";
 import nodePlugin from "eslint-plugin-n";
 
 interface RuleOptions {
-  root: string;
-
   /** enable NodeJS checks */
   node?: boolean;
 
@@ -39,7 +37,7 @@ export type ConfigParam = ESLint.Options["overrideConfig"];
 const reactFlat = eslintReact.configs.flat;
 
 export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
-  const { root, fast, node, react, strict, style, biome } = options;
+  const { fast, node, react, strict, style, biome } = options;
 
   const extendsList: ExtendsList = [eslint.configs.recommended];
 
@@ -98,7 +96,6 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
       languageOptions: {
         parserOptions: {
           projectService: true,
-          tsconfigRootDir: root,
         },
       },
     });
