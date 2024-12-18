@@ -1,5 +1,5 @@
 import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
+import tseslint, { ConfigWithExtends } from "typescript-eslint";
 import { ESLint, Linter } from "eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintReact from "eslint-plugin-react";
@@ -62,20 +62,20 @@ export async function createConfig(options: RuleOptions): Promise<FlatConfig> {
   }
 
   if (react && reactFlat) {
+    // Note: The cast is required, because of some TS voodoo with the recommended config from React
+    extendsList.push(reactFlat.recommended as ConfigWithExtends);
+
     extendsList.push({
       plugins: {
-        react: eslintReact,
         "react-hooks": eslintReactHooks,
         "react-compiler": eslintReactCompiler,
       },
       rules: {
-        ...reactFlat.recommended.rules,
         ...reactFlat["jsx-runtime"].rules,
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error",
         "react-compiler/react-compiler": "error",
       },
-      languageOptions: reactFlat.recommended.languageOptions,
     });
   }
 
