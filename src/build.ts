@@ -1,4 +1,4 @@
-import { buildConfig } from "./generator";
+import { buildConfig } from "./generator.js";
 import { promises as fs } from "fs";
 import { join } from "path";
 import { createHash } from "crypto";

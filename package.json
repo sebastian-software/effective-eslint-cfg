@@ -6,7 +6,7 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsx src/build.ts",
+    "build": "rm -rf dist && tsx src/build.ts && tsc -p tsconfig.build.json",
     "test": "vitest",
     "check": "tsc --noEmit",
     "lint": "eslint --flag unstable_ts_config .",
