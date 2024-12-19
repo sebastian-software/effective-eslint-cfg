@@ -9,6 +9,7 @@ import eslintReactCompiler from "eslint-plugin-react-compiler";
 import eslintJsdoc from "eslint-plugin-jsdoc";
 import eslintRegexp from "eslint-plugin-regexp";
 import nodePlugin from "eslint-plugin-n";
+import { createRequire } from "module";
 
 interface RuleOptions {
   /** enable NodeJS checks */
@@ -36,9 +37,7 @@ export type ConfigParam = ESLint.Options["overrideConfig"];
 
 const reactFlat = eslintReact.configs.flat;
 
-export async function buildConfig(
-  options: RuleOptions
-): Promise<Linter.Config> {
+export async function buildConfig(options: RuleOptions): Promise<string> {
   const { fast, node, react, strict, style, biome } = options;
 
   const extendsList: ExtendsList = [eslint.configs.recommended];
@@ -124,9 +123,27 @@ export async function buildConfig(
     "test.tsx"
   )) as Linter.Config;
   cleanupRules(generatedConfig);
-  cleanupPlugins(generatedConfig);
 
-  return generatedConfig;
+  function replacer(key: string, value: unknown) {
+    if (key === "plugins" && Array.isArray(value)) {
+      return cleanupPlugins(value);
+    }
+
+    if (key === "parser" && typeof value === "string") {
+      return `[[[@typescript-eslint/parser]]]`;
+    }
+
+    return value;
+  }
+
+  const exportedConfig = JSON.stringify(generatedConfig, replacer, 2);
+  const moduleConfig = replacePlaceholdersWithRequires(exportedConfig);
+
+  return `
+    import { createRequire } from "module";
+    const require = createRequire(import.meta.url);
+    export default ${moduleConfig};
+  `;
 }
 
 export function ruleSorter(a: string, b: string) {
@@ -173,8 +190,58 @@ function cleanupRules(generatedConfig: Linter.Config) {
   return generatedConfig;
 }
 
-function cleanupPlugins(generatedConfig: Linter.Config) {
-  console.log("OLD PLUGINS:", Object.keys(generatedConfig.plugins));
+const require = createRequire(import.meta.url); // create a require function in ESM
 
-  return generatedConfig;
+function cleanupPlugins(plugins: string[]) {
+  const result: Record<string, string> = {};
+  plugins.forEach((plugin) => {
+    let name = plugin.split(":")[0];
+    if (name === "@") {
+      return;
+    }
+    let pkg = name;
+    if (name.startsWith("@")) {
+      pkg = name + "/eslint-plugin";
+    } else {
+      pkg = "eslint-plugin-" + name;
+    }
+
+    result[name] = `[[[${pkg}]]]`;
+  });
+
+  return result;
+}
+
+/**
+ * Replaces all triple-bracket placeholders in a JSON string with require statements.
+ *
+ * Example:
+ *
+ * Input JSON String:
+ * {
+ *   "module": "[[[eslint-plugin-regexp]]]"
+ * }
+ *
+ * Transformed String:
+ * {
+ *   "module": require("eslint-plugin-regexp")
+ * }
+ *
+ * @param jsonStr - The JSON string containing triple-bracket placeholders.
+ * @returns The modified string with placeholders replaced by require statements.
+ */
+function replacePlaceholdersWithRequires(jsonStr: string): string {
+  // Regular expression to match any string value in JSON that is enclosed in triple brackets
+  const placeholderRegex = /"(\[\[\[([a-zA-Z0-9\-@\/\.]+)\]\]\])"/g;
+
+  // Replace each placeholder with the corresponding require statement
+  const replacedStr = jsonStr.replace(
+    placeholderRegex,
+    (_match, _p1, moduleName) => {
+      // Return the require statement without quotes
+      return `require("${moduleName}")`;
+    }
+  );
+
+  return replacedStr;
 }

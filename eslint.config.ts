@@ -6,9 +6,9 @@ const base = await getConfig({
   strict: true,
 });
 
-console.log("BASE:", base);
-
 export default [
+  { ignores: ["node_modules", "dist"] },
+  { files: ["**/*.ts", "**/*.tsx"] },
   base,
   {
     rules: {

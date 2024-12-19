@@ -17,9 +17,9 @@ async function main() {
 
     const config = await buildConfig(opts);
     const hash = numberToShortHash(i);
-    const filePath = join(outputDir, `${hash}.json`);
+    const filePath = join(outputDir, `${hash}.js`);
 
-    await fs.writeFile(filePath, JSON.stringify(config, null, 2), "utf8");
+    await fs.writeFile(filePath, config, "utf8");
   }
 
   console.log(`Generated ${numPermutations} configs in ${outputDir}`);
