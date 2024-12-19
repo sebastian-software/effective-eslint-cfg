@@ -22,10 +22,12 @@ async function main() {
     await fs.writeFile(filePath, config, "utf8");
   }
 
-  console.log(`Generated ${numPermutations} configs in ${outputDir}`);
+  console.log(
+    `Generated ${numPermutations.toString()} configs in ${outputDir}`
+  );
 }
 
-main().catch((err) => {
+main().catch((err: unknown) => {
   console.error(err);
   process.exit(1);
 });

@@ -1,8 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildConfig } from "./generator";
 
-const cwd = process.cwd();
-
 describe("createConfig", () => {
   it("generates a base configuration", async () => {
     const config = await buildConfig({});
