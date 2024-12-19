@@ -12,7 +12,11 @@ export default [
   base,
   {
     rules: {
-      "no-console": [0],
+      "jsdoc/require-jsdoc": "off",
+      "jsdoc/require-param": "off",
+      "jsdoc/require-property": "off",
+      "jsdoc/require-returns": "off",
+      "jsdoc/require-yields": "off",
     },
   },
 ] satisfies Linter.Config[];
