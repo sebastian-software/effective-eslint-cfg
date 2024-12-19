@@ -214,21 +214,6 @@ function cleanupPlugins(plugins: string[]) {
 
 /**
  * Replaces all triple-bracket placeholders in a JSON string with require statements.
- *
- * Example:
- *
- * Input JSON String:
- * {
- *   "module": "[[[eslint-plugin-regexp]]]"
- * }
- *
- * Transformed String:
- * {
- *   "module": require("eslint-plugin-regexp")
- * }
- *
- * @param jsonStr - The JSON string containing triple-bracket placeholders.
- * @returns The modified string with placeholders replaced by require statements.
  */
 function replacePlaceholdersWithRequires(jsonStr: string): string {
   // Regular expression to match any string value in JSON that is enclosed in triple brackets
