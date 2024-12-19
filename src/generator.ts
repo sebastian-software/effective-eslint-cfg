@@ -195,7 +195,7 @@ const require = createRequire(import.meta.url); // create a require function in 
 function cleanupPlugins(plugins: string[]) {
   const result: Record<string, string> = {};
   plugins.forEach((plugin) => {
-    let name = plugin.split(":")[0];
+    const name = plugin.split(":")[0];
     if (name === "@") {
       return;
     }
@@ -217,7 +217,7 @@ function cleanupPlugins(plugins: string[]) {
  */
 function replacePlaceholdersWithRequires(jsonStr: string): string {
   // Regular expression to match any string value in JSON that is enclosed in triple brackets
-  const placeholderRegex = /"(\[\[\[([a-zA-Z0-9\-@\/\.]+)\]\]\])"/g;
+  const placeholderRegex = /"(\[\[\[([a-z0-9\-@/.]+)\]\]\])"/gi;
 
   // Replace each placeholder with the corresponding require statement
   const replacedStr = jsonStr.replace(
