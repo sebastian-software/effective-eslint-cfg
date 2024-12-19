@@ -96,6 +96,12 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
     extendsList.push({
       languageOptions: {
         parserOptions: {
+          ecmaVersion: "latest",
+          ecmaFeatures: {
+            jsx: react,
+          },
+          // Note from docs:
+          // We now recommend using projectService instead of project for easier configuration and faster linting.
           projectService: true,
         },
       },
