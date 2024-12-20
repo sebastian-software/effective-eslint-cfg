@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import { getConfig } from "./dist";
+import { getConfig } from "./src";
 
 const base = await getConfig({
   react: true,
