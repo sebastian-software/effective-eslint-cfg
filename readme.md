@@ -28,20 +28,40 @@ npm install @effective/eslint-cfg
 ## Usage
 
 ```ts
-import { createConfig } from "@effective/eslint-cfg"
+// eslint.config.ts
+import { getConfig } from "@effective/eslint-cfg"
 
-const config = createConfig({
+const config = getConfig({
   react: true,
   strict: true,
-  style: true,
-  biome: false
+  style: true
 })
 
-// Output the generated configuration
-console.log(config)
+export default [
+  {
+    ignores: ["node_modules", "dist"]
+  },
+  {
+    settings: {
+      react: {
+        version: "19.0"
+      }
+    }
+  },
+  {
+    files: ["**/*.ts", "**/*.tsx"]
+  },
+  {
+    rules: {
+      // custom rules / overrides
+    }
+  }
+]
 ```
 
-## Build
+## Developer
+
+### Build
 
 ```bash
 pnpm run build
