@@ -7,6 +7,6 @@ export async function getConfig(options: Options) {
   const hash = numberToShortHash(num)
   const configPath = join(process.cwd(), "dist", "configs", `${hash}.js`)
 
-  const module = await import(configPath)
-  return module.default as Linter.Config
+  const module = (await import(configPath)) as { default: Linter.Config }
+  return module.default
 }
