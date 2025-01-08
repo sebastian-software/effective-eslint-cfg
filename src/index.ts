@@ -1,11 +1,15 @@
-import { join } from "path"
+import { resolve } from "path"
 import { Options, optionsToNumber, numberToShortHash } from "./util.js"
 import { Linter } from "eslint"
 
 export async function getConfig(options: Options) {
   const num = optionsToNumber(options)
   const hash = numberToShortHash(num)
-  const configPath = join(process.cwd(), "dist", "configs", `${hash}.js`)
+
+  const __dirname = import.meta.dirname
+
+  // Make sure that we are in "dist" folder and not in "src".
+  const configPath = resolve(__dirname, "..", "dist", "configs", `${hash}.js`)
 
   const module = (await import(configPath)) as { default: Linter.Config }
   return module.default
