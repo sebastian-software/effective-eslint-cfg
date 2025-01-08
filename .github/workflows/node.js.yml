@@ -25,7 +25,5 @@ jobs:
         run: pnpm install
       - name: Check Types
         run: pnpm run check
-      - name: Check Linting
-        run: pnpm run lint
-      - name: Check Successful Build
-        run: pnpm run build
+      - name: Check Successful Build and Lint
+        run: pnpm run build && pnpm run lint
