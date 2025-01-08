@@ -28,17 +28,17 @@ npm install @effective/eslint-cfg
 ## Usage
 
 ```ts
-import { createConfig } from "@effective/eslint-cfg";
+import { createConfig } from "@effective/eslint-cfg"
 
 const config = createConfig({
   react: true,
   strict: true,
   style: true,
-  biome: false,
-});
+  biome: false
+})
 
 // Output the generated configuration
-console.log(config);
+console.log(config)
 ```
 
 ## Build

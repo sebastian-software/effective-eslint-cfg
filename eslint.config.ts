@@ -1,10 +1,10 @@
-import type { Linter } from "eslint";
-import { getConfig } from "./src";
+import type { Linter } from "eslint"
+import { getConfig } from "./src"
 
 const base = await getConfig({
   react: true,
-  strict: true,
-});
+  strict: true
+})
 
 export default [
   { ignores: ["node_modules", "dist"] },
@@ -16,7 +16,7 @@ export default [
       "jsdoc/require-param": "off",
       "jsdoc/require-property": "off",
       "jsdoc/require-returns": "off",
-      "jsdoc/require-yields": "off",
-    },
-  },
-] satisfies Linter.Config[];
+      "jsdoc/require-yields": "off"
+    }
+  }
+] satisfies Linter.Config[]

@@ -2,38 +2,23 @@
   "name": "@effective/eslint-cfg",
   "version": "0.0.1",
   "description": "A library for generating ESLint Flat Configs with React and TypeScript support.",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsx src/build.ts && tsc -p tsconfig.build.json",
-    "test": "vitest",
     "check": "tsc --noEmit",
-    "lint": "eslint --flag unstable_ts_config .",
     "fix": "eslint --flag unstable_ts_config --fix .; prettier --write .",
     "format": "prettier --write .",
-    "update": "ncu -ui",
+    "lint": "eslint --flag unstable_ts_config .",
     "release": "git push && release-it --ci patch",
+    "release:major": "git push && release-it --ci major",
     "release:minor": "git push && release-it --ci minor",
-    "release:major": "git push && release-it --ci major"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@9.15.3",
-  "devDependencies": {
-    "@eslint/js": "^9.17.0",
-    "@types/node": "^22.10.5",
-    "eslint": "^9.17.0",
-    "eslint-config-biome": "^1.9.4",
-    "eslint-config-prettier": "^9.1.0",
-    "jiti": "^2.4.2",
-    "npm-check-updates": "^17.1.13",
-    "prettier": "^3.4.2",
-    "release-it": "^18.0.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "test": "vitest",
+    "update": "ncu -ui"
   },
   "dependencies": {
     "eslint-plugin-jsdoc": "^50.6.1",
@@ -43,5 +28,21 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-regexp": "^2.7.0",
     "typescript-eslint": "^8.19.1"
-  }
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.5",
+    "eslint": "^9.17.0",
+    "eslint-config-biome": "^1.9.4",
+    "eslint-config-prettier": "^9.1.0",
+    "jiti": "^2.4.2",
+    "npm-check-updates": "^17.1.13",
+    "prettier": "^3.4.2",
+    "prettier-plugin-packagejson": "^2.5.6",
+    "release-it": "^18.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "packageManager": "pnpm@9.15.3"
 }
