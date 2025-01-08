@@ -9,7 +9,6 @@ import eslintReactCompiler from "eslint-plugin-react-compiler"
 import eslintJsdoc from "eslint-plugin-jsdoc"
 import eslintRegexp from "eslint-plugin-regexp"
 import nodePlugin from "eslint-plugin-n"
-import { createRequire } from "module"
 import { format } from "prettier"
 
 interface RuleOptions {
