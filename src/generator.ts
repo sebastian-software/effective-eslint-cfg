@@ -133,7 +133,7 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
 
   function replacer(key: string, value: unknown) {
     if (key === "plugins" && Array.isArray(value)) {
-      return cleanupPlugins(value)
+      return cleanupPlugins(value as string[])
     }
 
     if (key === "parser" && typeof value === "string") {
@@ -189,7 +189,8 @@ function cleanupRules(generatedConfig: Linter.Config) {
         if (value.length === 1) {
           cleanRules[ruleName] = levelStr
         } else {
-          cleanRules[ruleName] = [levelStr, ...value.slice(1)]
+          const ruleOptions = value.slice(1) as unknown[]
+          cleanRules[ruleName] = [levelStr, ...ruleOptions]
         }
       }
     }
@@ -199,8 +200,6 @@ function cleanupRules(generatedConfig: Linter.Config) {
 
   return generatedConfig
 }
-
-const require = createRequire(import.meta.url) // create a require function in ESM
 
 function cleanupPlugins(plugins: string[]) {
   const result: Record<string, string> = {}
@@ -232,7 +231,7 @@ function replacePlaceholdersWithRequires(jsonStr: string): string {
   // Replace each placeholder with the corresponding require statement
   const replacedStr = jsonStr.replace(
     placeholderRegex,
-    (_match, _p1, moduleName) => {
+    (_match, _p1, moduleName: string) => {
       // Return the require statement without quotes
       return `require("${moduleName}")`
     }
