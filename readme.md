@@ -1,5 +1,16 @@
 # ESLint Config Builder
 
+[![Sponsored by][sponsor-img]][sponsor] [![License][github-license-img]][github] [![Version][npm-version-img]][npm] [![Build][github-action-img]][github] [![Downloads][npm-downloads-img]][npm]
+
+[sponsor]: https://www.sebastian-software.de
+[sponsor-img]: https://badgen.net/badge/Sponsored%20by/Sebastian%20Software/c41e54
+[npm]: https://www.npmjs.com/package/@effective/eslint-cfg
+[npm-downloads-img]: https://badgen.net/npm/dm/@effective/eslint-cfg
+[npm-version-img]: https://badgen.net/npm/v/@effective/eslint-cfg
+[github]: https://github.com/sebastian-software/effective-eslint-cfg
+[github-license-img]: https://badgen.net/github/license/sebastian-software/effective-eslint-cfg
+[github-action-img]: https://github.com/sebastian-software/effective-eslint-cfg/actions/workflows/node.js.yml/badge.svg
+
 A TypeScript-based library for generating ESLint configurations in the Flat Config format, targeting React (optional) and TypeScript (mandatory) projects.
 
 ## Features
@@ -66,3 +77,13 @@ export default [
 ```bash
 pnpm run build
 ```
+
+## License
+
+[Apache License; Version 2.0, January 2004](http://www.apache.org/licenses/LICENSE-2.0)
+
+## Copyright
+
+<img src="https://cdn.rawgit.com/sebastian-software/sebastian-software-brand/0d4ec9d6/sebastiansoftware-en.svg" alt="Logo of Sebastian Software GmbH, Mainz, Germany" width="460" height="160"/>
+
+Copyright 2024-2025<br/>[Sebastian Software GmbH](https://www.sebastian-software.de)
