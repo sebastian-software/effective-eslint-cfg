@@ -1,4 +1,21 @@
-declare module "eslint-config-prettier"
-declare module "eslint-plugin-react-hooks"
-declare module "eslint-config-biome"
-declare module "eslint-plugin-react-compiler"
+declare module "eslint-config-prettier" {
+  const config: {
+    rules: Linter.Rules
+  }
+  export = config
+}
+
+declare module "eslint-plugin-react-hooks" {
+  export const rules: Linter.Rules
+}
+
+declare module "eslint-config-biome" {
+  const config: {
+    rules: Linter.Rules
+  }
+  export = config
+}
+
+declare module "eslint-plugin-react-compiler" {
+  export const rules: Linter.Rules
+}
