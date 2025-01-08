@@ -145,11 +145,13 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
   const exportedConfig = JSON.stringify(generatedConfig, replacer, 2);
   const moduleConfig = replacePlaceholdersWithRequires(exportedConfig);
 
-  return `
+  return generatedConfig;
+
+  /*`
     import { createRequire } from "module";
     const require = createRequire(import.meta.url);
     export default ${moduleConfig};
-  `;
+  `;*/
 }
 
 export function ruleSorter(a: string, b: string) {
