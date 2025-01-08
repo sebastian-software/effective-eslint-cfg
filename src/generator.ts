@@ -10,6 +10,7 @@ import eslintJsdoc from "eslint-plugin-jsdoc";
 import eslintRegexp from "eslint-plugin-regexp";
 import nodePlugin from "eslint-plugin-n";
 import { createRequire } from "module";
+import { format } from "prettier";
 
 interface RuleOptions {
   /** enable NodeJS checks */
@@ -145,13 +146,14 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
   const exportedConfig = JSON.stringify(generatedConfig, replacer, 2);
   const moduleConfig = replacePlaceholdersWithRequires(exportedConfig);
 
-  return generatedConfig;
-
-  /*`
+  return format(
+    `
     import { createRequire } from "module";
     const require = createRequire(import.meta.url);
     export default ${moduleConfig};
-  `;*/
+  `,
+    { parser: "typescript" }
+  );
 }
 
 export function ruleSorter(a: string, b: string) {
