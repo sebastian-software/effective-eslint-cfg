@@ -70,6 +70,8 @@ export default [
 ]
 ```
 
+Note: Using TS configuration files work perfectly fine since ESLint v9 but requires installing `jiti` and using `eslint --flag unstable_ts_config`.
+
 ## Developer
 
 ### Build
