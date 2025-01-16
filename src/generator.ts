@@ -8,6 +8,7 @@ import eslintReactCompiler from "eslint-plugin-react-compiler"
 import eslintJsdoc from "eslint-plugin-jsdoc"
 import eslintRegexp from "eslint-plugin-regexp"
 import eslintJsxA11y from "eslint-plugin-jsx-a11y"
+import simpleImportSort from "eslint-plugin-simple-import-sort"
 import nodePlugin from "eslint-plugin-n"
 import { format } from "prettier"
 
@@ -58,6 +59,17 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
     // but that do not impact program logic. These rules are generally opinionated
     // about enforcing simpler code patterns.
     presets.push(tseslint.configs.stylisticTypeChecked)
+
+    // Conventional sorting of imports, far leaner and more to the point than "eslint-plugin-import/order"
+    presets.push({
+      plugins: {
+        "simple-import-sort": simpleImportSort
+      },
+      rules: {
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error"
+      }
+    })
   }
 
   if (react && reactFlat) {
