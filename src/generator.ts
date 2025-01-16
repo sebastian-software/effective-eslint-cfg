@@ -152,6 +152,7 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
   const generatedConfig = (await linter.calculateConfigForFile(
     "test.tsx"
   )) as Linter.Config
+
   cleanupRules(generatedConfig, disabled ?? false)
 
   function replacer(key: string, value: unknown) {
@@ -191,6 +192,12 @@ export function ruleSorter(a: string, b: string) {
   return a.localeCompare(b)
 }
 
+function getRulePackage(ruleName: string) {
+  if (ruleName.includes("/")) {
+    return ruleName.split("/")[0]
+  }
+}
+
 function cleanupRules(generatedConfig: Linter.Config, disabled: boolean) {
   const rules = generatedConfig.rules
   if (!rules) {
@@ -198,9 +205,21 @@ function cleanupRules(generatedConfig: Linter.Config, disabled: boolean) {
   }
 
   const ruleNames = Object.keys(rules).sort(ruleSorter)
+  const disabledPlugins = new Set([
+    "@babel",
+    "babel",
+    "vue",
+    "flowtype",
+    "@stylistic"
+  ])
 
   const cleanRules: typeof rules = {}
   for (const ruleName of ruleNames) {
+    const rulePackage = getRulePackage(ruleName)
+    if (rulePackage && disabledPlugins.has(rulePackage)) {
+      continue
+    }
+
     const value = rules[ruleName]
     if (value != null && Array.isArray(value)) {
       const level = value[0]
