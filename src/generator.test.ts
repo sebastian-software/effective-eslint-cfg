@@ -40,8 +40,13 @@ describe("createConfig", () => {
     expect(config).toMatchSnapshot()
   })
 
+  it("only return disabled rules", async () => {
+    const config = await buildConfig({ disabled: true })
+    expect(config).toMatchSnapshot()
+  })
+
   //
-  // DISABLING...
+  // COMBINE...
   //
 
   it("combines all options", async () => {

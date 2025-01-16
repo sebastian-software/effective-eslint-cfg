@@ -27,6 +27,7 @@ A TypeScript-based library for generating ESLint configurations in the Flat Conf
   - `node`: Recommended rules for development of ESM-enabled NodeJS scripts
 - Tweaks:
   - `fast`: Drop rules which require typing information (much faster)
+  - `disabled`: Only return disabled rules. Helpful to add to the end when using custom rules.
 - Automatically drops rules handled by Prettier.
 
 ## Installation

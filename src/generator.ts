@@ -25,6 +25,9 @@ interface RuleOptions {
 
   /** disable type-based rules for fast execution */
   fast?: boolean
+
+  /** return only disabled rules e.g. by prettier/typescript */
+  disabled?: boolean
 }
 
 export type FlatConfig = ReturnType<typeof tseslint.config>
@@ -34,7 +37,7 @@ export type ConfigParam = ESLint.Options["overrideConfig"]
 const reactFlat = eslintReact.configs.flat
 
 export async function buildConfig(options: RuleOptions): Promise<string> {
-  const { fast, node, react, strict, style } = options
+  const { fast, node, react, strict, style, disabled } = options
 
   const extendsList: ExtendsList = [eslint.configs.recommended]
 
@@ -88,21 +91,22 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
   // Disable all type checked rules for faster runtime of the config e.g. for editor usage etc.
   if (fast) {
     extendsList.push(tseslint.configs.disableTypeChecked)
-  } else {
-    extendsList.push({
-      languageOptions: {
-        parserOptions: {
-          ecmaVersion: "latest",
-          ecmaFeatures: {
-            jsx: react
-          },
-          // Note from docs:
-          // We now recommend using projectService instead of project for easier configuration and faster linting.
-          projectService: true
-        }
-      }
-    })
   }
+
+  // Configure TS parser
+  extendsList.push({
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: "latest",
+        ecmaFeatures: {
+          jsx: react
+        },
+        // Note from docs:
+        // We now recommend using projectService instead of project for easier configuration and faster linting.
+        projectService: !fast
+      }
+    }
+  })
 
   // Always disable rules which are better enforced by Prettier
   extendsList.push(eslintConfigPrettier)
@@ -117,7 +121,7 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
   const generatedConfig = (await linter.calculateConfigForFile(
     "test.tsx"
   )) as Linter.Config
-  cleanupRules(generatedConfig)
+  cleanupRules(generatedConfig, disabled)
 
   function replacer(key: string, value: unknown) {
     if (key === "plugins" && Array.isArray(value)) {
@@ -156,7 +160,7 @@ export function ruleSorter(a: string, b: string) {
   return a.localeCompare(b)
 }
 
-function cleanupRules(generatedConfig: Linter.Config) {
+function cleanupRules(generatedConfig: Linter.Config, disabled: boolean) {
   const rules = generatedConfig.rules
   if (!rules) {
     return generatedConfig
@@ -170,8 +174,15 @@ function cleanupRules(generatedConfig: Linter.Config) {
     if (value != null && Array.isArray(value)) {
       const level = value[0]
       if (level === 0) {
-        // pass, ignore
-      } else {
+        if (disabled) {
+          cleanRules[ruleName] = "off"
+        }
+
+        // else: pass, ignore
+      }
+
+      // ignore when asked for disabled rules only
+      else if (!disabled) {
         const levelStr = level === 2 ? "error" : "warn"
 
         if (value.length === 1) {
