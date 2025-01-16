@@ -212,6 +212,7 @@ function cleanupRules(generatedConfig: Linter.Config, disabled: boolean) {
     "flowtype",
     "@stylistic"
   ])
+  const disabledOffPlugins = new Set(["jsdoc"])
 
   const cleanRules: typeof rules = {}
   for (const ruleName of ruleNames) {
@@ -225,7 +226,9 @@ function cleanupRules(generatedConfig: Linter.Config, disabled: boolean) {
       const level = value[0]
       if (level === 0) {
         if (disabled) {
-          cleanRules[ruleName] = "off"
+          if (!rulePackage || !disabledOffPlugins.has(rulePackage)) {
+            cleanRules[ruleName] = "off"
+          }
         }
 
         // else: pass, ignore
