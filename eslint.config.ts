@@ -1,9 +1,11 @@
 import type { Linter } from "eslint"
+
 import { getConfig } from "./src"
 
 const base = await getConfig({
-  react: true,
-  strict: true
+  node: true,
+  strict: true,
+  style: true
 })
 
 export default [
