@@ -26,7 +26,4 @@ async function main() {
   console.log(`Generated ${numPermutations.toString()} configs in ${outputDir}`)
 }
 
-main().catch((err: unknown) => {
-  console.error(err)
-  process.exit(1)
-})
+void main()

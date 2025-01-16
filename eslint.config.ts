@@ -1,6 +1,6 @@
 import type { Linter } from "eslint"
 
-import { getConfig } from "./src"
+import { getConfig } from "./src/index"
 
 const base = await getConfig({
   node: true,
