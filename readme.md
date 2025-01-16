@@ -26,7 +26,6 @@ A TypeScript-based library for generating ESLint configurations in the Flat Conf
   - `regexp`: Recommended mostly auto-fix rules for regular expressions
   - `node`: Recommended rules for development of ESM-enabled NodeJS scripts
 - Tweaks:
-  - `biome`: Drop rules achievable by Biome
   - `fast`: Drop rules which require typing information (much faster)
 - Automatically drops rules handled by Prettier.
 

@@ -44,11 +44,6 @@ describe("createConfig", () => {
   // DISABLING...
   //
 
-  it("excludes rules covered by Biome", async () => {
-    const config = await buildConfig({ biome: true })
-    expect(config).toMatchSnapshot()
-  })
-
   it("combines all options", async () => {
     const config = await buildConfig({
       node: true,

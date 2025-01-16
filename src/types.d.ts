@@ -9,13 +9,6 @@ declare module "eslint-plugin-react-hooks" {
   export const rules: Linter.Rules
 }
 
-declare module "eslint-config-biome" {
-  const config: {
-    rules: Linter.Rules
-  }
-  export = config
-}
-
 declare module "eslint-plugin-react-compiler" {
   export const rules: Linter.Rules
 }

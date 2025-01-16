@@ -6,17 +6,9 @@ export type Options = {
   strict?: boolean
   style?: boolean
   fast?: boolean
-  biome?: boolean
 }
 
-export const flags = [
-  "node",
-  "react",
-  "strict",
-  "style",
-  "fast",
-  "biome"
-] as const
+export const flags = ["node", "react", "strict", "style", "fast"] as const
 
 export function optionsToNumber(opts: Options): number {
   let num = 0

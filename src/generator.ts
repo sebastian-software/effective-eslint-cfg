@@ -4,7 +4,6 @@ import { ESLint, Linter } from "eslint"
 import eslintConfigPrettier from "eslint-config-prettier"
 import eslintReact from "eslint-plugin-react"
 import eslintReactHooks from "eslint-plugin-react-hooks"
-import eslintBiome from "eslint-config-biome"
 import eslintReactCompiler from "eslint-plugin-react-compiler"
 import eslintJsdoc from "eslint-plugin-jsdoc"
 import eslintRegexp from "eslint-plugin-regexp"
@@ -26,9 +25,6 @@ interface RuleOptions {
 
   /** disable type-based rules for fast execution */
   fast?: boolean
-
-  /* remove all rules which are supported by Biome to make everything faster */
-  biome?: boolean
 }
 
 export type FlatConfig = ReturnType<typeof tseslint.config>
@@ -38,7 +34,7 @@ export type ConfigParam = ESLint.Options["overrideConfig"]
 const reactFlat = eslintReact.configs.flat
 
 export async function buildConfig(options: RuleOptions): Promise<string> {
-  const { fast, node, react, strict, style, biome } = options
+  const { fast, node, react, strict, style } = options
 
   const extendsList: ExtendsList = [eslint.configs.recommended]
 
@@ -110,13 +106,6 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
 
   // Always disable rules which are better enforced by Prettier
   extendsList.push(eslintConfigPrettier)
-
-  // When users switch to Biome (for performance) it makes sense to
-  // move these rules from the plate of ESLint to focus on running
-  // complex or type-based rules only.
-  if (biome) {
-    extendsList.push(eslintBiome)
-  }
 
   const config = tseslint.config(extendsList)
 
