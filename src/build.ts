@@ -1,6 +1,7 @@
-import { buildConfig } from "./generator.js"
 import { promises as fs } from "fs"
 import { join } from "path"
+
+import { buildConfig } from "./generator.js"
 import { flags, numberToShortHash, Options } from "./util.js"
 
 async function main() {

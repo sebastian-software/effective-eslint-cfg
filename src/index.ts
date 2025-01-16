@@ -1,6 +1,7 @@
-import { resolve } from "path"
-import { Options, optionsToNumber, numberToShortHash } from "./util.js"
 import { Linter } from "eslint"
+import { resolve } from "path"
+
+import { numberToShortHash,Options, optionsToNumber } from "./util.js"
 
 export async function getConfig(options: Options) {
   const num = optionsToNumber(options)

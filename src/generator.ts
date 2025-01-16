@@ -1,16 +1,16 @@
 import eslint from "@eslint/js"
-import tseslint from "typescript-eslint"
 import { ESLint, Linter } from "eslint"
 import eslintConfigPrettier from "eslint-config-prettier"
-import eslintReact from "eslint-plugin-react"
-import eslintReactHooks from "eslint-plugin-react-hooks"
-import eslintReactCompiler from "eslint-plugin-react-compiler"
 import eslintJsdoc from "eslint-plugin-jsdoc"
-import eslintRegexp from "eslint-plugin-regexp"
 import eslintJsxA11y from "eslint-plugin-jsx-a11y"
-import simpleImportSort from "eslint-plugin-simple-import-sort"
 import nodePlugin from "eslint-plugin-n"
+import eslintReact from "eslint-plugin-react"
+import eslintReactCompiler from "eslint-plugin-react-compiler"
+import eslintReactHooks from "eslint-plugin-react-hooks"
+import eslintRegexp from "eslint-plugin-regexp"
+import simpleImportSort from "eslint-plugin-simple-import-sort"
 import { format } from "prettier"
+import tseslint from "typescript-eslint"
 
 interface RuleOptions {
   /** enable NodeJS checks */
