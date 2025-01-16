@@ -117,6 +117,15 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
   // Check NodeJS things (ESM mode)
   if (node) {
     presets.push(nodePlugin.configs["flat/recommended-module"])
+
+    const tryExtensions = [".js", ".ts"]
+    if (react) {
+      tryExtensions.push(".tsx")
+    }
+
+    presets.push({
+      settings: { n: { tryExtensions } }
+    })
   }
 
   // Disable all type checked rules for faster runtime of the config e.g. for editor usage etc.

@@ -319,6 +319,11 @@ exports[`createConfig > combines all options 1`] = `
 "import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 export default {
+  settings: {
+    n: {
+      tryExtensions: [".js", ".ts", ".tsx"],
+    },
+  },
   linterOptions: {
     reportUnusedDisableDirectives: 1,
   },
@@ -1852,6 +1857,11 @@ exports[`createConfig > includes Node-specific rules 1`] = `
 "import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 export default {
+  settings: {
+    n: {
+      tryExtensions: [".js", ".ts"],
+    },
+  },
   linterOptions: {
     reportUnusedDisableDirectives: 1,
   },
