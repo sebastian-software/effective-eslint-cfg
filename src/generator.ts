@@ -1,5 +1,5 @@
 import eslint from "@eslint/js"
-import tseslint, { ConfigWithExtends } from "typescript-eslint"
+import tseslint from "typescript-eslint"
 import { ESLint, Linter } from "eslint"
 import eslintConfigPrettier from "eslint-config-prettier"
 import eslintReact from "eslint-plugin-react"
@@ -72,9 +72,9 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
     })
   }
 
-  if (react && reactFlat) {
+  if (react) {
     // Note: The cast is required, because of some TS voodoo with the recommended config from React
-    presets.push(reactFlat.recommended as ConfigWithExtends)
+    presets.push(reactFlat.recommended)
 
     presets.push({
       plugins: {
