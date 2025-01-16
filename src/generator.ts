@@ -7,6 +7,7 @@ import eslintReactHooks from "eslint-plugin-react-hooks"
 import eslintReactCompiler from "eslint-plugin-react-compiler"
 import eslintJsdoc from "eslint-plugin-jsdoc"
 import eslintRegexp from "eslint-plugin-regexp"
+import eslintJsxA11y from "eslint-plugin-jsx-a11y"
 import nodePlugin from "eslint-plugin-n"
 import { format } from "prettier"
 
@@ -39,9 +40,9 @@ const reactFlat = eslintReact.configs.flat
 export async function buildConfig(options: RuleOptions): Promise<string> {
   const { fast, node, react, strict, style, disabled } = options
 
-  const extendsList: ExtendsList = [eslint.configs.recommended]
+  const presets: ExtendsList = [eslint.configs.recommended]
 
-  extendsList.push(
+  presets.push(
     strict
       ? // Contains all of recommended, recommended-type-checked, and strict,
         // along with additional strict rules that require type information.
@@ -56,14 +57,14 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
     // Rules considered to be best practice for modern TypeScript codebases,
     // but that do not impact program logic. These rules are generally opinionated
     // about enforcing simpler code patterns.
-    extendsList.push(tseslint.configs.stylisticTypeChecked)
+    presets.push(tseslint.configs.stylisticTypeChecked)
   }
 
   if (react && reactFlat) {
     // Note: The cast is required, because of some TS voodoo with the recommended config from React
-    extendsList.push(reactFlat.recommended as ConfigWithExtends)
+    presets.push(reactFlat.recommended as ConfigWithExtends)
 
-    extendsList.push({
+    presets.push({
       plugins: {
         "react-hooks": eslintReactHooks,
         "react-compiler": eslintReactCompiler
@@ -77,24 +78,29 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
     })
   }
 
+  // Always enable basic a11y checks... not responsible when not doing so.
+  if (react) {
+    presets.push(eslintJsxA11y.flatConfigs.recommended)
+  }
+
   // We like JSDoc but for nothing which can be done better with TypeScript
-  extendsList.push(eslintJsdoc.configs["flat/recommended-typescript-error"])
+  presets.push(eslintJsdoc.configs["flat/recommended-typescript-error"])
 
   // Check some validity related to usage and definition of regular expressions
-  extendsList.push(eslintRegexp.configs["flat/recommended"])
+  presets.push(eslintRegexp.configs["flat/recommended"])
 
   // Check NodeJS things (ESM mode)
   if (node) {
-    extendsList.push(nodePlugin.configs["flat/recommended-module"])
+    presets.push(nodePlugin.configs["flat/recommended-module"])
   }
 
   // Disable all type checked rules for faster runtime of the config e.g. for editor usage etc.
   if (fast) {
-    extendsList.push(tseslint.configs.disableTypeChecked)
+    presets.push(tseslint.configs.disableTypeChecked)
   }
 
   // Configure TS parser
-  extendsList.push({
+  presets.push({
     languageOptions: {
       parserOptions: {
         ecmaVersion: "latest",
@@ -109,9 +115,9 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
   })
 
   // Always disable rules which are better enforced by Prettier
-  extendsList.push(eslintConfigPrettier)
+  presets.push(eslintConfigPrettier)
 
-  const config = tseslint.config(extendsList)
+  const config = tseslint.config(presets)
 
   const linter = new ESLint({
     overrideConfigFile: true,
