@@ -1,6 +1,6 @@
 import { createHash } from "crypto"
 
-export type Options = {
+export interface Options {
   node?: boolean
   react?: boolean
   strict?: boolean
