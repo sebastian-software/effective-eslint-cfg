@@ -127,7 +127,7 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
   const generatedConfig = (await linter.calculateConfigForFile(
     "test.tsx"
   )) as Linter.Config
-  cleanupRules(generatedConfig, disabled)
+  cleanupRules(generatedConfig, disabled ?? false)
 
   function replacer(key: string, value: unknown) {
     if (key === "plugins" && Array.isArray(value)) {
