@@ -98,6 +98,19 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
   // We like JSDoc but for nothing which can be done better with TypeScript
   presets.push(eslintJsdoc.configs["flat/recommended-typescript-error"])
 
+  presets.push({
+    rules: {
+      // We are TypeScript oriented. We all like JSDoc for some methods but
+      // requiring it is a bit strong for most code bases. We still want
+      // to verify JSDoc to be correct when existing.
+      "jsdoc/require-jsdoc": "off",
+      "jsdoc/require-param": "off",
+      "jsdoc/require-property": "off",
+      "jsdoc/require-returns": "off",
+      "jsdoc/require-yields": "off"
+    }
+  })
+
   // Check some validity related to usage and definition of regular expressions
   presets.push(eslintRegexp.configs["flat/recommended"])
 

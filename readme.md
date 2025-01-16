@@ -11,24 +11,26 @@
 [github-license-img]: https://badgen.net/github/license/sebastian-software/effective-eslint-cfg
 [github-action-img]: https://github.com/sebastian-software/effective-eslint-cfg/actions/workflows/node.js.yml/badge.svg
 
-A TypeScript-based library for generating ESLint configurations in the Flat Config format, targeting React (optional) and TypeScript (mandatory) projects.
+A TypeScript-based library for generating ESLint configurations in the Flat Config format, targeting TypeScript projects with optional NodeJS and React support.
 
 ## Features
 
 - Generates ESLint Flat Configs for ESLint v9.
 - Supports TypeScript and optionally React and NodeJS
-- Config options:
-  - `strict`: Enables stricter linting rules.
-  - `style`: Adds additional rules for style guidelines.
-- Plugins for:
-  - `jsdoc`: Typescript-aware JSDoc linting
-  - `react`: Recommended checks from the react, hooks and compiler presets
+- Automatically drops rules handled by Prettier.
+
+## Config options
+
+- `strict`: Enables strict linting rules (TypeScript mostly)
+- `style`: Adds additional rules for style guidelines and import sorting/grouping.
+- Included Plugins:
+  - `jsdoc`: Typescript-aware JSDoc linting without requiring docs... only validating.
+  - `react`: Recommended checks from the react, hooks and compiler presets. Also included A11Y checks.
   - `regexp`: Recommended mostly auto-fix rules for regular expressions
   - `node`: Recommended rules for development of ESM-enabled NodeJS scripts
-- Tweaks:
+- Output Tweaks:
   - `fast`: Drop rules which require typing information (much faster)
   - `disabled`: Only return disabled rules. Helpful to add to the end when using custom rules.
-- Automatically drops rules handled by Prettier.
 
 ## Installation
 
