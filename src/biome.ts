@@ -1,4 +1,4 @@
-import type { JsonMetadata, RulesMetadata } from "./biome-config"
+import type { JsonMetadata, RulesMetadata, RuleSource } from "./biome-types"
 
 const META_URL = "https://biomejs.dev/metadata/rules.json"
 
@@ -29,6 +29,9 @@ supportedSource.set("eslintSonarJs", "sonarjs/")
 supportedSource.set("eslintBarrelFiles", "no-barrel-files/")
 supportedSource.set("eslintJest", "jest/")
 
+type UnionKeys<T> = T extends T ? keyof T : never
+type RuleSourceKeys = UnionKeys<RuleSource>
+
 function flattenRules(
   input: Record<string, Record<string, RuleMeta>>,
   options: FlattenOptions
@@ -51,13 +54,14 @@ function flattenRules(
         }
 
         sources?.forEach((source) => {
-          const sourceNames = Object.keys(source)
+          // Wir wissen: In jedem "source" Objekt existiert genau ein Key (z.B. "clippy")
+          // und dessen Value ist vom Typ string.
+          const entries = Object.entries(source) as [RuleSourceKeys, string][]
 
-          sourceNames.forEach((sourceName) => {
-            const pluginPrefix = supportedSource.get(sourceName)
+          entries.forEach(([key, value]) => {
+            const pluginPrefix = supportedSource.get(key)
             if (pluginPrefix != null) {
-              ourMeta.originalRule =
-                pluginPrefix + source[sourceName as keyof typeof source]
+              ourMeta.originalRule = pluginPrefix + value
             }
           })
         })
