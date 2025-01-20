@@ -43,6 +43,15 @@ describe("createConfig", () => {
     expect(config).toMatchSnapshot()
   })
 
+  it("disable biome supported and type requiring rules", async () => {
+    const biomeRules = await getBiomeRules()
+    const config = await buildConfig(
+      { biome: true, fast: true },
+      { biomeRules }
+    )
+    expect(config).toMatchSnapshot()
+  })
+
   it("disable type requiring rules", async () => {
     const config = await buildConfig({ fast: true })
     expect(config).toMatchSnapshot()
