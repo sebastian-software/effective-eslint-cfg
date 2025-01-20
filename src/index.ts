@@ -45,9 +45,9 @@ export function setRuleSeverity(
   }
 
   if (Array.isArray(ruleConfig)) {
-    config.rules[ruleName] = severity
+    ruleConfig[0] = severity
   } else {
-    config.rules[ruleName][0] = severity
+    config.rules[ruleName] = severity
   }
 }
 
