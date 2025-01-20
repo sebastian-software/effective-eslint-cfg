@@ -16,22 +16,26 @@ A TypeScript-based library for generating ESLint configurations in the Flat Conf
 ## Features
 
 - Generates ESLint Flat Configs for ESLint v9.
-- Supports TypeScript and optionally React and NodeJS
+- Requires TypeScript and optionally supports React and NodeJS
 - Automatically drops rules handled by Prettier.
+- Uses Biome data to optionally disable rules supported by Biome.
 
 ## Config options
 
 - `strict`: Enables strict linting rules (TypeScript mostly)
 - `style`: Adds additional rules for style guidelines and import sorting/grouping.
-- Included Plugins:
-  - `jsdoc`: Typescript-aware JSDoc linting without requiring docs... only validating.
-  - `react`: Recommended checks from the react, hooks and compiler presets. Also included A11Y checks.
-  - `regexp`: Recommended mostly auto-fix rules for regular expressions
-  - `node`: Recommended rules for development of ESM-enabled NodeJS scripts
-- Output Tweaks:
-  - `fast`: Drop rules which require typing information (much faster)
-  - `biome`: Drop rules which are implemented identically in Biome (for performance reasons)
-  - `disabled`: Only return disabled rules. Helpful to add to the end when using custom rules.
+- `fast`: Drop rules which require typing information (much faster)
+- `biome`: Drop rules which are implemented identically in Biome (for performance reasons)
+- `disabled`: Only return disabled rules. Helpful to add to the end when using custom rules.
+- `react`: Add all recommended ReactJS checks
+- `node`: Add all recommended NodeJS checks
+
+## Included Plugins
+
+- `react`: Recommended checks from the react, hooks and compiler presets. Also included A11Y checks.
+- `node`: Recommended rules for development of ESM-enabled NodeJS scripts
+- `jsdoc`: Typescript-aware JSDoc linting without requiring docs... only validating.
+- `regexp`: Recommended mostly auto-fix rules for regular expressions
 
 ## Installation
 
