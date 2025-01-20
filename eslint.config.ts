@@ -18,27 +18,5 @@ export default [
     }
   },
   { files: ["**/*.ts", "**/*.tsx"] },
-  base,
-  {
-    rules: {
-      "jsdoc/require-jsdoc": "off",
-      "jsdoc/require-param": "off",
-      "jsdoc/require-property": "off",
-      "jsdoc/require-returns": "off",
-      "jsdoc/require-yields": "off",
-
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          args: "all",
-          argsIgnorePattern: "^_",
-          caughtErrors: "all",
-          caughtErrorsIgnorePattern: "^_",
-          destructuredArrayIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-          ignoreRestSiblings: true
-        }
-      ]
-    }
-  }
+  base
 ] satisfies Linter.Config[]

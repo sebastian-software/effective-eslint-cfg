@@ -137,7 +137,23 @@ export async function buildConfig(
       "jsdoc/require-param": "off",
       "jsdoc/require-property": "off",
       "jsdoc/require-returns": "off",
-      "jsdoc/require-yields": "off"
+      "jsdoc/require-yields": "off",
+
+      // Interestingly the rule is enabled in the recommended presets but
+      // differs in behavior from the standard TSC handling. They even document
+      // the different... wonder why not just use the sensible default in TSC.
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          args: "all",
+          argsIgnorePattern: "^_",
+          caughtErrors: "all",
+          caughtErrorsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          ignoreRestSiblings: true
+        }
+      ]
     }
   })
 
