@@ -36,7 +36,7 @@
     "update": "ncu -ui"
   },
   "dependencies": {
-    "eslint-plugin-jsdoc": "^50.6.1",
+    "eslint-plugin-jsdoc": "^50.6.2",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-n": "^17.15.1",
     "eslint-plugin-react": "^7.37.4",
@@ -53,13 +53,13 @@
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "jiti": "^2.4.2",
-    "npm-check-updates": "^17.1.13",
+    "npm-check-updates": "^17.1.14",
     "prettier": "^3.4.2",
-    "prettier-plugin-packagejson": "^2.5.7",
+    "prettier-plugin-packagejson": "^2.5.8",
     "release-it": "^18.1.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
-    "vitest": "^2.1.8"
+    "vitest": "^3.0.2"
   },
   "packageManager": "pnpm@9.15.4",
   "publishConfig": {
