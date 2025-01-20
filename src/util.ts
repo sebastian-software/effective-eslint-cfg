@@ -1,14 +1,29 @@
 import { createHash } from "crypto"
 
 export interface Options {
-  node?: boolean
-  react?: boolean
+  // mode options
   strict?: boolean
   style?: boolean
+
+  // additional rules options
+  node?: boolean
+  react?: boolean
+
+  // output options
+  disabled?: boolean
   fast?: boolean
+  biome?: boolean
 }
 
-export const flags = ["node", "react", "strict", "style", "fast"] as const
+export const flags = [
+  "node",
+  "react",
+  "strict",
+  "style",
+  "disabled",
+  "fast",
+  "biome"
+] as const
 
 export function optionsToNumber(opts: Options): number {
   let num = 0
