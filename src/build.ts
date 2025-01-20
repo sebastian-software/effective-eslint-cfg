@@ -1,9 +1,9 @@
 import { promises as fs } from "fs"
 import { join } from "path"
 
+import { getBiomeRules } from "./biome.js"
 import { buildConfig } from "./generator.js"
 import { flags, numberToShortHash, Options } from "./util.js"
-import { getBiomeRules } from "./biome.js"
 
 async function main() {
   const outputDir = join(process.cwd(), "dist", "configs")

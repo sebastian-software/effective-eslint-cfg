@@ -1,4 +1,4 @@
-import { JsonMetadata, RulesMetadata } from "./biome-config"
+import type { JsonMetadata, RulesMetadata } from "./biome-config"
 
 const META_URL = "https://biomejs.dev/metadata/rules.json"
 
@@ -38,7 +38,7 @@ function flattenRules(
   for (const [_fileType, categories] of Object.entries(input)) {
     for (const [category, rules] of Object.entries(categories)) {
       for (const [ruleName, ruleMeta] of Object.entries(rules)) {
-        const { name, version, docs, link, sources, ...restMeta } = ruleMeta
+        const { _name, _version, _docs, _link, sources, ...restMeta } = ruleMeta
 
         const ourMeta: ReducedRuleMeta = {
           category,

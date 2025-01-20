@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 
-import { buildConfig } from "./generator"
 import { getBiomeRules } from "./biome"
+import { buildConfig } from "./generator"
 
 describe("createConfig", () => {
   it("generates a base configuration", async () => {
