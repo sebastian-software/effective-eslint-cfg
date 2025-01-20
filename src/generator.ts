@@ -28,6 +28,9 @@ interface RuleOptions {
   /** disable type-based rules for fast execution */
   fast?: boolean
 
+  /** whether biome matched rules should be disabled */
+  biome?: boolean
+
   /** return only disabled rules e.g. by prettier/typescript */
   disabled?: boolean
 }
@@ -38,8 +41,33 @@ export type ConfigParam = ESLint.Options["overrideConfig"]
 
 const reactFlat = eslintReact.configs.flat
 
-export async function buildConfig(options: RuleOptions): Promise<string> {
-  const { fast, node, react, strict, style, disabled } = options
+interface BiomeRule {
+  category: string
+  originalRule: string
+}
+
+type BiomeRules = Record<string, BiomeRule>
+
+interface Settings {
+  biomeRules?: BiomeRules
+}
+
+function createBiomePreset(biomeRules: BiomeRules) {
+  const rules: Record<string, "off"> = {}
+  for (const [_ruleName, { originalRule }] of Object.entries(biomeRules)) {
+    rules[originalRule] = "off"
+  }
+
+  return {
+    rules
+  }
+}
+
+export async function buildConfig(
+  options: RuleOptions,
+  { biomeRules }: Settings = {}
+): Promise<string> {
+  const { fast, node, react, strict, style, biome, disabled } = options
 
   const presets: ExtendsList = [eslint.configs.recommended]
 
@@ -150,6 +178,10 @@ export async function buildConfig(options: RuleOptions): Promise<string> {
 
   // Always disable rules which are better enforced by Prettier
   presets.push(eslintConfigPrettier)
+
+  if (biome) {
+    presets.push(createBiomePreset(biomeRules))
+  }
 
   const config = tseslint.config(presets)
 

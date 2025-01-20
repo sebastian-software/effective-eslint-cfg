@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest"
 
 import { buildConfig } from "./generator"
+import { getBiomeRules } from "./biome"
 
 describe("createConfig", () => {
   it("generates a base configuration", async () => {
@@ -36,7 +37,13 @@ describe("createConfig", () => {
     expect(config).toMatchSnapshot()
   })
 
-  it("disable type-based rules", async () => {
+  it("disable biome supported rules", async () => {
+    const biomeRules = await getBiomeRules()
+    const config = await buildConfig({ biome: true }, { biomeRules })
+    expect(config).toMatchSnapshot()
+  })
+
+  it("disable type requiring rules", async () => {
     const config = await buildConfig({ fast: true })
     expect(config).toMatchSnapshot()
   })

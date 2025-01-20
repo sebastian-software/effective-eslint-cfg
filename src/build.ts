@@ -3,11 +3,13 @@ import { join } from "path"
 
 import { buildConfig } from "./generator.js"
 import { flags, numberToShortHash, Options } from "./util.js"
+import { getBiomeRules } from "./biome.js"
 
 async function main() {
   const outputDir = join(process.cwd(), "dist", "configs")
   await fs.mkdir(outputDir, { recursive: true })
 
+  const biomeRules = await getBiomeRules()
   const numPermutations = 1 << flags.length
 
   for (let i = 0; i < numPermutations; i++) {
@@ -16,7 +18,7 @@ async function main() {
       opts[flags[bit]] = (i & (1 << bit)) !== 0
     }
 
-    const config = await buildConfig(opts)
+    const config = await buildConfig(opts, { biomeRules })
     const hash = numberToShortHash(i)
     const filePath = join(outputDir, `${hash}.js`)
 
