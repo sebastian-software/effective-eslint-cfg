@@ -79,6 +79,87 @@ export default [
 
 Note: Using TS configuration files work perfectly fine since ESLint v9 but requires installing `jiti`.
 
+## API
+
+The package exports the following functions:
+
+### `getConfig(options)`
+
+Loads an ESLint configuration based on the provided options.
+
+- `options` - The configuration options
+- Returns: Promise resolving to the loaded ESLint configuration
+
+```ts
+import { getConfig } from "@effective/eslint-cfg"
+
+const options = {
+  react: true,
+  strict: true,
+  style: true
+}
+
+const config = await getConfig(options)
+console.log(config.rules) // Access the ESLint rules
+```
+
+### `setRuleSeverity(config, ruleName, severity)`
+
+Changes the severity of a specific ESLint rule in the configuration.
+
+- `config` - The ESLint configuration
+- `ruleName` - The name of the rule to modify
+- `severity` - The new severity level ("error" | "warn" | "off")
+- Throws: When the config has no rules or the rule is not configured
+
+```ts
+import { getConfig, setRuleSeverity } from "@effective/eslint-cfg"
+
+const config = await getConfig(options)
+// Change 'no-console' rule to warning
+setRuleSeverity(config, "no-console", "warn")
+```
+
+### `disableRule(config, ruleName)`
+
+Disables a specific ESLint rule in the configuration by removing it.
+
+- `config` - The ESLint configuration
+- `ruleName` - The name of the rule to disable
+- Throws: When the config has no rules or the rule is not configured
+
+```ts
+import { getConfig, disableRule } from "@effective/eslint-cfg"
+
+const config = await getConfig(options)
+// Completely remove the 'no-console' rule
+disableRule(config, "no-console")
+```
+
+### Complete Example
+
+```ts
+import { getConfig, setRuleSeverity, disableRule } from "@effective/eslint-cfg"
+
+async function customizeEslintConfig() {
+  // Load the base configuration
+  const config = await getConfig({
+    react: true,
+    strict: true,
+    style: true
+  })
+
+  // Customize rule severities
+  setRuleSeverity(config, "no-console", "warn")
+  setRuleSeverity(config, "no-unused-vars", "error")
+
+  // Disable rules you don't want
+  disableRule(config, "complexity")
+
+  return config
+}
+```
+
 ## Developer
 
 ### Build
