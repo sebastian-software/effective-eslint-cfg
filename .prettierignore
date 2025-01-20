@@ -1,1 +1,3 @@
 pnpm-lock.yaml
+src/biome-types.ts
+src/biome-schema.json

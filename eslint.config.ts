@@ -10,13 +10,5 @@ const base = await getConfig({
 
 export default [
   { ignores: ["node_modules", "dist"] },
-  {
-    settings: {
-      react: {
-        version: "19.0"
-      }
-    }
-  },
-  { files: ["**/*.ts", "**/*.tsx"] },
   base
 ] satisfies Linter.Config[]
