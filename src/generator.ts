@@ -43,7 +43,7 @@ const reactFlat = eslintReact.configs.flat
 
 interface BiomeRule {
   category: string
-  originalRule: string
+  originalRule?: string
 }
 
 type BiomeRules = Record<string, BiomeRule>
@@ -55,7 +55,9 @@ interface Settings {
 function createBiomePreset(biomeRules: BiomeRules) {
   const rules: Record<string, "off"> = {}
   for (const [_ruleName, { originalRule }] of Object.entries(biomeRules)) {
-    rules[originalRule] = "off"
+    if (originalRule) {
+      rules[originalRule] = "off"
+    }
   }
 
   return {
@@ -180,6 +182,10 @@ export async function buildConfig(
   presets.push(eslintConfigPrettier)
 
   if (biome) {
+    if (!biomeRules) {
+      throw new Error("Unexpected missing biome rules")
+    }
+
     presets.push(createBiomePreset(biomeRules))
   }
 
