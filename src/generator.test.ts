@@ -53,6 +53,15 @@ describe("createConfig", () => {
     expect(config).toMatchSnapshot()
   })
 
+  it("only return disabled (with biome) rules", async () => {
+    const biomeRules = await getBiomeRules()
+    const config = await buildConfig(
+      { disabled: true, biome: true },
+      { biomeRules }
+    )
+    expect(config).toMatchSnapshot()
+  })
+
   //
   // COMBINE...
   //
