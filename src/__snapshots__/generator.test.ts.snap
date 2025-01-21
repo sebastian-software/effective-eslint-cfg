@@ -120,7 +120,12 @@ export default {
       },
     ],
     "@typescript-eslint/adjacent-overload-signatures": "error",
-    "@typescript-eslint/array-type": "error",
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        default: "array-simple",
+      },
+    ],
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/ban-ts-comment": "error",
     "@typescript-eslint/ban-tslint-comment": "error",
@@ -451,7 +456,12 @@ export default {
       },
     ],
     "@typescript-eslint/adjacent-overload-signatures": "error",
-    "@typescript-eslint/array-type": "error",
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        default: "array-simple",
+      },
+    ],
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/ban-ts-comment": [
       "error",
@@ -786,7 +796,6 @@ export default {
     "react/no-string-refs": "error",
     "react/no-unescaped-entities": "error",
     "react/no-unknown-property": "error",
-    "react/prop-types": "error",
     "react/require-render-return": "error",
     "regexp/confusing-quantifier": "warn",
     "regexp/control-character-escape": "error",
@@ -1476,6 +1485,12 @@ export default {
         requireStringLiterals: false,
       },
     ],
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        default: "array-simple",
+      },
+    ],
     "@typescript-eslint/ban-ts-comment": "error",
     "@typescript-eslint/no-array-constructor": "error",
     "@typescript-eslint/no-duplicate-enum-values": "error",
@@ -1741,6 +1756,12 @@ export default {
       "error",
       {
         requireStringLiterals: false,
+      },
+    ],
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        default: "array-simple",
       },
     ],
     "@typescript-eslint/await-thenable": "error",
@@ -2081,6 +2102,12 @@ export default {
         requireStringLiterals: false,
       },
     ],
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        default: "array-simple",
+      },
+    ],
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/ban-ts-comment": "error",
     "@typescript-eslint/no-array-constructor": "error",
@@ -2372,6 +2399,12 @@ export default {
       "error",
       {
         requireStringLiterals: false,
+      },
+    ],
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        default: "array-simple",
       },
     ],
     "@typescript-eslint/await-thenable": "error",
@@ -2819,6 +2852,12 @@ export default {
         requireStringLiterals: false,
       },
     ],
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        default: "array-simple",
+      },
+    ],
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/ban-ts-comment": "error",
     "@typescript-eslint/no-array-constructor": "error",
@@ -3050,7 +3089,6 @@ export default {
     "react/no-string-refs": "error",
     "react/no-unescaped-entities": "error",
     "react/no-unknown-property": "error",
-    "react/prop-types": "error",
     "react/require-render-return": "error",
     "regexp/confusing-quantifier": "warn",
     "regexp/control-character-escape": "error",
@@ -3450,6 +3488,7 @@ export default {
     "react/no-children-prop": "off",
     "react/no-danger": "off",
     "react/no-danger-with-children": "off",
+    "react/prop-types": "off",
     "react/void-dom-elements-no-children": "off",
     "sonarjs/cognitive-complexity": "off",
     "sonarjs/prefer-while": "off",
@@ -3654,6 +3693,7 @@ export default {
     "react/jsx-space-before-closing": "off",
     "react/jsx-tag-spacing": "off",
     "react/jsx-wrap-multilines": "off",
+    "react/prop-types": "off",
     "standard/array-bracket-even-spacing": "off",
     "standard/computed-property-even-spacing": "off",
     "standard/object-curly-even-spacing": "off",
