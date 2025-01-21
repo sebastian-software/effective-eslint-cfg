@@ -91,7 +91,7 @@ export function addRule(
   }
 
   const ruleConfig = config.rules[ruleName]
-  if (ruleConfig == null) {
+  if (ruleConfig != null) {
     throw new Error(`Rule ${ruleName} is already configured!`)
   }
 
