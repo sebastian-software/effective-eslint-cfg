@@ -52,6 +52,39 @@ export function setRuleSeverity(
 }
 
 /**
+ * Configures a specific ESLint rule in the configuration with its severity and optional parameters.
+ * Unlike setRuleSeverity, this method preserves the existing severity level while allowing to update
+ * the rule's options.
+ *
+ * @param config - The ESLint configuration
+ * @param ruleName - The name of the rule to configure
+ * @param options - Optional array of configuration options for the rule
+ * @throws When the config has no rules or the rule is not configured
+ */
+export function configureRule(
+  config: Linter.Config,
+  ruleName: string,
+  options?: unknown[]
+) {
+  if (!config.rules) {
+    throw new Error("Config has no rules!")
+  }
+
+  const ruleConfig = config.rules[ruleName]
+  if (ruleConfig == null) {
+    throw new Error(`Rule ${ruleName} is not configured!`)
+  }
+
+  const severity = Array.isArray(ruleConfig) ? ruleConfig[0] : ruleConfig
+
+  if (options && options.length > 0) {
+    config.rules[ruleName] = [severity, ...options]
+  } else {
+    config.rules[ruleName] = severity
+  }
+}
+
+/**
  * Disables a specific ESLint rule in the configuration by removing it.
  *
  * @param config - The ESLint configuration

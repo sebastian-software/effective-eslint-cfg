@@ -120,6 +120,23 @@ const config = await getConfig(options)
 setRuleSeverity(config, "no-console", "warn")
 ```
 
+### `configureRule(config, ruleName, options)`
+
+Configures a specific ESLint rule in the configuration with its severity and optional parameters. Unlike setRuleSeverity, this method preserves the existing severity level while allowing to update the rule's options.
+
+- `config` - The ESLint configuration
+- `ruleName` - The name of the rule to configure
+- `options` - Optional array of configuration options for the rule
+- Throws: When the config has no rules or the rule is not configured
+
+```ts
+import { getConfig, configureRule } from "@effective/eslint-cfg"
+
+const config = await getConfig(options)
+// Configure 'max-len' rule with options while preserving severity
+configureRule(config, "max-len", [{ code: 100, tabWidth: 2 }])
+```
+
 ### `disableRule(config, ruleName)`
 
 Disables a specific ESLint rule in the configuration by removing it.
