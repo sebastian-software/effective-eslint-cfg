@@ -139,6 +139,11 @@ export async function buildConfig(
       "jsdoc/require-returns": "off",
       "jsdoc/require-yields": "off",
 
+      // Disable prop-type checks. These are better validated by strict TypeScript
+      // anyway and also have quite of long standing bug related to using `React.memo`:
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/2760
+      "react/prop-types": "off",
+
       // Interestingly the rule is enabled in the recommended presets but
       // differs in behavior from the standard TSC handling. They even document
       // the different... wonder why not just use the sensible default in TSC.
@@ -152,6 +157,16 @@ export async function buildConfig(
           destructuredArrayIgnorePattern: "^_",
           varsIgnorePattern: "^_",
           ignoreRestSiblings: true
+        }
+      ],
+
+      // The default is defined without any options leading to simplify even complex
+      // array constructions which effectively makes it harder to read than the
+      // wrapping nature of `Array<>`. Using the XO/Sindre preferred style instead.
+      "@typescript-eslint/array-type": [
+        "error",
+        {
+          default: "array-simple"
         }
       ]
     }
