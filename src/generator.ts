@@ -168,6 +168,15 @@ export async function buildConfig(
         {
           default: "array-simple"
         }
+      ],
+
+      // In TypeScript we typically don't need to document all desctructed props
+      // as complexer object are defined by their interface/type already.
+      "jsdoc/check-param-names": [
+        "error",
+        {
+          checkDestructured: false
+        }
       ]
     }
   })
