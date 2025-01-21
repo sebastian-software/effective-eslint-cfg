@@ -84,7 +84,7 @@ export function addRule(
   config: Linter.Config,
   ruleName: string,
   severity: "warn" | "error",
-  options: unknown[]
+  options?: unknown[]
 ) {
   if (!config.rules) {
     throw new Error("Config has no rules!")
