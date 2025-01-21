@@ -70,3 +70,34 @@ export function disableRule(config: Linter.Config, ruleName: string) {
 
   delete config.rules[ruleName]
 }
+
+/**
+ * Adds a new ESLint rule to the configuration with specified severity and options.
+ *
+ * @param config - The ESLint configuration
+ * @param ruleName - The name of the rule to add
+ * @param severity - The severity level for the rule
+ * @param options - Additional options for the rule configuration
+ * @throws When the config has no rules or the rule is already configured
+ */
+export function addRule(
+  config: Linter.Config,
+  ruleName: string,
+  severity: "warn" | "error",
+  options: unknown[]
+) {
+  if (!config.rules) {
+    throw new Error("Config has no rules!")
+  }
+
+  const ruleConfig = config.rules[ruleName]
+  if (ruleConfig == null) {
+    throw new Error(`Rule ${ruleName} is already configured!`)
+  }
+
+  if (options) {
+    config.rules[ruleName] = [severity, ...options]
+  } else {
+    config.rules[ruleName] = severity
+  }
+}

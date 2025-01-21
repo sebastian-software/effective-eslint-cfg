@@ -136,10 +136,33 @@ const config = await getConfig(options)
 disableRule(config, "no-console")
 ```
 
+### `addRule(config, ruleName, severity, options)`
+
+Adds a new ESLint rule to the configuration with specified severity and options.
+
+- `config` - The ESLint configuration
+- `ruleName` - The name of the rule to add
+- `severity` - The severity level for the rule ("warn" | "error")
+- `options` - Additional options for the rule configuration
+- Throws: When the config has no rules or the rule is already configured
+
+```ts
+import { getConfig, addRule } from "@effective/eslint-cfg"
+
+const config = await getConfig(options)
+// Add new rule with options
+addRule(config, "max-len", "error", [{ code: 100 }])
+```
+
 ### Complete Example
 
 ```ts
-import { getConfig, setRuleSeverity, disableRule } from "@effective/eslint-cfg"
+import {
+  getConfig,
+  setRuleSeverity,
+  disableRule,
+  addRule
+} from "@effective/eslint-cfg"
 
 async function customizeEslintConfig() {
   // Load the base configuration
@@ -155,6 +178,9 @@ async function customizeEslintConfig() {
 
   // Disable rules you don't want
   disableRule(config, "complexity")
+
+  // Add new rule with options
+  addRule(config, "max-len", "error", [{ code: 100 }])
 
   return config
 }
