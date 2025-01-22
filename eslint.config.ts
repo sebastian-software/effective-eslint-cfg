@@ -10,5 +10,14 @@ const base = await getConfig({
 
 export default [
   { ignores: ["node_modules", "dist"] },
+
+  {
+    settings: {
+      jest: {
+        globalPackage: "vitest"
+      }
+    }
+  },
+
   base
 ] satisfies Linter.Config[]

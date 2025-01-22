@@ -13,13 +13,18 @@ describe("createConfig", () => {
   // ENABLING...
   //
 
-  it("includes Node-specific rules", async () => {
+  it("includes NodeJS specific rules", async () => {
     const config = await buildConfig({ node: true })
     expect(config).toMatchSnapshot()
   })
 
-  it("includes React-specific rules", async () => {
+  it("includes React specific rules", async () => {
     const config = await buildConfig({ react: true })
+    expect(config).toMatchSnapshot()
+  })
+
+  it("includes Testing specific rules", async () => {
+    const config = await buildConfig({ testing: true })
     expect(config).toMatchSnapshot()
   })
 
@@ -79,9 +84,26 @@ describe("createConfig", () => {
     const config = await buildConfig({
       node: true,
       react: true,
+      testing: true,
       strict: true,
       style: true
     })
+    expect(config).toMatchSnapshot()
+  })
+
+  it("combines all options without biome support rules", async () => {
+    const biomeRules = await getBiomeRules()
+    const config = await buildConfig(
+      {
+        node: true,
+        react: true,
+        testing: true,
+        strict: true,
+        style: true,
+        biome: true
+      },
+      { biomeRules }
+    )
     expect(config).toMatchSnapshot()
   })
 })

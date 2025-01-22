@@ -37,6 +37,7 @@
     "update": "ncu -ui"
   },
   "dependencies": {
+    "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-jsdoc": "^50.6.2",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-n": "^17.15.1",

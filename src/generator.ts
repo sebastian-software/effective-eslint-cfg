@@ -9,6 +9,7 @@ import eslintReactCompiler from "eslint-plugin-react-compiler"
 import eslintReactHooks from "eslint-plugin-react-hooks"
 import eslintRegexp from "eslint-plugin-regexp"
 import simpleImportSort from "eslint-plugin-simple-import-sort"
+import eslintJest from "eslint-plugin-jest"
 import { format } from "prettier"
 import tseslint from "typescript-eslint"
 
@@ -18,6 +19,9 @@ interface RuleOptions {
 
   /* enable React related rules */
   react?: boolean
+
+  /* enable Jest/Vitest related rules */
+  testing?: boolean
 
   /* enable strict checks - recommended */
   strict?: boolean
@@ -69,7 +73,7 @@ export async function buildConfig(
   options: RuleOptions,
   { biomeRules }: Settings = {}
 ): Promise<string> {
-  const { fast, node, react, strict, style, biome, disabled } = options
+  const { fast, node, react, testing, strict, style, biome, disabled } = options
 
   const presets: ExtendsList = [eslint.configs.recommended]
 
@@ -183,6 +187,25 @@ export async function buildConfig(
 
   // Check some validity related to usage and definition of regular expressions
   presets.push(eslintRegexp.configs["flat/recommended"])
+
+  // Add Jest/Vitest recommended configuration
+  if (testing) {
+    const jestRecommended = eslintJest.configs["flat/recommended"]
+    const jestStyle = eslintJest.configs["flat/style"]
+
+    if (style) {
+      presets.push({
+        files: ["**/*.{spec,test}.{ts,tsx}"],
+        ...jestRecommended,
+        ...jestStyle
+      })
+    } else {
+      presets.push({
+        files: ["**/*.{spec,test}.{ts,tsx}"],
+        ...jestRecommended
+      })
+    }
+  }
 
   // Check NodeJS things (ESM mode)
   if (node) {

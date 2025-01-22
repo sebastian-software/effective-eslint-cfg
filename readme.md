@@ -29,6 +29,7 @@ A TypeScript-based library for generating ESLint configurations in the Flat Conf
 - `disabled`: Only return disabled rules. Helpful to add to the end when using custom rules.
 - `react`: Add all recommended ReactJS checks
 - `node`: Add all recommended NodeJS checks
+- `testing`: Add all recommended Jest checks
 
 ## Included Plugins
 

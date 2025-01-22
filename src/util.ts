@@ -8,6 +8,7 @@ export interface Options {
   // additional rules options
   node?: boolean
   react?: boolean
+  testing?: boolean
 
   // output options
   disabled?: boolean
@@ -16,10 +17,16 @@ export interface Options {
 }
 
 export const flags = [
-  "node",
-  "react",
+  // mode options
   "strict",
   "style",
+
+  // additional rules options
+  "node",
+  "react",
+  "testing",
+
+  // output options
   "disabled",
   "fast",
   "biome"
