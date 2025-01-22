@@ -222,7 +222,12 @@ export default {
     "@typescript-eslint/unbound-method": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
-    "jsdoc/check-param-names": "error",
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        checkDestructured: false,
+      },
+    ],
     "jsdoc/check-property-names": "error",
     "jsdoc/check-tag-names": [
       "error",
@@ -608,7 +613,12 @@ export default {
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
-    "jsdoc/check-param-names": "error",
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        checkDestructured: false,
+      },
+    ],
     "jsdoc/check-property-names": "error",
     "jsdoc/check-tag-names": [
       "error",
@@ -1077,7 +1087,12 @@ export default {
     "@typescript-eslint/triple-slash-reference": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
-    "jsdoc/check-param-names": "error",
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        checkDestructured: false,
+      },
+    ],
     "jsdoc/check-property-names": "error",
     "jsdoc/check-tag-names": [
       "error",
@@ -1260,7 +1275,12 @@ export default {
     "@typescript-eslint/unbound-method": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
-    "jsdoc/check-param-names": "error",
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        checkDestructured: false,
+      },
+    ],
     "jsdoc/check-property-names": "error",
     "jsdoc/check-tag-names": [
       "error",
@@ -1531,7 +1551,12 @@ export default {
     "@typescript-eslint/triple-slash-reference": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
-    "jsdoc/check-param-names": "error",
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        checkDestructured: false,
+      },
+    ],
     "jsdoc/check-property-names": "error",
     "jsdoc/check-tag-names": [
       "error",
@@ -1877,7 +1902,12 @@ export default {
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
-    "jsdoc/check-param-names": "error",
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        checkDestructured: false,
+      },
+    ],
     "jsdoc/check-property-names": "error",
     "jsdoc/check-tag-names": [
       "error",
@@ -2171,7 +2201,12 @@ export default {
     "@typescript-eslint/unbound-method": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
-    "jsdoc/check-param-names": "error",
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        checkDestructured: false,
+      },
+    ],
     "jsdoc/check-property-names": "error",
     "jsdoc/check-tag-names": [
       "error",
@@ -2470,7 +2505,12 @@ export default {
     "@typescript-eslint/unbound-method": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
-    "jsdoc/check-param-names": "error",
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        checkDestructured: false,
+      },
+    ],
     "jsdoc/check-property-names": "error",
     "jsdoc/check-tag-names": [
       "error",
@@ -2921,7 +2961,12 @@ export default {
     "@typescript-eslint/unbound-method": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
-    "jsdoc/check-param-names": "error",
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        checkDestructured: false,
+      },
+    ],
     "jsdoc/check-property-names": "error",
     "jsdoc/check-tag-names": [
       "error",
