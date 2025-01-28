@@ -69,6 +69,22 @@ function createBiomePreset(biomeRules: BiomeRules) {
   }
 }
 
+export interface FileNameOptions {
+  react?: boolean
+  testing?: boolean
+}
+
+export function getFileName({ react, testing }: FileNameOptions) {
+  let fileName = "index"
+  if (testing) {
+    fileName += ".test"
+  }
+
+  fileName += react ? ".tsx" : ".ts"
+
+  return fileName
+}
+
 export async function buildConfig(
   options: RuleOptions,
   { biomeRules }: Settings = {}
@@ -191,9 +207,9 @@ export async function buildConfig(
   // Add Jest/Vitest recommended configuration
   if (testing) {
     const jestRecommended = eslintJest.configs["flat/recommended"]
-    const jestStyle = eslintJest.configs["flat/style"]
 
     if (style) {
+      const jestStyle = eslintJest.configs["flat/style"]
       presets.push({
         files: ["**/*.{spec,test}.{ts,tsx}"],
         ...jestRecommended,
@@ -260,7 +276,7 @@ export async function buildConfig(
   })
 
   const generatedConfig = (await linter.calculateConfigForFile(
-    "test.tsx"
+    getFileName({ react, testing })
   )) as Linter.Config
 
   cleanupRules(generatedConfig, disabled ?? false)
