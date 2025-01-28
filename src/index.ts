@@ -18,7 +18,14 @@ export async function getConfig(options: Options) {
   // Make sure that we are in "dist" folder and not in "src".
   const configPath = resolve(__dirname, "..", "dist", "configs", `${hash}.js`)
 
-  const module = (await import(configPath)) as { default: Linter.Config }
+  console.log(`>>> Config: ${hash}; Options: ${Object.keys(options)}`)
+
+  // Users might modify the module by adding rules, changing settings etc.
+  // Due to the module cache we will receive a modified file when not using a
+  // cache buster with e.g. Date.now() here.
+  const module = (await import(`${configPath}?${Date.now()}`)) as {
+    default: Linter.Config
+  }
   return module.default
 }
 
