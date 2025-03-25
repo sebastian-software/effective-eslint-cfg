@@ -220,6 +220,19 @@ export default {
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "regexp/confusing-quantifier": "warn",
     "regexp/control-character-escape": "error",
     "regexp/match-any": "error",
@@ -288,6 +301,7 @@ export default {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     "simple-import-sort": require("eslint-plugin-simple-import-sort"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
   },
   language: "@/js",
@@ -580,6 +594,19 @@ export default {
     "@typescript-eslint/unbound-method": "error",
     "@typescript-eslint/unified-signatures": "error",
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "jest/no-alias-methods": "warn",
     "jest/prefer-to-be": "error",
     "jest/prefer-to-contain": "error",
@@ -820,6 +847,7 @@ export default {
     "react-compiler": require("eslint-plugin-react-compiler"),
     "jsx-a11y": require("eslint-plugin-jsx-a11y"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
     jest: require("eslint-plugin-jest"),
     n: require("eslint-plugin-n"),
@@ -1128,6 +1156,19 @@ export default {
     "@typescript-eslint/unbound-method": "error",
     "@typescript-eslint/unified-signatures": "error",
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "jest/no-alias-methods": "warn",
     "jest/prefer-to-be": "error",
     "jest/prefer-to-contain": "error",
@@ -1257,6 +1298,7 @@ export default {
     "react-compiler": require("eslint-plugin-react-compiler"),
     "jsx-a11y": require("eslint-plugin-jsx-a11y"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
     jest: require("eslint-plugin-jest"),
     n: require("eslint-plugin-n"),
@@ -1478,6 +1520,19 @@ export default {
     ],
     "@typescript-eslint/no-wrapper-object-types": "error",
     "@typescript-eslint/triple-slash-reference": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "regexp/confusing-quantifier": "warn",
     "regexp/control-character-escape": "error",
     "regexp/match-any": "error",
@@ -1543,6 +1598,7 @@ export default {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
   },
   language: "@/js",
@@ -1635,6 +1691,19 @@ export default {
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "regexp/confusing-quantifier": "warn",
     "regexp/control-character-escape": "error",
     "regexp/match-any": "error",
@@ -1700,6 +1769,7 @@ export default {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
   },
   language: "@/js",
@@ -1880,6 +1950,19 @@ export default {
     "@typescript-eslint/prefer-as-const": "error",
     "@typescript-eslint/prefer-namespace-keyword": "error",
     "@typescript-eslint/triple-slash-reference": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "regexp/confusing-quantifier": "warn",
     "regexp/control-character-escape": "error",
     "regexp/match-any": "error",
@@ -1945,6 +2028,7 @@ export default {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
   },
   language: "@/js",
@@ -2200,6 +2284,19 @@ export default {
     "@typescript-eslint/unbound-method": "error",
     "@typescript-eslint/unified-signatures": "error",
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "regexp/confusing-quantifier": "warn",
     "regexp/control-character-escape": "error",
     "regexp/match-any": "error",
@@ -2265,6 +2362,7 @@ export default {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
   },
   language: "@/js",
@@ -2468,6 +2566,19 @@ export default {
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "regexp/confusing-quantifier": "warn",
     "regexp/control-character-escape": "error",
     "regexp/match-any": "error",
@@ -2533,6 +2644,7 @@ export default {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
   },
   language: "@/js",
@@ -2741,6 +2853,19 @@ export default {
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "n/hashbang": "error",
     "n/no-deprecated-api": "error",
     "n/no-exports-assign": "error",
@@ -2826,6 +2951,7 @@ export default {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
     n: require("eslint-plugin-n"),
   },
@@ -3166,6 +3292,19 @@ export default {
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "jsx-a11y/alt-text": "error",
     "jsx-a11y/anchor-has-content": "error",
     "jsx-a11y/anchor-is-valid": "error",
@@ -3379,6 +3518,7 @@ export default {
     "react-compiler": require("eslint-plugin-react-compiler"),
     "jsx-a11y": require("eslint-plugin-jsx-a11y"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
   },
   language: "@/js",
@@ -3584,6 +3724,19 @@ export default {
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,ts}": "CAMEL_CASE",
+        "**/*.tsx": "PASCAL_CASE",
+      },
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "**/": "KEBAB_CASE",
+      },
+    ],
     "jest/expect-expect": "warn",
     "jest/no-alias-methods": "error",
     "jest/no-commented-out-tests": "warn",
@@ -3668,6 +3821,7 @@ export default {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
     jest: require("eslint-plugin-jest"),
   },
@@ -3890,6 +4044,7 @@ export default {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
   },
   language: "@/js",
@@ -4028,6 +4183,7 @@ export default {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     tsdoc: require("eslint-plugin-tsdoc"),
+    "check-file": require("eslint-plugin-check-file"),
     regexp: require("eslint-plugin-regexp"),
   },
   language: "@/js",

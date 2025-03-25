@@ -2,6 +2,7 @@ import eslint from "@eslint/js"
 import { ESLint, Linter } from "eslint"
 import eslintConfigPrettier from "eslint-config-prettier"
 import eslintTsdoc from "eslint-plugin-tsdoc"
+import eslintCheckFile from "eslint-plugin-check-file"
 import eslintJsxA11y from "eslint-plugin-jsx-a11y"
 import nodePlugin from "eslint-plugin-n"
 import eslintReact from "eslint-plugin-react"
@@ -151,6 +152,27 @@ export async function buildConfig(
     },
     rules: {
       "tsdoc/syntax": "error"
+    }
+  })
+
+  presets.push({
+    plugins: {
+      "check-file": eslintCheckFile
+    },
+    rules: {
+      "check-file/filename-naming-convention": [
+        "error",
+        {
+          "**/*.{js,ts}": "CAMEL_CASE",
+          "**/*.tsx": "PASCAL_CASE"
+        }
+      ],
+      "check-file/folder-naming-convention": [
+        "error",
+        {
+          "**/": "KEBAB_CASE"
+        }
+      ]
     }
   })
 
