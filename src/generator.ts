@@ -165,6 +165,9 @@ export async function buildConfig(
         {
           "**/*.{js,ts}": "CAMEL_CASE",
           "**/*.tsx": "PASCAL_CASE"
+        },
+        {
+          ignoreMiddleExtensions: true
         }
       ],
       "check-file/folder-naming-convention": [
