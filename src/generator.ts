@@ -1,7 +1,7 @@
 import eslint from "@eslint/js"
 import { ESLint, Linter } from "eslint"
 import eslintConfigPrettier from "eslint-config-prettier"
-import eslintJsdoc from "eslint-plugin-jsdoc"
+import eslintTsdoc from "eslint-plugin-tsdoc"
 import eslintJsxA11y from "eslint-plugin-jsx-a11y"
 import nodePlugin from "eslint-plugin-n"
 import eslintReact from "eslint-plugin-react"
@@ -145,20 +145,17 @@ export async function buildConfig(
     presets.push(eslintJsxA11y.flatConfigs.recommended)
   }
 
-  // We like JSDoc but for nothing which can be done better with TypeScript
-  presets.push(eslintJsdoc.configs["flat/recommended-typescript-error"])
+  presets.push({
+    plugins: {
+      tsdoc: eslintTsdoc
+    },
+    rules: {
+      "tsdoc/syntax": "error"
+    }
+  })
 
   presets.push({
     rules: {
-      // We are TypeScript oriented. We all like JSDoc for some methods but
-      // requiring it is a bit strong for most code bases. We still want
-      // to verify JSDoc to be correct when existing.
-      "jsdoc/require-jsdoc": "off",
-      "jsdoc/require-param": "off",
-      "jsdoc/require-property": "off",
-      "jsdoc/require-returns": "off",
-      "jsdoc/require-yields": "off",
-
       // Disable prop-type checks. These are better validated by strict TypeScript
       // anyway and also have quite of long standing bug related to using `React.memo`:
       // https://github.com/jsx-eslint/eslint-plugin-react/issues/2760
@@ -187,15 +184,6 @@ export async function buildConfig(
         "error",
         {
           default: "array-simple"
-        }
-      ],
-
-      // In TypeScript we typically don't need to document all desctructed props
-      // as complexer object are defined by their interface/type already.
-      "jsdoc/check-param-names": [
-        "error",
-        {
-          checkDestructured: false
         }
       ]
     }
@@ -338,7 +326,6 @@ function cleanupRules(generatedConfig: Linter.Config, disabled: boolean) {
     "flowtype",
     "@stylistic"
   ])
-  const disabledOffPlugins = new Set(["jsdoc"])
 
   const cleanRules: typeof rules = {}
   for (const ruleName of ruleNames) {
@@ -352,7 +339,7 @@ function cleanupRules(generatedConfig: Linter.Config, disabled: boolean) {
       const level = value[0]
       if (level === 0) {
         if (disabled) {
-          if (!rulePackage || !disabledOffPlugins.has(rulePackage)) {
+          if (!rulePackage) {
             cleanRules[ruleName] = "off"
           }
         }
