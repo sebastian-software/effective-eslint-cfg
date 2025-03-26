@@ -34,11 +34,10 @@ A TypeScript-based library for generating ESLint configurations in the Flat Conf
 
 ## Included Plugins
 
-- `react`: Recommended checks from the react, hooks and compiler presets. Also included A11Y checks.
-- `node`: Recommended rules for development of ESM-enabled NodeJS scripts
-- `jest`: Recommended rules for usage of a modern test runner like Jest or compatible (Vitest, Bun)
-- `tsdoc`: Typescript-aware JSDoc-like linting without requiring docs... only validating.
-- `regexp`: Recommended mostly auto-fix rules for regular expressions
+- Recommended checks from the React, hooks and compiler presets. Also included A11Y checks.
+- Recommended rules for development of ESM-enabled NodeJS scripts
+- Recommended rules for usage of a modern test runner like Jest or compatible (Vitest, Bun)
+- Recommended mostly auto-fix rules for regular expressions
 
 ## Installation
 
