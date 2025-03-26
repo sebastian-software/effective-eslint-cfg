@@ -12,6 +12,7 @@ import eslintRegexp from "eslint-plugin-regexp"
 import simpleImportSort from "eslint-plugin-simple-import-sort"
 import eslintTestingLib from "eslint-plugin-testing-library"
 import eslintJest from "eslint-plugin-jest"
+import eslintStorybook from "eslint-plugin-storybook"
 import { format } from "prettier"
 import tseslint from "typescript-eslint"
 
@@ -21,9 +22,6 @@ interface RuleOptions {
 
   /* enable React related rules */
   react?: boolean
-
-  /* enable Jest/Vitest related rules */
-  testing?: boolean
 
   /* enable strict checks - recommended */
   strict?: boolean
@@ -56,6 +54,7 @@ type BiomeRules = Record<string, BiomeRule>
 
 interface Settings {
   biomeRules?: BiomeRules
+  fileName?: string
 }
 
 function createBiomePreset(biomeRules: BiomeRules) {
@@ -89,9 +88,9 @@ export function getFileName({ react, testing }: FileNameOptions) {
 
 export async function buildConfig(
   options: RuleOptions,
-  { biomeRules }: Settings = {}
+  { biomeRules, fileName }: Settings = {}
 ): Promise<string> {
-  const { fast, node, react, testing, strict, style, biome, disabled } = options
+  const { fast, node, react, strict, style, biome, disabled } = options
 
   const presets: ExtendsList = [eslint.configs.recommended]
 
@@ -140,6 +139,8 @@ export async function buildConfig(
         "react-compiler/react-compiler": "error"
       }
     })
+
+    presets.push(eslintStorybook.configs["flat/recommended"])
   }
 
   // Always enable basic a11y checks... not responsible when not doing so.
@@ -218,29 +219,25 @@ export async function buildConfig(
   // Check some validity related to usage and definition of regular expressions
   presets.push(eslintRegexp.configs["flat/recommended"])
 
-  // Add Jest/Vitest recommended configuration
-  if (testing) {
-    const testFiles = react
-      ? "**/*.{spec,test}.{ts,tsx}"
-      : "**/*.{spec,test}.ts"
+  // Add Jest/Vitest/TestingLibrary recommended configuration
+  const testFiles = react ? "**/*.{spec,test}.{ts,tsx}" : "**/*.{spec,test}.ts"
 
-    const jestRecommended = eslintJest.configs["flat/recommended"]
-    const jestStyle = eslintJest.configs["flat/style"]
-    const testingLibRules =
-      eslintTestingLib.configs[react ? "flat/react" : "flat/dom"]
+  const jestRecommended = eslintJest.configs["flat/recommended"]
+  const jestStyle = eslintJest.configs["flat/style"]
+  const testingLibRules =
+    eslintTestingLib.configs[react ? "flat/react" : "flat/dom"]
 
-    presets.push({
-      files: [testFiles],
-      ...jestRecommended,
-      ...(style ? jestStyle : {})
-    })
+  presets.push({
+    files: [testFiles],
+    ...jestRecommended,
+    ...(style ? jestStyle : {})
+  })
 
-    // Keep in a separate prest push to prevent overwriting keys from Jest.
-    presets.push({
-      files: [testFiles],
-      ...testingLibRules
-    })
-  }
+  // Keep in a separate prest push to prevent overwriting keys from Jest.
+  presets.push({
+    files: [testFiles],
+    ...testingLibRules
+  })
 
   // Check NodeJS things (ESM mode)
   if (node) {
@@ -295,7 +292,7 @@ export async function buildConfig(
   })
 
   const generatedConfig = (await linter.calculateConfigForFile(
-    getFileName({ react, testing })
+    fileName ?? "index.ts"
   )) as Linter.Config
 
   cleanupRules(generatedConfig, disabled ?? false)
@@ -315,11 +312,15 @@ export async function buildConfig(
   const exportedConfig = JSON.stringify(generatedConfig, replacer, 2)
   const moduleConfig = replacePlaceholdersWithRequires(exportedConfig)
 
+  return moduleConfig
+}
+
+export function configToModule(config: string) {
   return format(
     `
     import { createRequire } from "module";
     const require = createRequire(import.meta.url);
-    export default ${moduleConfig};
+    export default ${config};
   `,
     { parser: "typescript" }
   )

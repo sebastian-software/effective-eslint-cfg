@@ -2,7 +2,7 @@ import { promises as fs } from "fs"
 import { join } from "path"
 
 import { getBiomeRules } from "./biome.js"
-import { buildConfig } from "./generator.js"
+import { buildConfig, configToModule } from "./generator.js"
 import { flags, numberToShortHash, Options } from "./util.js"
 
 async function main() {
@@ -19,10 +19,11 @@ async function main() {
     }
 
     const config = await buildConfig(opts, { biomeRules })
+    const code = await configToModule(config)
     const hash = numberToShortHash(i)
     const filePath = join(outputDir, `${hash}.js`)
 
-    await fs.writeFile(filePath, config, "utf8")
+    await fs.writeFile(filePath, code, "utf8")
   }
 
   console.log(`Generated ${numPermutations.toString()} configs in ${outputDir}`)

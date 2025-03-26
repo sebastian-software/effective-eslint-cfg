@@ -23,11 +23,6 @@ describe("createConfig", () => {
     expect(config).toMatchSnapshot()
   })
 
-  it("includes Testing specific rules", async () => {
-    const config = await buildConfig({ testing: true })
-    expect(config).toMatchSnapshot()
-  })
-
   //
   // GLOBAL SETTINGS...
   //
@@ -84,7 +79,6 @@ describe("createConfig", () => {
     const config = await buildConfig({
       node: true,
       react: true,
-      testing: true,
       strict: true,
       style: true
     })
@@ -97,7 +91,6 @@ describe("createConfig", () => {
       {
         node: true,
         react: true,
-        testing: true,
         strict: true,
         style: true,
         biome: true
