@@ -73,7 +73,7 @@ function createBiomePreset(biomeRules: BiomeRules) {
 export async function buildConfig(
   options: RuleOptions,
   { biomeRules, fileName }: Settings = {}
-): Promise<string> {
+): Promise<Linter.Config> {
   const { fast, node, react, strict, style, biome, disabled } = options
 
   const presets: ExtendsList = [eslint.configs.recommended]
@@ -281,6 +281,10 @@ export async function buildConfig(
 
   cleanupRules(generatedConfig, disabled ?? false)
 
+  return generatedConfig
+}
+
+export function configToModule(config: string) {
   function replacer(key: string, value: unknown) {
     if (key === "plugins" && Array.isArray(value)) {
       return cleanupPlugins(value as string[])
@@ -293,13 +297,9 @@ export async function buildConfig(
     return value
   }
 
-  const exportedConfig = JSON.stringify(generatedConfig, replacer, 2)
+  const exportedConfig = JSON.stringify(config, replacer, 2)
   const moduleConfig = replacePlaceholdersWithRequires(exportedConfig)
 
-  return moduleConfig
-}
-
-export function configToModule(config: string) {
   return format(
     `
     import { createRequire } from "module";
