@@ -70,22 +70,6 @@ function createBiomePreset(biomeRules: BiomeRules) {
   }
 }
 
-export interface FileNameOptions {
-  react?: boolean
-  testing?: boolean
-}
-
-export function getFileName({ react, testing }: FileNameOptions) {
-  let fileName = "index"
-  if (testing) {
-    fileName += ".test"
-  }
-
-  fileName += react ? ".tsx" : ".ts"
-
-  return fileName
-}
-
 export async function buildConfig(
   options: RuleOptions,
   { biomeRules, fileName }: Settings = {}

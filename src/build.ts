@@ -5,6 +5,27 @@ import { getBiomeRules } from "./biome.js"
 import { buildConfig, configToModule } from "./generator.js"
 import { flags, numberToShortHash, Options } from "./util.js"
 
+const fileNameRelevantOptions = ["react", "testing", "storybook"] as const
+
+export interface FileNameOptions {
+  react?: boolean
+  testing?: boolean
+  storybook?: boolean
+}
+
+export function getFileName({ react, testing, storybook }: FileNameOptions) {
+  let fileName = "index"
+  if (testing) {
+    fileName += ".test"
+  } else if (storybook) {
+    fileName += ".stories"
+  }
+
+  fileName += react ? ".tsx" : ".ts"
+
+  return fileName
+}
+
 async function main() {
   const outputDir = join(process.cwd(), "dist", "configs")
   await fs.mkdir(outputDir, { recursive: true })
