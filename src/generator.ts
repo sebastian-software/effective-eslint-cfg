@@ -10,6 +10,7 @@ import eslintReactCompiler from "eslint-plugin-react-compiler"
 import eslintReactHooks from "eslint-plugin-react-hooks"
 import eslintRegexp from "eslint-plugin-regexp"
 import simpleImportSort from "eslint-plugin-simple-import-sort"
+import eslintTestingLib from "eslint-plugin-testing-library"
 import eslintJest from "eslint-plugin-jest"
 import { format } from "prettier"
 import tseslint from "typescript-eslint"
@@ -219,21 +220,26 @@ export async function buildConfig(
 
   // Add Jest/Vitest recommended configuration
   if (testing) {
-    const jestRecommended = eslintJest.configs["flat/recommended"]
+    const testFiles = react
+      ? "**/*.{spec,test}.{ts,tsx}"
+      : "**/*.{spec,test}.ts"
 
-    if (style) {
-      const jestStyle = eslintJest.configs["flat/style"]
-      presets.push({
-        files: ["**/*.{spec,test}.{ts,tsx}"],
-        ...jestRecommended,
-        ...jestStyle
-      })
-    } else {
-      presets.push({
-        files: ["**/*.{spec,test}.{ts,tsx}"],
-        ...jestRecommended
-      })
-    }
+    const jestRecommended = eslintJest.configs["flat/recommended"]
+    const jestStyle = eslintJest.configs["flat/style"]
+    const testingLibRules =
+      eslintTestingLib.configs[react ? "flat/react" : "flat/dom"]
+
+    presets.push({
+      files: [testFiles],
+      ...jestRecommended,
+      ...(style ? jestStyle : {})
+    })
+
+    // Keep in a separate prest push to prevent overwriting keys from Jest.
+    presets.push({
+      files: [testFiles],
+      ...testingLibRules
+    })
   }
 
   // Check NodeJS things (ESM mode)
