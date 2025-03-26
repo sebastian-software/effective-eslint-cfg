@@ -1,6 +1,6 @@
 # ESLint Config Builder
 
-[![Sponsored by][sponsor-img]][sponsor] [![License][github-license-img]][github] [![Version][npm-version-img]][npm] [![Build][github-action-img]][github] [![Downloads][npm-downloads-img]][npm]
+[![Sponsored by][sponsor-img]][sponsor] [![License][github-license-img]][github] [![Version][npm-version-img]][npm] [![Build][github-action-img]][github-actions] [![Downloads][npm-downloads-img]][npm]
 
 [sponsor]: https://www.sebastian-software.de
 [sponsor-img]: https://badgen.net/badge/Sponsored%20by/Sebastian%20Software/c41e54
@@ -8,6 +8,7 @@
 [npm-downloads-img]: https://badgen.net/npm/dm/@effective/eslint-cfg
 [npm-version-img]: https://badgen.net/npm/v/@effective/eslint-cfg
 [github]: https://github.com/sebastian-software/effective-eslint-cfg
+[github-actions]: https://github.com/sebastian-software/effective-eslint-cfg/actions/
 [github-license-img]: https://badgen.net/github/license/sebastian-software/effective-eslint-cfg
 [github-action-img]: https://github.com/sebastian-software/effective-eslint-cfg/actions/workflows/node.js.yml/badge.svg
 
