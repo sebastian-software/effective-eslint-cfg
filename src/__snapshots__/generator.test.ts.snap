@@ -226,6 +226,9 @@ export default {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
       },
+      {
+        ignoreMiddleExtensions: true,
+      },
     ],
     "check-file/folder-naming-convention": [
       "error",
@@ -599,6 +602,9 @@ export default {
       {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
+      },
+      {
+        ignoreMiddleExtensions: true,
       },
     ],
     "check-file/folder-naming-convention": [
@@ -1162,6 +1168,9 @@ export default {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
       },
+      {
+        ignoreMiddleExtensions: true,
+      },
     ],
     "check-file/folder-naming-convention": [
       "error",
@@ -1526,6 +1535,9 @@ export default {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
       },
+      {
+        ignoreMiddleExtensions: true,
+      },
     ],
     "check-file/folder-naming-convention": [
       "error",
@@ -1696,6 +1708,9 @@ export default {
       {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
+      },
+      {
+        ignoreMiddleExtensions: true,
       },
     ],
     "check-file/folder-naming-convention": [
@@ -1955,6 +1970,9 @@ export default {
       {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
+      },
+      {
+        ignoreMiddleExtensions: true,
       },
     ],
     "check-file/folder-naming-convention": [
@@ -2290,6 +2308,9 @@ export default {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
       },
+      {
+        ignoreMiddleExtensions: true,
+      },
     ],
     "check-file/folder-naming-convention": [
       "error",
@@ -2571,6 +2592,9 @@ export default {
       {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
+      },
+      {
+        ignoreMiddleExtensions: true,
       },
     ],
     "check-file/folder-naming-convention": [
@@ -2858,6 +2882,9 @@ export default {
       {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
+      },
+      {
+        ignoreMiddleExtensions: true,
       },
     ],
     "check-file/folder-naming-convention": [
@@ -3298,6 +3325,9 @@ export default {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
       },
+      {
+        ignoreMiddleExtensions: true,
+      },
     ],
     "check-file/folder-naming-convention": [
       "error",
@@ -3729,6 +3759,9 @@ export default {
       {
         "**/*.{js,ts}": "CAMEL_CASE",
         "**/*.tsx": "PASCAL_CASE",
+      },
+      {
+        ignoreMiddleExtensions: true,
       },
     ],
     "check-file/folder-naming-convention": [
