@@ -28,16 +28,8 @@ A TypeScript-based library for generating ESLint configurations in the Flat Conf
 - `fast`: Drop rules which require typing information (much faster)
 - `biome`: Drop rules which are implemented identically in Biome (for performance reasons)
 - `disabled`: Only return disabled rules. Helpful to add to the end when using custom rules.
-- `react`: Add all recommended ReactJS checks
+- `react`: Add all recommended ReactJS/Hooks/Storybook checks
 - `node`: Add all recommended NodeJS checks
-- `testing`: Add all recommended Jest checks
-
-## Included Plugins
-
-- Recommended checks from the React, hooks and compiler presets. Also included A11Y checks.
-- Recommended rules for development of ESM-enabled NodeJS scripts
-- Recommended rules for usage of a modern test runner like Jest or compatible (Vitest, Bun)
-- Recommended mostly auto-fix rules for regular expressions
 
 ## Installation
 
