@@ -16,6 +16,11 @@ declare module "eslint-plugin-react-compiler" {
   export const rules: Linter.Rules
 }
 
+declare module "eslint-plugin-check-file" {
+  import { Linter } from "eslint"
+  export const rules: Linter.Rules
+}
+
 declare module "eslint-plugin-jsx-a11y" {
   import type { ConfigWithExtends } from "typescript-eslint"
 
