@@ -137,7 +137,8 @@ export async function buildConfig(
   presets.push(
     // 1. rules that check names and descriptions
     eslintJsdoc.configs["flat/contents-typescript-error"],
-    eslintJsdoc.configs["flat/logical-typescript-error"]
+    eslintJsdoc.configs["flat/logical-typescript-error"],
+    eslintJsdoc.configs["flat/stylistic-typescript-error"]
   )
 
   presets.push({

@@ -144,6 +144,8 @@ exports[`createConfig > applies stylistic rules 1`] = `
     ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -159,15 +161,24 @@ exports[`createConfig > applies stylistic rules 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
@@ -693,6 +704,8 @@ exports[`createConfig > combines all options 1`] = `
     ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -708,15 +721,24 @@ exports[`createConfig > combines all options 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
@@ -1408,6 +1430,8 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
       },
     ],
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -1423,15 +1447,24 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
@@ -1675,6 +1708,8 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
       },
     ],
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -1690,15 +1725,24 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
@@ -1879,6 +1923,8 @@ exports[`createConfig > disable biome supported rules 1`] = `
       },
     ],
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -1894,15 +1940,24 @@ exports[`createConfig > disable biome supported rules 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
@@ -2078,6 +2133,8 @@ exports[`createConfig > disable type requiring rules 1`] = `
     ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -2093,15 +2150,24 @@ exports[`createConfig > disable type requiring rules 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
@@ -2448,6 +2514,8 @@ exports[`createConfig > enables strict rules 1`] = `
     ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -2463,15 +2531,24 @@ exports[`createConfig > enables strict rules 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
@@ -2768,6 +2845,8 @@ exports[`createConfig > generates a base configuration 1`] = `
     ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -2783,15 +2862,24 @@ exports[`createConfig > generates a base configuration 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
@@ -3225,6 +3313,8 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -3240,15 +3330,24 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
@@ -3580,6 +3679,8 @@ exports[`createConfig > includes React specific rules 1`] = `
     ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-line-alignment": "error",
     "jsdoc/check-param-names": [
       "error",
       {
@@ -3595,15 +3696,24 @@ exports[`createConfig > includes React specific rules 1`] = `
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
     "jsdoc/informative-docs": "error",
+    "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
+    "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
     "jsdoc/no-blank-block-descriptions": "error",
     "jsdoc/no-blank-blocks": "error",
     "jsdoc/no-defaults": "error",
+    "jsdoc/no-multi-asterisks": "error",
     "jsdoc/no-types": "error",
     "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-asterisk-prefix": "error",
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never",
+    ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
+    "jsdoc/tag-lines": "error",
     "jsdoc/text-escaping": [
       "error",
       {
