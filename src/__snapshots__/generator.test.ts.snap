@@ -160,7 +160,6 @@ exports[`createConfig > applies stylistic rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -183,12 +182,6 @@ exports[`createConfig > applies stylistic rules 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -726,7 +719,6 @@ exports[`createConfig > combines all options 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -749,12 +741,6 @@ exports[`createConfig > combines all options 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -1458,7 +1444,6 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -1481,12 +1466,6 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -1742,7 +1721,6 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -1765,12 +1743,6 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -1963,7 +1935,6 @@ exports[`createConfig > disable biome supported rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -1986,12 +1957,6 @@ exports[`createConfig > disable biome supported rules 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -2179,7 +2144,6 @@ exports[`createConfig > disable type requiring rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -2202,12 +2166,6 @@ exports[`createConfig > disable type requiring rules 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -2566,7 +2524,6 @@ exports[`createConfig > enables strict rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -2589,12 +2546,6 @@ exports[`createConfig > enables strict rules 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -2903,7 +2854,6 @@ exports[`createConfig > generates a base configuration 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -2926,12 +2876,6 @@ exports[`createConfig > generates a base configuration 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -3377,7 +3321,6 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -3400,12 +3343,6 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -3749,7 +3686,6 @@ exports[`createConfig > includes React specific rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/informative-docs": "error",
     "jsdoc/lines-before-block": "error",
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
@@ -3772,12 +3708,6 @@ exports[`createConfig > includes React specific rules 1`] = `
       "never",
       {
         "startLines": 1,
-      },
-    ],
-    "jsdoc/text-escaping": [
-      "error",
-      {
-        "escapeHTML": true,
       },
     ],
     "jsdoc/valid-types": "error",
@@ -4245,6 +4175,8 @@ exports[`createConfig > only return disabled (with biome) rules 1`] = `
     "indent-legacy": "off",
     "jest/max-nested-describe": "off",
     "jest/no-done-callback": "off",
+    "jsdoc/informative-docs": "off",
+    "jsdoc/text-escaping": "off",
     "jsx-a11y/alt-text": "off",
     "jsx-a11y/anchor-has-content": "off",
     "jsx-a11y/anchor-is-valid": "off",
@@ -4560,6 +4492,8 @@ exports[`createConfig > only return disabled rules 1`] = `
     "implicit-arrow-linebreak": "off",
     "indent": "off",
     "indent-legacy": "off",
+    "jsdoc/informative-docs": "off",
+    "jsdoc/text-escaping": "off",
     "jsx-quotes": "off",
     "key-spacing": "off",
     "keyword-spacing": "off",

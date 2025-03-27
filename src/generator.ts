@@ -137,8 +137,15 @@ export async function buildConfig(
   presets.push(
     // 1. rules that check names and descriptions
     eslintJsdoc.configs["flat/contents-typescript-error"],
+
+    // 2. rules that enforce proper tag values
     eslintJsdoc.configs["flat/logical-typescript-error"],
+
+    // 3. rules that enforce clear, consistent tag formatting and styles
     eslintJsdoc.configs["flat/stylistic-typescript-error"]
+
+    // 4. rules that enforce tags exist (unused... would not enforce jsdoc usage globally)
+    // eslintJsdoc.configs["flat/requirements-typescript-error"]
   )
 
   presets.push({
@@ -185,11 +192,17 @@ export async function buildConfig(
         }
       ],
 
+      // Saw too many false positives where the description actually was okay.
+      "jsdoc/informative-docs": "off",
+
       // Making JSDoc compatible with TSDoc where the hyphen is required.
       "jsdoc/require-hyphen-before-param-description": ["error", "always"],
 
       // Making JSDoc using the uniform formatting which is common but might be accidentally not used in some cases.
       "jsdoc/require-asterisk-prefix": "error",
+
+      // We are fine with using raw HTML in JSDoc and also having stuff like Array<string> in there.
+      "jsdoc/text-escaping": "off",
 
       // Disable prop-type checks. These are better validated by strict TypeScript
       // anyway and also have quite of long standing bug related to using `React.memo`:
