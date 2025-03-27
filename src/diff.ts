@@ -1,10 +1,11 @@
 import { ESLint, Linter } from "eslint"
+import { ConfigWithModuleRefs } from "./generator"
 
 export function diffLintConfig(
-  config: Linter.Config<Linter.RulesRecord>,
-  otherConfig: Linter.Config<Linter.RulesRecord>
-): Linter.Config | null {
-  const diff: Linter.Config = {}
+  config: ConfigWithModuleRefs,
+  otherConfig: ConfigWithModuleRefs
+): ConfigWithModuleRefs | null {
+  const diff: ConfigWithModuleRefs = {}
 
   // Compare rules
   if (config.rules || otherConfig.rules) {
@@ -85,7 +86,7 @@ export function diffLintConfig(
 
   // Compare plugins - only include new or different plugins
   if (otherConfig.plugins) {
-    const newPlugins: Record<string, ESLint.Plugin> = {}
+    const newPlugins: Record<string, string> = {}
     let hasNewPlugins = false
 
     for (const [name, plugin] of Object.entries(otherConfig.plugins)) {

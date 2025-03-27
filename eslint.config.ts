@@ -5,8 +5,7 @@ import { getConfig } from "./src/index"
 const base = await getConfig({
   node: true,
   strict: true,
-  style: true,
-  testing: true
+  style: true
 })
 
 export default [

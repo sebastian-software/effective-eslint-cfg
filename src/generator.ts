@@ -73,7 +73,7 @@ function createBiomePreset(biomeRules: BiomeRules) {
 export async function buildConfig(
   options: RuleOptions,
   { biomeRules, fileName }: Settings = {}
-): Promise<Linter.Config> {
+): Promise<ConfigWithModuleRefs> {
   const { fast, node, react, strict, style, biome, disabled } = options
 
   const presets: ExtendsList = [eslint.configs.recommended]
@@ -281,30 +281,44 @@ export async function buildConfig(
 
   cleanupRules(generatedConfig, disabled ?? false)
 
-  return generatedConfig
-}
+  const { parser, ...languageOptionsWithoutParser } =
+    generatedConfig.languageOptions ?? {}
 
-export function configToModule(config: string) {
-  function replacer(key: string, value: unknown) {
-    if (key === "plugins" && Array.isArray(value)) {
-      return cleanupPlugins(value as string[])
-    }
-
-    if (key === "parser" && typeof value === "string") {
-      return `[[[@typescript-eslint/parser]]]`
-    }
-
-    return value
+  const configWithModuleRefs = {
+    ...generatedConfig,
+    languageOptions: {
+      ...generatedConfig.languageOptions,
+      parser: "[[[@typescript-eslint/parser]]]"
+    },
+    plugins: cleanupPlugins(generatedConfig.plugins)
   }
 
-  const exportedConfig = JSON.stringify(config, replacer, 2)
+  // This is newly generated in ESLint v9.7 and holds language information
+  // which is not needed for the generated config.
+  delete configWithModuleRefs.language
+
+  return configWithModuleRefs
+}
+
+export type ConfigWithModuleRefs = Omit<
+  Linter.Config<Linter.RulesRecord>,
+  "plugins" | "languageOptions"
+> & {
+  plugins?: Record<string, string>
+  languageOptions?: {
+    parser?: string
+  } & Omit<Linter.LanguageOptions, "parser">
+}
+
+export function configToModule(config: unknown) {
+  const exportedConfig = JSON.stringify(config, null, 2)
   const moduleConfig = replacePlaceholdersWithRequires(exportedConfig)
 
   return format(
     `
     import { createRequire } from "module";
     const require = createRequire(import.meta.url);
-    export default ${config};
+    export default ${moduleConfig};
   `,
     { parser: "typescript" }
   )
@@ -382,9 +396,16 @@ function cleanupRules(generatedConfig: Linter.Config, disabled: boolean) {
   return generatedConfig
 }
 
-function cleanupPlugins(plugins: string[]) {
+/**
+ * Cleans up the plugins object by replacing the actual plugin object with placeholders for the corresponding require statements.
+ */
+function cleanupPlugins(plugins?: Record<string, ESLint.Plugin>) {
+  if (!plugins) {
+    return
+  }
+
   const result: Record<string, string> = {}
-  plugins.forEach((plugin) => {
+  Object.keys(plugins).forEach((plugin) => {
     const name = plugin.split(":")[0]
     if (name === "@") {
       return
