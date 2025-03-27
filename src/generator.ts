@@ -208,6 +208,14 @@ export async function buildConfig(
       // breaks in many cases where the previous human-written content has actually been better.
       "jsdoc/check-line-alignment": "off",
 
+      // Tweak to not add a line on block start.
+      "jsdoc/lines-before-block": [
+        "error",
+        {
+          checkBlockStarts: true
+        }
+      ],
+
       // Disable prop-type checks. These are better validated by strict TypeScript
       // anyway and also have quite of long standing bug related to using `React.memo`:
       // https://github.com/jsx-eslint/eslint-plugin-react/issues/2760

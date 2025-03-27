@@ -159,7 +159,12 @@ exports[`createConfig > applies stylistic rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
@@ -717,7 +722,12 @@ exports[`createConfig > combines all options 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
@@ -1441,7 +1451,12 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
@@ -1717,7 +1732,12 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
@@ -1930,7 +1950,12 @@ exports[`createConfig > disable biome supported rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
@@ -2138,7 +2163,12 @@ exports[`createConfig > disable type requiring rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
@@ -2517,7 +2547,12 @@ exports[`createConfig > enables strict rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
@@ -2846,7 +2881,12 @@ exports[`createConfig > generates a base configuration 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
@@ -3312,7 +3352,12 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
@@ -3676,7 +3721,12 @@ exports[`createConfig > includes React specific rules 1`] = `
     "jsdoc/check-values": "error",
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
-    "jsdoc/lines-before-block": "error",
+    "jsdoc/lines-before-block": [
+      "error",
+      {
+        "checkBlockStarts": true,
+      },
+    ],
     "jsdoc/match-description": "error",
     "jsdoc/multiline-blocks": "error",
     "jsdoc/no-bad-blocks": "error",
