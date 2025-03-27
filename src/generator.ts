@@ -176,6 +176,12 @@ export async function buildConfig(
         }
       ],
 
+      // Making JSDoc compatible with TSDoc where the hyphen is required.
+      "jsdoc/require-hyphen-before-param-description": "error",
+
+      // Making JSDoc using the uniform formatting which is common but might be accidentally not used in some cases.
+      "jsdoc/require-asterisk-prefix": "error",
+
       // Disable prop-type checks. These are better validated by strict TypeScript
       // anyway and also have quite of long standing bug related to using `React.memo`:
       // https://github.com/jsx-eslint/eslint-plugin-react/issues/2760
