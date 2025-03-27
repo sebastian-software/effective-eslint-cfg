@@ -1,6 +1,6 @@
 {
   "name": "@effective/eslint-cfg",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "private": false,
   "description": "A library for generating ESLint Flat Configs with React and TypeScript support.",
   "keywords": [
