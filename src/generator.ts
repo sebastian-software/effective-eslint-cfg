@@ -167,15 +167,6 @@ export async function buildConfig(
 
   presets.push({
     rules: {
-      // We are TypeScript oriented. We all like JSDoc for some methods but
-      // requiring it is a bit strong for most code bases. We still want
-      // to verify JSDoc to be correct when existing.
-      // "jsdoc/require-jsdoc": "off",
-      // "jsdoc/require-param": "off",
-      // "jsdoc/require-property": "off",
-      // "jsdoc/require-returns": "off",
-      // "jsdoc/require-yields": "off",
-
       // In TypeScript we typically don't need to document all desctructed props
       // as complexer object are defined by their interface/type already.
       "jsdoc/check-param-names": [
