@@ -1,4 +1,5 @@
 import { createHash } from "crypto"
+import { Linter } from "eslint"
 
 export interface Options {
   // mode options
@@ -42,4 +43,16 @@ export function optionsToNumber(opts: Options): number {
 
 export function numberToShortHash(num: number): string {
   return createHash("sha1").update(String(num)).digest("hex").slice(0, 8)
+}
+
+export function getConfigObject(
+  config: Linter.Config[],
+  objectName: string = "base"
+) {
+  const obj = config.find((c) => c.name === `effective/${objectName}`)
+  if (!obj) {
+    throw new Error(`Config ${objectName} not found!`)
+  }
+
+  return obj
 }

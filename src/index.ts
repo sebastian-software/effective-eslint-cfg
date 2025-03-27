@@ -1,7 +1,12 @@
 import { Linter } from "eslint"
 import { resolve } from "path"
 
-import { numberToShortHash, Options, optionsToNumber } from "./util.js"
+import {
+  getConfigObject,
+  numberToShortHash,
+  Options,
+  optionsToNumber
+} from "./util.js"
 
 /**
  * Loads an ESLint configuration based on the provided options.
@@ -32,7 +37,7 @@ export async function getConfig(options: Options) {
 /**
  * Changes the severity of a specific ESLint rule in the configuration.
  *
- * @param config - The ESLint configuration
+ * @param config - The ESLint configuration array
  * @param ruleName - The name of the rule to modify
  * @param severity - The new severity level
  * @throws When the config has no rules or the rule is not configured
@@ -40,13 +45,15 @@ export async function getConfig(options: Options) {
 export function setRuleSeverity(
   config: Linter.Config[],
   ruleName: string,
-  severity: "error" | "warn" | "off"
+  severity: "error" | "warn" | "off",
+  objectName?: "base" | "testing" | "storybook"
 ) {
-  if (!config.rules) {
+  const obj = getConfigObject(config, objectName)
+  if (!obj.rules) {
     throw new Error("Config has no rules!")
   }
 
-  const ruleConfig = config.rules[ruleName]
+  const ruleConfig = obj.rules[ruleName]
   if (ruleConfig == null) {
     throw new Error(`Rule ${ruleName} is not configured!`)
   }
@@ -54,7 +61,7 @@ export function setRuleSeverity(
   if (Array.isArray(ruleConfig)) {
     ruleConfig[0] = severity
   } else {
-    config.rules[ruleName] = severity
+    obj.rules[ruleName] = severity
   }
 }
 
@@ -63,7 +70,7 @@ export function setRuleSeverity(
  * Unlike setRuleSeverity, this method preserves the existing severity level while allowing to update
  * the rule's options.
  *
- * @param config - The ESLint configuration
+ * @param config - The ESLint configuration array
  * @param ruleName - The name of the rule to configure
  * @param options - Optional array of configuration options for the rule
  * @throws When the config has no rules or the rule is not configured
@@ -71,13 +78,15 @@ export function setRuleSeverity(
 export function configureRule(
   config: Linter.Config[],
   ruleName: string,
+  objectName?: "base" | "testing" | "storybook",
   options?: unknown[]
 ) {
-  if (!config.rules) {
+  const obj = getConfigObject(config, objectName)
+  if (!obj.rules) {
     throw new Error("Config has no rules!")
   }
 
-  const ruleConfig = config.rules[ruleName]
+  const ruleConfig = obj.rules[ruleName]
   if (ruleConfig == null) {
     throw new Error(`Rule ${ruleName} is not configured!`)
   }
@@ -85,36 +94,41 @@ export function configureRule(
   const severity = Array.isArray(ruleConfig) ? ruleConfig[0] : ruleConfig
 
   if (options && options.length > 0) {
-    config.rules[ruleName] = [severity, ...options]
+    obj.rules[ruleName] = [severity, ...options]
   } else {
-    config.rules[ruleName] = severity
+    obj.rules[ruleName] = severity
   }
 }
 
 /**
  * Disables a specific ESLint rule in the configuration by removing it.
  *
- * @param config - The ESLint configuration
+ * @param config - The ESLint configuration array
  * @param ruleName - The name of the rule to disable
  * @throws When the config has no rules or the rule is not configured
  */
-export function disableRule(config: Linter.Config[], ruleName: string) {
-  if (!config.rules) {
+export function disableRule(
+  config: Linter.Config[],
+  ruleName: string,
+  objectName?: "base" | "testing" | "storybook"
+) {
+  const obj = getConfigObject(config, objectName)
+  if (!obj.rules) {
     throw new Error("Config has no rules!")
   }
 
-  const ruleConfig = config.rules[ruleName]
+  const ruleConfig = obj.rules[ruleName]
   if (ruleConfig == null) {
     throw new Error(`Rule ${ruleName} is not configured!`)
   }
 
-  delete config.rules[ruleName]
+  delete obj.rules[ruleName]
 }
 
 /**
  * Adds a new ESLint rule to the configuration with specified severity and options.
  *
- * @param config - The ESLint configuration
+ * @param config - The ESLint configuration array
  * @param ruleName - The name of the rule to add
  * @param severity - The severity level for the rule
  * @param options - Additional options for the rule configuration
@@ -124,20 +138,22 @@ export function addRule(
   config: Linter.Config[],
   ruleName: string,
   severity: "warn" | "error",
+  objectName?: "base" | "testing" | "storybook",
   options?: unknown[]
 ) {
-  if (!config.rules) {
+  const obj = getConfigObject(config, objectName)
+  if (!obj.rules) {
     throw new Error("Config has no rules!")
   }
 
-  const ruleConfig = config.rules[ruleName]
+  const ruleConfig = obj.rules[ruleName]
   if (ruleConfig != null) {
     throw new Error(`Rule ${ruleName} is already configured!`)
   }
 
   if (options) {
-    config.rules[ruleName] = [severity, ...options]
+    obj.rules[ruleName] = [severity, ...options]
   } else {
-    config.rules[ruleName] = severity
+    obj.rules[ruleName] = severity
   }
 }
