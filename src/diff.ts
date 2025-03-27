@@ -3,7 +3,7 @@ import { ESLint, Linter } from "eslint"
 export function diffLintConfig(
   config: Linter.Config<Linter.RulesRecord>,
   otherConfig: Linter.Config<Linter.RulesRecord>
-): Linter.Config {
+): Linter.Config | null {
   const diff: Linter.Config = {}
 
   // Compare rules
@@ -43,22 +43,43 @@ export function diffLintConfig(
   }
 
   // Compare language options
-  if (config.languageOptions || otherConfig.languageOptions) {
-    const oldLang = config.languageOptions || {}
-    const newLang = otherConfig.languageOptions || {}
-
-    if (JSON.stringify(oldLang) !== JSON.stringify(newLang)) {
-      diff.languageOptions = newLang
+  if (otherConfig.languageOptions) {
+    const oldLang = config.languageOptions
+    const newLang = otherConfig.languageOptions
+    for (const option of Object.keys(newLang) as Array<keyof typeof newLang>) {
+      if (
+        JSON.stringify(oldLang?.[option]) !== JSON.stringify(newLang[option])
+      ) {
+        if (!diff.languageOptions) {
+          diff.languageOptions = {}
+        }
+        const value = newLang[option]
+        if (value !== undefined) {
+          diff.languageOptions[option] = value
+        }
+      }
     }
   }
 
   // Compare linter options
-  if (config.linterOptions || otherConfig.linterOptions) {
-    const oldLinter = config.linterOptions || {}
-    const newLinter = otherConfig.linterOptions || {}
+  if (otherConfig.linterOptions) {
+    const oldLinter = config.linterOptions || ({} as Linter.LinterOptions)
+    const newLinter = otherConfig.linterOptions
 
-    if (JSON.stringify(oldLinter) !== JSON.stringify(newLinter)) {
-      diff.linterOptions = newLinter
+    for (const option of Object.keys(newLinter) as Array<
+      keyof typeof newLinter
+    >) {
+      if (
+        JSON.stringify(oldLinter[option]) !== JSON.stringify(newLinter[option])
+      ) {
+        if (!diff.linterOptions) {
+          diff.linterOptions = {}
+        }
+        const value = newLinter[option]
+        if (value !== undefined) {
+          ;(diff.linterOptions[option] as unknown) = value
+        }
+      }
     }
   }
 
@@ -77,6 +98,10 @@ export function diffLintConfig(
     if (hasNewPlugins) {
       diff.plugins = newPlugins
     }
+  }
+
+  if (Object.keys(diff).length === 0) {
+    return null
   }
 
   return diff
