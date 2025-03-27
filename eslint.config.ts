@@ -19,5 +19,5 @@ export default [
     }
   },
 
-  base
+  ...base
 ] satisfies Linter.Config[]

@@ -24,7 +24,7 @@ export async function getConfig(options: Options) {
   // Due to the module cache we will receive a modified file when not using a
   // cache buster with e.g. Date.now() here.
   const module = (await import(`${configPath}?${Date.now()}`)) as {
-    default: Linter.Config
+    default: Linter.Config[]
   }
   return module.default
 }
