@@ -52,30 +52,31 @@ async function main() {
 
     const enabledOpts = new Set(flags.filter((flag) => opts[flag]))
     const hasReact = enabledOpts.has("react")
-    console.log("OPTS:", opts, "=>", enabledOpts)
 
     const baseConfig = await buildConfig(opts, {
       biomeRules,
       fileName: getFileName({ react: hasReact })
     })
+    baseConfig.name = "effective/base"
+
     const configForTests = await buildConfig(opts, {
       biomeRules,
       fileName: getFileName({ testing: true, react: hasReact })
     })
+    const diffTests = diffLintConfig(baseConfig, configForTests)
+    if (diffTests) {
+      diffTests.files = [fileGlob.testing]
+      diffTests.name = "effective/testing"
+    }
+
     const configForStorybook = await buildConfig(opts, {
       biomeRules,
       fileName: getFileName({ storybook: true, react: hasReact })
     })
-
-    const diffTests = diffLintConfig(baseConfig, configForTests)
-    if (diffTests) {
-      diffTests.files = [fileGlob.testing]
-      console.log("DIFF-TESTS:", diffTests)
-    }
     const diffStorybook = diffLintConfig(baseConfig, configForStorybook)
     if (diffStorybook) {
       diffStorybook.files = [fileGlob.storybook]
-      console.log("DIFF-STORYBOOK:", diffStorybook)
+      diffStorybook.name = "effective/storybook"
     }
 
     const config = [baseConfig, diffTests, diffStorybook].filter(
