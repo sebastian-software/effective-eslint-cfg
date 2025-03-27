@@ -186,7 +186,7 @@ export async function buildConfig(
       ],
 
       // Making JSDoc compatible with TSDoc where the hyphen is required.
-      "jsdoc/require-hyphen-before-param-description": "error",
+      "jsdoc/require-hyphen-before-param-description": ["error", "always"],
 
       // Making JSDoc using the uniform formatting which is common but might be accidentally not used in some cases.
       "jsdoc/require-asterisk-prefix": "error",
