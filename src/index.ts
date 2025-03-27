@@ -38,7 +38,7 @@ export async function getConfig(options: Options) {
  * @throws When the config has no rules or the rule is not configured
  */
 export function setRuleSeverity(
-  config: Linter.Config,
+  config: Linter.Config[],
   ruleName: string,
   severity: "error" | "warn" | "off"
 ) {
@@ -69,7 +69,7 @@ export function setRuleSeverity(
  * @throws When the config has no rules or the rule is not configured
  */
 export function configureRule(
-  config: Linter.Config,
+  config: Linter.Config[],
   ruleName: string,
   options?: unknown[]
 ) {
@@ -98,7 +98,7 @@ export function configureRule(
  * @param ruleName - The name of the rule to disable
  * @throws When the config has no rules or the rule is not configured
  */
-export function disableRule(config: Linter.Config, ruleName: string) {
+export function disableRule(config: Linter.Config[], ruleName: string) {
   if (!config.rules) {
     throw new Error("Config has no rules!")
   }
@@ -121,7 +121,7 @@ export function disableRule(config: Linter.Config, ruleName: string) {
  * @throws When the config has no rules or the rule is already configured
  */
 export function addRule(
-  config: Linter.Config,
+  config: Linter.Config[],
   ruleName: string,
   severity: "warn" | "error",
   options?: unknown[]
