@@ -204,14 +204,9 @@ export async function buildConfig(
       // We are fine with using raw HTML in JSDoc and also having stuff like Array<string> in there.
       "jsdoc/text-escaping": "off",
 
-      // We want to use 2 spaces for indentation in JSDoc.
-      "jsdoc/check-line-alignment": [
-        "error",
-        "always",
-        {
-          wrapIndent: "  "
-        }
-      ],
+      // We want to use 2 spaces for indentation in JSDoc. But this randomly
+      // breaks in many cases where the previous human-written content has actually been better.
+      "jsdoc/check-line-alignment": "off",
 
       // Disable prop-type checks. These are better validated by strict TypeScript
       // anyway and also have quite of long standing bug related to using `React.memo`:
