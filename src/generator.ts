@@ -208,13 +208,9 @@ export async function buildConfig(
       // breaks in many cases where the previous human-written content has actually been better.
       "jsdoc/check-line-alignment": "off",
 
-      // Tweak to not add a line on block start.
-      "jsdoc/lines-before-block": [
-        "error",
-        {
-          checkBlockStarts: true
-        }
-      ],
+      // Has some unwanted side-effects... probably better use a more generic
+      // rule for line before comments.
+      "jsdoc/lines-before-block": "off",
 
       // Disable prop-type checks. These are better validated by strict TypeScript
       // anyway and also have quite of long standing bug related to using `React.memo`:
