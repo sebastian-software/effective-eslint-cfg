@@ -178,7 +178,13 @@ exports[`createConfig > applies stylistic rules 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {
@@ -738,7 +744,13 @@ exports[`createConfig > combines all options 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {
@@ -1464,7 +1476,13 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {
@@ -1742,7 +1760,13 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {
@@ -1957,7 +1981,13 @@ exports[`createConfig > disable biome supported rules 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {
@@ -2167,7 +2197,13 @@ exports[`createConfig > disable type requiring rules 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {
@@ -2548,7 +2584,13 @@ exports[`createConfig > enables strict rules 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {
@@ -2879,7 +2921,13 @@ exports[`createConfig > generates a base configuration 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {
@@ -3347,7 +3395,13 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {
@@ -3713,7 +3767,13 @@ exports[`createConfig > includes React specific rules 1`] = `
     ],
     "jsdoc/require-returns-check": "error",
     "jsdoc/require-yields-check": "error",
-    "jsdoc/tag-lines": "error",
+    "jsdoc/tag-lines": [
+      "error",
+      "never",
+      {
+        "startLines": 1,
+      },
+    ],
     "jsdoc/text-escaping": [
       "error",
       {

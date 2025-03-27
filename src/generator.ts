@@ -167,12 +167,21 @@ export async function buildConfig(
 
   presets.push({
     rules: {
-      // In TypeScript we typically don't need to document all desctructed props
+      // In TypeScript we typically don't need to document all destructed props
       // as complexer object are defined by their interface/type already.
       "jsdoc/check-param-names": [
         "error",
         {
           checkDestructured: false
+        }
+      ],
+
+      // Unified according common best practices. Auto-fixable!
+      "jsdoc/tag-lines": [
+        "error",
+        "never",
+        {
+          startLines: 1
         }
       ],
 
