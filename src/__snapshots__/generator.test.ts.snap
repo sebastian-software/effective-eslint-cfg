@@ -269,7 +269,6 @@ exports[`createConfig > applies stylistic rules 1`] = `
     "no-useless-catch": "error",
     "no-useless-escape": "error",
     "no-var": "error",
-    "no-with": "error",
     "prefer-const": [
       "error",
       {
@@ -1002,7 +1001,6 @@ exports[`createConfig > combines all options 1`] = `
     "no-useless-catch": "error",
     "no-useless-escape": "error",
     "no-var": "error",
-    "no-with": "error",
     "prefer-const": [
       "error",
       {
@@ -2243,7 +2241,6 @@ exports[`createConfig > disable type requiring rules 1`] = `
     "no-useless-catch": "error",
     "no-useless-escape": "error",
     "no-var": "error",
-    "no-with": "error",
     "prefer-const": [
       "error",
       {
@@ -2621,7 +2618,6 @@ exports[`createConfig > enables strict rules 1`] = `
     "no-useless-catch": "error",
     "no-useless-escape": "error",
     "no-var": "error",
-    "no-with": "error",
     "prefer-const": [
       "error",
       {
@@ -2949,7 +2945,6 @@ exports[`createConfig > generates a base configuration 1`] = `
     "no-useless-catch": "error",
     "no-useless-escape": "error",
     "no-var": "error",
-    "no-with": "error",
     "prefer-const": [
       "error",
       {
@@ -3436,7 +3431,6 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     "no-useless-catch": "error",
     "no-useless-escape": "error",
     "no-var": "error",
-    "no-with": "error",
     "prefer-const": [
       "error",
       {
@@ -3931,7 +3925,6 @@ exports[`createConfig > includes React specific rules 1`] = `
     "no-useless-catch": "error",
     "no-useless-escape": "error",
     "no-var": "error",
-    "no-with": "error",
     "prefer-const": [
       "error",
       {
@@ -4521,6 +4514,7 @@ exports[`createConfig > only return disabled rules 1`] = `
     "no-unused-vars": "off",
     "no-useless-backreference": "off",
     "no-whitespace-before-property": "off",
+    "no-with": "off",
     "no-wrap-func": "off",
     "nonblock-statement-body-position": "off",
     "object-curly-newline": "off",
