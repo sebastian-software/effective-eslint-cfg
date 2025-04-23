@@ -129,6 +129,7 @@ exports[`createConfig > applies stylistic rules 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },
@@ -685,6 +686,7 @@ exports[`createConfig > combines all options 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },
@@ -1408,6 +1410,7 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },
@@ -1683,6 +1686,7 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },
@@ -1895,6 +1899,7 @@ exports[`createConfig > disable biome supported rules 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },
@@ -2101,6 +2106,7 @@ exports[`createConfig > disable type requiring rules 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },
@@ -2478,6 +2484,7 @@ exports[`createConfig > enables strict rules 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },
@@ -2805,6 +2812,7 @@ exports[`createConfig > generates a base configuration 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },
@@ -3269,6 +3277,7 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },
@@ -3631,6 +3640,7 @@ exports[`createConfig > includes React specific rules 1`] = `
     "check-file/filename-naming-convention": [
       "error",
       {
+        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
         "**/*.tsx": "PASCAL_CASE",
         "**/*.{js,ts}": "CAMEL_CASE",
       },

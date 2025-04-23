@@ -156,6 +156,7 @@ export async function buildConfig(
       "check-file/filename-naming-convention": [
         "error",
         {
+          "**/*.stories.{ts,tsx}": "PASCAL_CASE",
           "**/*.{js,ts}": "CAMEL_CASE",
           "**/*.tsx": "PASCAL_CASE"
         },
