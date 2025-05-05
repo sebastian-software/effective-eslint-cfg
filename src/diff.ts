@@ -19,7 +19,10 @@ export function diffLintConfig(
       const newRule = otherConfig.rules?.[rule]
 
       if (JSON.stringify(oldRule) !== JSON.stringify(newRule)) {
-        if (!diff.rules) diff.rules = {}
+        if (!diff.rules) {
+          diff.rules = {}
+        }
+
         diff.rules[rule] = newRule
       }
     }
@@ -37,7 +40,10 @@ export function diffLintConfig(
       const newSetting = otherConfig.settings?.[setting]
 
       if (JSON.stringify(oldSetting) !== JSON.stringify(newSetting)) {
-        if (!diff.settings) diff.settings = {}
+        if (!diff.settings) {
+          diff.settings = {}
+        }
+
         diff.settings[setting] = newSetting
       }
     }
@@ -54,6 +60,7 @@ export function diffLintConfig(
         if (!diff.languageOptions) {
           diff.languageOptions = {}
         }
+
         const value = newLang[option]
         if (value !== undefined) {
           diff.languageOptions[option] = value
