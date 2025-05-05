@@ -23,6 +23,30 @@ describe("createConfig", () => {
     expect(config).toMatchSnapshot()
   })
 
+  it("includes Test specific rules", async () => {
+    const config = await buildConfig(
+      { strict: true, style: true },
+      { fileName: "dateUtils.test.ts" }
+    )
+    expect(config).toMatchSnapshot()
+  })
+
+  it("includes Storybook specific rules", async () => {
+    const config = await buildConfig(
+      { react: true, strict: true, style: true },
+      { fileName: "Button.stories.tsx" }
+    )
+    expect(config).toMatchSnapshot()
+  })
+
+  it("includes Playwright specific rules", async () => {
+    const config = await buildConfig(
+      { strict: true, style: true },
+      { fileName: "AdminPanel.spec.ts" }
+    )
+    expect(config).toMatchSnapshot()
+  })
+
   //
   // GLOBAL SETTINGS...
   //
