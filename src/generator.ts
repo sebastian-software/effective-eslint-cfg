@@ -157,6 +157,7 @@ export async function buildConfig(
         "error",
         {
           "**/*.stories.{ts,tsx}": "PASCAL_CASE",
+          "**/use[A-Z]*.{ts,tsx}": "CAMEL_CASE",
           "**/*.{js,ts}": "CAMEL_CASE",
           "**/*.tsx": "PASCAL_CASE"
         },
