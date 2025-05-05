@@ -232,15 +232,16 @@ export async function buildConfig(
     eslintTestingLib.configs[react ? "flat/react" : "flat/dom"]
 
   presets.push({
-    files: [testFiles],
     ...jestRecommended,
-    ...(style ? jestStyle : {})
+    ...(style ? jestStyle : {}),
+    files: [testFiles]
   })
 
   // Keep in a separate prest push to prevent overwriting keys from Jest.
   presets.push({
-    files: [testFiles],
-    ...testingLibRules
+    ...testingLibRules,
+    files: [testFiles]
+  })
   })
 
   // Check NodeJS things (ESM mode)
