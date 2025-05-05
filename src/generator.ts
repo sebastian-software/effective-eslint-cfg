@@ -10,6 +10,7 @@ import eslintReactHooks from "eslint-plugin-react-hooks"
 import eslintRegexp from "eslint-plugin-regexp"
 import simpleImportSort from "eslint-plugin-simple-import-sort"
 import eslintTestingLib from "eslint-plugin-testing-library"
+import eslintPlaywright from "eslint-plugin-playwright"
 import eslintJest from "eslint-plugin-jest"
 import eslintStorybook from "eslint-plugin-storybook"
 import { format } from "prettier"
@@ -132,7 +133,6 @@ export async function buildConfig(
   }
 
   // We like JSDoc but for nothing which can be done better with TypeScript
-
   presets.push(
     // 1. rules that check names and descriptions
     eslintJsdoc.configs["flat/contents-typescript-error"],
@@ -223,8 +223,10 @@ export async function buildConfig(
   // Check some validity related to usage and definition of regular expressions
   presets.push(eslintRegexp.configs["flat/recommended"])
 
-  // Add Jest/Vitest/TestingLibrary recommended configuration
-  const testFiles = react ? "**/*.{spec,test}.{ts,tsx}" : "**/*.{spec,test}.ts"
+  // Add Jest/Vitest/TestingLibrary/Playwright recommended configuration
+  const testFiles = react ? "**/*.test.{ts,tsx}" : "**/*.test.ts"
+  // Add Playwright recommended configuration
+  const specFiles = "**/*.spec.ts"
 
   const jestRecommended = eslintJest.configs["flat/recommended"]
   const jestStyle = eslintJest.configs["flat/style"]
@@ -242,6 +244,10 @@ export async function buildConfig(
     ...testingLibRules,
     files: [testFiles]
   })
+
+  presets.push({
+    ...eslintPlaywright.configs["flat/recommended"],
+    files: [specFiles]
   })
 
   // Check NodeJS things (ESM mode)
