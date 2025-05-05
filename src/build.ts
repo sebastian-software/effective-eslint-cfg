@@ -10,30 +10,36 @@ const fileNameRelevantOptions = ["react", "testing", "storybook"] as const
 
 export interface FileNameOptions {
   react?: boolean
-  testing?: boolean
+  test?: boolean
+  e2e?: boolean
   storybook?: boolean
 }
 
 export function getFileName({
   react,
-  testing,
+  test,
+  e2e,
   storybook
 }: FileNameOptions = {}) {
-  let fileName = "index"
-  if (testing) {
-    fileName += ".test"
+  let fileName = "dateUtils"
+  if (test) {
+    fileName = "dateUtils.test"
+  } else if (e2e) {
+    fileName = "AdminPanel.spec"
   } else if (storybook) {
-    fileName += ".stories"
+    fileName = "Button.stories"
   }
 
-  fileName += react ? ".tsx" : ".ts"
+  fileName += react && !e2e && !test ? ".tsx" : ".ts"
 
+  console.log(fileName)
   return fileName
 }
 
 const fileGlob = {
   react: "**/*.{ts,tsx}",
-  testing: "**/*.{spec,test}.{ts,tsx}",
+  test: "**/*.test.{ts,tsx}",
+  e2e: "**/*.spec.{ts}",
   storybook: "**/*.stories.tsx"
 }
 
@@ -59,14 +65,24 @@ async function main() {
     })
     baseConfig.name = "effective/base"
 
-    const configForTests = await buildConfig(opts, {
+    const configForTest = await buildConfig(opts, {
       biomeRules,
-      fileName: getFileName({ testing: true, react: hasReact })
+      fileName: getFileName({ test: true, react: hasReact })
     })
-    const diffTests = diffLintConfig(baseConfig, configForTests)
-    if (diffTests) {
-      diffTests.files = [fileGlob.testing]
-      diffTests.name = "effective/testing"
+    const diffTest = diffLintConfig(baseConfig, configForTest)
+    if (diffTest) {
+      diffTest.files = [fileGlob.test]
+      diffTest.name = "effective/test"
+    }
+
+    const configForE2E = await buildConfig(opts, {
+      biomeRules,
+      fileName: getFileName({ e2e: true, react: hasReact })
+    })
+    const diffE2E = diffLintConfig(baseConfig, configForE2E)
+    if (diffE2E) {
+      diffE2E.files = [fileGlob.e2e]
+      diffE2E.name = "effective/e2e"
     }
 
     const configForStorybook = await buildConfig(opts, {
@@ -79,7 +95,7 @@ async function main() {
       diffStorybook.name = "effective/storybook"
     }
 
-    const config = [baseConfig, diffTests, diffStorybook].filter(
+    const config = [baseConfig, diffTest, diffE2E, diffStorybook].filter(
       (value) => value != null
     )
 
