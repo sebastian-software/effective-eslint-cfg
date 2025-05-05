@@ -2,6 +2,7 @@ import { Linter } from "eslint"
 import { resolve } from "path"
 
 import {
+  ConfigName,
   getConfigObject,
   numberToShortHash,
   Options,
@@ -46,11 +47,11 @@ export function setRuleSeverity(
   config: Linter.Config[],
   ruleName: string,
   severity: "error" | "warn" | "off",
-  objectName?: "base" | "testing" | "storybook"
+  objectName?: ConfigName
 ) {
   const obj = getConfigObject(config, objectName)
   if (!obj.rules) {
-    throw new Error("Config has no rules!")
+    throw new Error(`Config ${objectName} has no rules!`)
   }
 
   const ruleConfig = obj.rules[ruleName]
@@ -78,12 +79,12 @@ export function setRuleSeverity(
 export function configureRule(
   config: Linter.Config[],
   ruleName: string,
-  objectName?: "base" | "testing" | "storybook",
+  objectName?: ConfigName,
   options?: unknown[]
 ) {
   const obj = getConfigObject(config, objectName)
   if (!obj.rules) {
-    throw new Error("Config has no rules!")
+    throw new Error(`Config ${objectName} has no rules!`)
   }
 
   const ruleConfig = obj.rules[ruleName]
@@ -110,11 +111,11 @@ export function configureRule(
 export function disableRule(
   config: Linter.Config[],
   ruleName: string,
-  objectName?: "base" | "testing" | "storybook"
+  objectName?: ConfigName
 ) {
   const obj = getConfigObject(config, objectName)
   if (!obj.rules) {
-    throw new Error("Config has no rules!")
+    throw new Error(`Config ${objectName} has no rules!`)
   }
 
   const ruleConfig = obj.rules[ruleName]
@@ -131,6 +132,7 @@ export function disableRule(
  * @param config - The ESLint configuration array
  * @param ruleName - The name of the rule to add
  * @param severity - The severity level for the rule
+ * @param objectName - The name of the config object to add the rule to
  * @param options - Additional options for the rule configuration
  * @throws When the config has no rules or the rule is already configured
  */
@@ -138,12 +140,12 @@ export function addRule(
   config: Linter.Config[],
   ruleName: string,
   severity: "warn" | "error",
-  objectName?: "base" | "testing" | "storybook",
+  objectName?: ConfigName,
   options?: unknown[]
 ) {
   const obj = getConfigObject(config, objectName)
   if (!obj.rules) {
-    throw new Error("Config has no rules!")
+    throw new Error(`Config ${objectName} has no rules!`)
   }
 
   const ruleConfig = obj.rules[ruleName]
@@ -163,12 +165,17 @@ export function addRule(
  *
  * @param config - The ESLint configuration array
  * @param ruleName - The name of the rule to keep enabled
+ * @param objectName - The name of the config object to disable all rules foräö--------
  * @throws When the config has no rules
  */
-export function disableAllRulesBut(config: Linter.Config[], ruleName: string) {
-  const obj = getConfigObject(config, "base")
+export function disableAllRulesBut(
+  config: Linter.Config[],
+  ruleName: string,
+  objectName?: ConfigName
+) {
+  const obj = getConfigObject(config, objectName)
   if (!obj.rules) {
-    throw new Error("Config has no rules!")
+    throw new Error(`Config ${objectName} has no rules!`)
   }
 
   for (const key in obj.rules) {

@@ -45,9 +45,11 @@ export function numberToShortHash(num: number): string {
   return createHash("sha1").update(String(num)).digest("hex").slice(0, 8)
 }
 
+export type ConfigName = "base" | "test" | "e2e" | "storybook"
+
 export function getConfigObject(
   config: Linter.Config[],
-  objectName: string = "base"
+  objectName: ConfigName = "base"
 ) {
   const obj = config.find((c) => c.name === `effective/${objectName}`)
   if (!obj) {
