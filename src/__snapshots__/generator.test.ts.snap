@@ -15,7 +15,8 @@ exports[`createConfig > applies stylistic rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -503,7 +504,8 @@ exports[`createConfig > combines all options 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -1253,7 +1255,8 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -1600,7 +1603,8 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -1773,7 +1777,8 @@ exports[`createConfig > disable biome supported rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -1970,7 +1975,8 @@ exports[`createConfig > disable type requiring rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -2262,7 +2268,8 @@ exports[`createConfig > enables strict rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -2627,7 +2634,8 @@ exports[`createConfig > generates a base configuration 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -3078,7 +3086,8 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -3486,7 +3495,8 @@ exports[`createConfig > includes Playwright specific rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -3907,7 +3917,8 @@ exports[`createConfig > includes React specific rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -4402,7 +4413,8 @@ exports[`createConfig > includes Storybook specific rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -5007,7 +5019,8 @@ exports[`createConfig > includes Test specific rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -5442,7 +5455,8 @@ exports[`createConfig > only return disabled (with biome) rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
@@ -5798,7 +5812,8 @@ exports[`createConfig > only return disabled rules 1`] = `
     "sourceType": "module",
   },
   "linterOptions": {
-    "reportUnusedDisableDirectives": 1,
+    "reportUnusedDisableDirectives": "off",
+    "reportUnusedInlineConfigs": "off",
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",

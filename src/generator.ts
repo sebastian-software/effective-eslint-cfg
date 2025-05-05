@@ -308,6 +308,13 @@ export async function buildConfig(
 
   cleanupRules(generatedConfig, disabled ?? false)
 
+  // Tweak some defaults which are injected but somehow not configurable via API.
+  if (generatedConfig.linterOptions) {
+    generatedConfig.linterOptions.reportUnusedDisableDirectives = "off"
+    generatedConfig.linterOptions.reportUnusedInlineConfigs = "off"
+  }
+
+  // This is more useful as a command line argument than a built-in option.
   const { parser, ...languageOptionsWithoutParser } =
     generatedConfig.languageOptions ?? {}
 
