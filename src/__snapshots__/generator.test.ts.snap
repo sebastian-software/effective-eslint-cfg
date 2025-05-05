@@ -19,7 +19,6 @@ exports[`createConfig > applies stylistic rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
     "simple-import-sort": "[[[eslint-plugin-simple-import-sort]]]",
@@ -126,23 +125,6 @@ exports[`createConfig > applies stylistic rules 1`] = `
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
@@ -525,7 +507,6 @@ exports[`createConfig > combines all options 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "jsx-a11y": "[[[eslint-plugin-jsx-a11y]]]",
     "n": "[[[eslint-plugin-n]]]",
@@ -688,23 +669,6 @@ exports[`createConfig > combines all options 1`] = `
     "@typescript-eslint/unbound-method": "error",
     "@typescript-eslint/unified-signatures": "error",
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
@@ -1293,7 +1257,6 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "jsx-a11y": "[[[eslint-plugin-jsx-a11y]]]",
     "n": "[[[eslint-plugin-n]]]",
@@ -1417,23 +1380,6 @@ exports[`createConfig > combines all options without biome support rules 1`] = `
     "@typescript-eslint/unbound-method": "error",
     "@typescript-eslint/unified-signatures": "error",
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
     "jsdoc/check-param-names": [
@@ -1658,7 +1604,6 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
   },
@@ -1693,23 +1638,6 @@ exports[`createConfig > disable biome supported and type requiring rules 1`] = `
     ],
     "@typescript-eslint/no-wrapper-object-types": "error",
     "@typescript-eslint/triple-slash-reference": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
     "jsdoc/check-param-names": [
@@ -1849,7 +1777,6 @@ exports[`createConfig > disable biome supported rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
   },
@@ -1906,23 +1833,6 @@ exports[`createConfig > disable biome supported rules 1`] = `
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
     "jsdoc/check-param-names": [
@@ -2064,7 +1974,6 @@ exports[`createConfig > disable type requiring rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
   },
@@ -2113,23 +2022,6 @@ exports[`createConfig > disable type requiring rules 1`] = `
     "@typescript-eslint/prefer-as-const": "error",
     "@typescript-eslint/prefer-namespace-keyword": "error",
     "@typescript-eslint/triple-slash-reference": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
@@ -2374,7 +2266,6 @@ exports[`createConfig > enables strict rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
   },
@@ -2496,23 +2387,6 @@ exports[`createConfig > enables strict rules 1`] = `
     "@typescript-eslint/unbound-method": "error",
     "@typescript-eslint/unified-signatures": "error",
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
@@ -2757,7 +2631,6 @@ exports[`createConfig > generates a base configuration 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
   },
@@ -2829,23 +2702,6 @@ exports[`createConfig > generates a base configuration 1`] = `
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
@@ -3226,7 +3082,6 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "n": "[[[eslint-plugin-n]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
@@ -3299,23 +3154,6 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
@@ -3590,7 +3428,6 @@ exports[`createConfig > includes React specific rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "jsx-a11y": "[[[eslint-plugin-jsx-a11y]]]",
     "react": "[[[eslint-plugin-react]]]",
@@ -3667,23 +3504,6 @@ exports[`createConfig > includes React specific rules 1`] = `
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unbound-method": "error",
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-        "**/*.tsx": "PASCAL_CASE",
-        "**/*.{js,ts}": "CAMEL_CASE",
-      },
-      {
-        "ignoreMiddleExtensions": true,
-      },
-    ],
-    "check-file/folder-naming-convention": [
-      "error",
-      {
-        "**/": "KEBAB_CASE",
-      },
-    ],
     "for-direction": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
@@ -4103,7 +3923,6 @@ exports[`createConfig > only return disabled (with biome) rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
   },
@@ -4460,7 +4279,6 @@ exports[`createConfig > only return disabled rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "check-file": "[[[eslint-plugin-check-file]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
   },

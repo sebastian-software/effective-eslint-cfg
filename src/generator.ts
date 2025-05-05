@@ -1,7 +1,6 @@
 import eslint from "@eslint/js"
 import { ESLint, Linter } from "eslint"
 import eslintConfigPrettier from "eslint-config-prettier"
-import eslintCheckFile from "eslint-plugin-check-file"
 import eslintJsdoc from "eslint-plugin-jsdoc"
 import eslintJsxA11y from "eslint-plugin-jsx-a11y"
 import nodePlugin from "eslint-plugin-n"
@@ -147,32 +146,6 @@ export async function buildConfig(
     // 4. rules that enforce tags exist (unused... would not enforce jsdoc usage globally)
     // eslintJsdoc.configs["flat/requirements-typescript-error"]
   )
-
-  presets.push({
-    plugins: {
-      "check-file": eslintCheckFile
-    },
-    rules: {
-      "check-file/filename-naming-convention": [
-        "error",
-        {
-          "**/*.stories.{ts,tsx}": "PASCAL_CASE",
-          "**/use[A-Z]*.{ts,tsx}": "CAMEL_CASE",
-          "**/*.{js,ts}": "CAMEL_CASE",
-          "**/*.tsx": "PASCAL_CASE"
-        },
-        {
-          ignoreMiddleExtensions: true
-        }
-      ],
-      "check-file/folder-naming-convention": [
-        "error",
-        {
-          "**/": "KEBAB_CASE"
-        }
-      ]
-    }
-  })
 
   presets.push({
     rules: {
