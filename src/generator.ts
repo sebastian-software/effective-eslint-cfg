@@ -124,7 +124,7 @@ export async function buildConfig(
       }
     })
 
-    presets.push(eslintStorybook.configs["flat/recommended"])
+    presets.push(...eslintStorybook.configs["flat/recommended"])
   }
 
   // Always enable basic a11y checks... not responsible when not doing so.
