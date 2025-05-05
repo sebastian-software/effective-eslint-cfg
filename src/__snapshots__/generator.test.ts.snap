@@ -256,7 +256,12 @@ exports[`createConfig > applies stylistic rules 1`] = `
         "props": true,
       },
     ],
-    "no-shadow-restricted-names": "error",
+    "no-shadow-restricted-names": [
+      "error",
+      {
+        "reportGlobalThis": false,
+      },
+    ],
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
@@ -989,7 +994,12 @@ exports[`createConfig > combines all options 1`] = `
         "props": true,
       },
     ],
-    "no-shadow-restricted-names": "error",
+    "no-shadow-restricted-names": [
+      "error",
+      {
+        "reportGlobalThis": false,
+      },
+    ],
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
@@ -2233,7 +2243,12 @@ exports[`createConfig > disable type requiring rules 1`] = `
         "props": true,
       },
     ],
-    "no-shadow-restricted-names": "error",
+    "no-shadow-restricted-names": [
+      "error",
+      {
+        "reportGlobalThis": false,
+      },
+    ],
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
@@ -2611,7 +2626,12 @@ exports[`createConfig > enables strict rules 1`] = `
         "props": true,
       },
     ],
-    "no-shadow-restricted-names": "error",
+    "no-shadow-restricted-names": [
+      "error",
+      {
+        "reportGlobalThis": false,
+      },
+    ],
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
@@ -2939,7 +2959,12 @@ exports[`createConfig > generates a base configuration 1`] = `
         "props": true,
       },
     ],
-    "no-shadow-restricted-names": "error",
+    "no-shadow-restricted-names": [
+      "error",
+      {
+        "reportGlobalThis": false,
+      },
+    ],
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
@@ -3426,7 +3451,12 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
         "props": true,
       },
     ],
-    "no-shadow-restricted-names": "error",
+    "no-shadow-restricted-names": [
+      "error",
+      {
+        "reportGlobalThis": false,
+      },
+    ],
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
@@ -3921,7 +3951,12 @@ exports[`createConfig > includes React specific rules 1`] = `
         "props": true,
       },
     ],
-    "no-shadow-restricted-names": "error",
+    "no-shadow-restricted-names": [
+      "error",
+      {
+        "reportGlobalThis": false,
+      },
+    ],
     "no-sparse-arrays": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-optional-chaining": [
