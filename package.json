@@ -39,7 +39,7 @@
   "dependencies": {
     "eslint-plugin-check-file": "^3.2.0",
     "eslint-plugin-jest": "^28.11.0",
-    "eslint-plugin-jsdoc": "^50.6.10",
+    "eslint-plugin-jsdoc": "^50.6.11",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-n": "^17.17.0",
     "eslint-plugin-react": "^7.37.5",
@@ -49,24 +49,24 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-storybook": "^0.12.0",
     "eslint-plugin-testing-library": "^7.1.1",
-    "typescript-eslint": "^8.31.0"
+    "typescript-eslint": "^8.31.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@eslint/js": "^9.25.1",
-    "@types/node": "^22.14.1",
-    "eslint": "^9.25.1",
+    "@eslint/js": "^9.26.0",
+    "@types/node": "^22.15.3",
+    "eslint": "^9.26.0",
     "eslint-config-prettier": "^10.1.2",
     "jiti": "^2.4.2",
-    "npm-check-updates": "^18.0.0",
+    "npm-check-updates": "^18.0.1",
     "prettier": "^3.5.3",
-    "prettier-plugin-packagejson": "^2.5.10",
-    "release-it": "^19.0.1",
-    "tsx": "^4.19.3",
+    "prettier-plugin-packagejson": "^2.5.11",
+    "release-it": "^19.0.2",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vitest": "^3.1.2"
   },
-  "packageManager": "pnpm@10.9.0",
+  "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=22.0.0"
   },
