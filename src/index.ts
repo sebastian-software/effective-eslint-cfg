@@ -157,3 +157,23 @@ export function addRule(
     obj.rules[ruleName] = severity
   }
 }
+
+/**
+ * Disables all rules except the one specified. Useful for focusing on a single rule for debugging.
+ *
+ * @param config - The ESLint configuration array
+ * @param ruleName - The name of the rule to keep enabled
+ * @throws When the config has no rules
+ */
+export function disableAllRulesBut(config: Linter.Config[], ruleName: string) {
+  const obj = getConfigObject(config, "base")
+  if (!obj.rules) {
+    throw new Error("Config has no rules!")
+  }
+
+  for (const key in obj.rules) {
+    if (key !== ruleName) {
+      obj.rules[key] = "off"
+    }
+  }
+}

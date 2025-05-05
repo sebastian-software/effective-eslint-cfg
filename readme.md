@@ -165,6 +165,14 @@ const config = await getConfig(options)
 addRule(config, "max-len", "error", [{ code: 100 }])
 ```
 
+### `disableAllRulesBut(config, ruleName)`
+
+Disables all rules except the one specified. Useful for focusing on a single rule for debugging.
+
+- `config` - The ESLint configuration
+- `ruleName` - The name of the rule to add
+- Throws: When the config has no rules or the rule is already configured
+
 ### Complete Example
 
 ```ts
