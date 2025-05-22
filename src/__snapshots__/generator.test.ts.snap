@@ -256,7 +256,12 @@ exports[`createConfig > applies stylistic rules 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "prefer-const": [
       "error",
@@ -977,7 +982,12 @@ exports[`createConfig > combines all options 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "prefer-const": [
       "error",
@@ -2158,7 +2168,12 @@ exports[`createConfig > disable type requiring rules 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "prefer-const": [
       "error",
@@ -2524,7 +2539,12 @@ exports[`createConfig > enables strict rules 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "prefer-const": [
       "error",
@@ -2840,7 +2860,12 @@ exports[`createConfig > generates a base configuration 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "prefer-const": [
       "error",
@@ -3315,7 +3340,12 @@ exports[`createConfig > includes NodeJS specific rules 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "prefer-const": [
       "error",
@@ -3781,7 +3811,12 @@ exports[`createConfig > includes Playwright specific rules 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "playwright/expect-expect": "warn",
     "playwright/max-nested-describe": "warn",
@@ -4282,7 +4317,12 @@ exports[`createConfig > includes React specific rules 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "prefer-const": [
       "error",
@@ -4863,7 +4903,12 @@ exports[`createConfig > includes Storybook specific rules 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "prefer-const": [
       "error",
@@ -5316,7 +5361,12 @@ exports[`createConfig > includes Test specific rules 1`] = `
     "no-unused-labels": "error",
     "no-unused-private-class-members": "error",
     "no-useless-catch": "error",
-    "no-useless-escape": "error",
+    "no-useless-escape": [
+      "error",
+      {
+        "allowRegexCharacters": [],
+      },
+    ],
     "no-var": "error",
     "prefer-const": [
       "error",
