@@ -4887,21 +4887,6 @@ exports[`createConfig > includes Test specific rules 1`] = `
 {
   "languageOptions": {
     "ecmaVersion": 2026,
-    "globals": {
-      "afterAll": false,
-      "afterEach": false,
-      "beforeAll": false,
-      "beforeEach": false,
-      "describe": false,
-      "expect": false,
-      "fit": false,
-      "it": false,
-      "jest": false,
-      "test": false,
-      "xdescribe": false,
-      "xit": false,
-      "xtest": false,
-    },
     "parser": "[[[@typescript-eslint/parser]]]",
     "parserOptions": {
       "ecmaFeatures": {
@@ -4918,10 +4903,10 @@ exports[`createConfig > includes Test specific rules 1`] = `
   },
   "plugins": {
     "@typescript-eslint": "[[[@typescript-eslint/eslint-plugin]]]",
-    "jest": "[[[eslint-plugin-jest]]]",
     "jsdoc": "[[[eslint-plugin-jsdoc]]]",
     "regexp": "[[[eslint-plugin-regexp]]]",
     "testing-library": "[[[eslint-plugin-testing-library]]]",
+    "vitest": "[[[eslint-plugin-vitest]]]",
   },
   "rules": {
     "@typescript-eslint/array-type": [
@@ -5044,25 +5029,6 @@ exports[`createConfig > includes Test specific rules 1`] = `
     "@typescript-eslint/unified-signatures": "error",
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
     "for-direction": "error",
-    "jest/expect-expect": "warn",
-    "jest/no-alias-methods": "error",
-    "jest/no-commented-out-tests": "warn",
-    "jest/no-conditional-expect": "error",
-    "jest/no-deprecated-functions": "error",
-    "jest/no-disabled-tests": "warn",
-    "jest/no-done-callback": "error",
-    "jest/no-export": "error",
-    "jest/no-focused-tests": "error",
-    "jest/no-identical-title": "error",
-    "jest/no-interpolation-in-snapshots": "error",
-    "jest/no-jasmine-globals": "error",
-    "jest/no-mocks-import": "error",
-    "jest/no-standalone-expect": "error",
-    "jest/no-test-prefixes": "error",
-    "jest/valid-describe-callback": "error",
-    "jest/valid-expect": "error",
-    "jest/valid-expect-in-promise": "error",
-    "jest/valid-title": "error",
     "jsdoc/check-access": "error",
     "jsdoc/check-alignment": "error",
     "jsdoc/check-param-names": [
@@ -5328,6 +5294,32 @@ exports[`createConfig > includes Test specific rules 1`] = `
         "requireStringLiterals": false,
       },
     ],
+    "vitest/expect-expect": [
+      "error",
+      {
+        "additionalTestBlockFunctions": [],
+        "assertFunctionNames": [
+          "expect",
+          "assert",
+        ],
+      },
+    ],
+    "vitest/no-commented-out-tests": "error",
+    "vitest/no-conditional-expect": "error",
+    "vitest/no-disabled-tests": "warn",
+    "vitest/no-focused-tests": "error",
+    "vitest/no-identical-title": "error",
+    "vitest/no-import-node-test": "error",
+    "vitest/no-interpolation-in-snapshots": "error",
+    "vitest/no-mocks-import": "error",
+    "vitest/no-standalone-expect": "error",
+    "vitest/no-unneeded-async-expect-function": "error",
+    "vitest/prefer-called-exactly-once-with": "error",
+    "vitest/require-local-test-context-for-concurrent-snapshots": "error",
+    "vitest/valid-describe-callback": "error",
+    "vitest/valid-expect": "error",
+    "vitest/valid-expect-in-promise": "error",
+    "vitest/valid-title": "error",
   },
 }
 `;

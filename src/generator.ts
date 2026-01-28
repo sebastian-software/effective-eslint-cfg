@@ -12,7 +12,7 @@ import simpleImportSort from "eslint-plugin-simple-import-sort"
 import eslintSonarjs from "eslint-plugin-sonarjs"
 import eslintTestingLib from "eslint-plugin-testing-library"
 import eslintPlaywright from "eslint-plugin-playwright"
-import eslintJest from "eslint-plugin-jest"
+import eslintVitest from "@vitest/eslint-plugin"
 import eslintStorybook from "eslint-plugin-storybook"
 import { format } from "prettier"
 import tseslint from "typescript-eslint"
@@ -163,23 +163,19 @@ export async function buildConfig(
   // Check some validity related to usage and definition of regular expressions
   presets.push(eslintRegexp.configs["flat/recommended"])
 
-  // Add Jest/Vitest/TestingLibrary/Playwright recommended configuration
+  // Add Vitest/TestingLibrary/Playwright recommended configuration
   const testFiles = react ? "**/*.test.{ts,tsx}" : "**/*.test.ts"
-  // Add Playwright recommended configuration
   const specFiles = "**/*.spec.ts"
 
-  const jestRecommended = eslintJest.configs["flat/recommended"]
-  const jestStyle = eslintJest.configs["flat/style"]
   const testingLibRules =
     eslintTestingLib.configs[react ? "flat/react" : "flat/dom"]
 
   presets.push({
-    ...jestRecommended,
-    ...(ai ? jestStyle : {}),
+    ...eslintVitest.configs.recommended,
     files: [testFiles]
   })
 
-  // Keep in a separate prest push to prevent overwriting keys from Jest.
+  // Keep in a separate preset push to prevent overwriting keys from Vitest.
   presets.push({
     ...testingLibRules,
     files: [testFiles]

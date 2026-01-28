@@ -142,7 +142,6 @@ When you code with AI assistants, quality depends on feedback loops. The `ai` fl
 The `ai` flag also enables:
 - **TypeScript stylistic rules** - `prefer-nullish-coalescing`, `prefer-optional-chain`, `consistent-type-definitions`, and more
 - **Import sorting** - Automatic, consistent import order via `simple-import-sort`
-- **Jest style rules** - Consistent test file patterns
 
 Why bundle style with AI? Because inconsistent code is harder to maintain. If AI writes your code, it should follow your style.
 
@@ -154,7 +153,7 @@ Every configuration includes:
 - **TypeScript-ESLint type-checked** - Full type-aware rules
 - **JSDoc** - Documentation quality checks (TypeScript-aware)
 - **RegExp** - Regex best practices
-- **Jest + Testing Library** - Test file rules
+- **Vitest + Testing Library** - Test file rules (also works with Bun Test)
 - **Playwright** - E2E test rules
 - **Prettier compat** - Rules that conflict with Prettier are disabled
 
