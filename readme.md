@@ -152,15 +152,36 @@ Each configuration automatically includes **4 rule sets** that apply to differen
 | Config Block | Files | What's Different |
 |--------------|-------|------------------|
 | `effective/base` | All `.ts`/`.tsx` | Your main rules |
-| `effective/test` | `**/*.test.{ts,tsx}` | + Vitest rules, relaxed type rules |
-| `effective/e2e` | `**/*.spec.ts` | + Playwright rules |
+| `effective/test` | `**/*.test.{ts,tsx}` | + Vitest rules |
+| `effective/playwright` | `**/*.spec.ts` | + Playwright rules |
 | `effective/storybook` | `**/*.stories.{ts,tsx}` | + Storybook rules |
 
-The test/e2e/storybook configs only contain the **differences** from base - ESLint merges them automatically. This means test files get Vitest rules without you having to configure anything.
+The test/playwright/storybook configs only contain the **differences** from base - ESLint merges them automatically. This means test files get Vitest rules without you having to configure anything.
 
 ```ts
 // This just works - Vitest rules apply automatically to .test.ts files
 await getConfig({ strict: true })
+```
+
+### Why `.test` vs `.spec`?
+
+We use `.test.ts` for unit tests (Vitest) and `.spec.ts` for end-to-end tests (Playwright). This follows [Playwright's documentation](https://playwright.dev/docs/test-configuration) which consistently uses `.spec.ts`.
+
+Some projects use `.spec` for unit tests too - if that's you, you'll need to adjust the file patterns in your config.
+
+### Co-located Tests
+
+We match by file name pattern (`**/*.test.ts`), not by directory (`__tests__/**`). This supports the modern practice of co-locating tests next to the code they test:
+
+```
+src/
+  utils/
+    dateUtils.ts
+    dateUtils.test.ts   ← Vitest rules apply here
+  components/
+    Button.tsx
+    Button.test.tsx     ← Vitest rules apply here
+    Button.stories.tsx  ← Storybook rules apply here
 ```
 
 ## What's Included (Always)

@@ -10,26 +10,26 @@ const fileNameRelevantOptions = ["react", "testing", "storybook"] as const
 export interface FileNameOptions {
   react?: boolean
   test?: boolean
-  e2e?: boolean
+  playwright?: boolean
   storybook?: boolean
 }
 
 export function getFileName({
   react,
   test,
-  e2e,
+  playwright,
   storybook
 }: FileNameOptions = {}) {
   let fileName = "dateUtils"
   if (test) {
     fileName = "dateUtils.test"
-  } else if (e2e) {
+  } else if (playwright) {
     fileName = "AdminPanel.spec"
   } else if (storybook) {
     fileName = "Button.stories"
   }
 
-  fileName += react && !e2e && !test ? ".tsx" : ".ts"
+  fileName += react && !playwright && !test ? ".tsx" : ".ts"
 
   console.log(fileName)
   return fileName
@@ -38,7 +38,7 @@ export function getFileName({
 const fileGlob = {
   react: "**/*.{ts,tsx}",
   test: "**/*.test.{ts,tsx}",
-  e2e: "**/*.spec.ts",
+  playwright: "**/*.spec.ts",
   storybook: "**/*.stories.{ts,tsx}"
 }
 
@@ -71,13 +71,13 @@ async function main() {
       diffTest.name = "effective/test"
     }
 
-    const configForE2E = await buildConfig(opts, {
-      fileName: getFileName({ e2e: true, react: hasReact })
+    const configForPlaywright = await buildConfig(opts, {
+      fileName: getFileName({ playwright: true, react: hasReact })
     })
-    const diffE2E = diffLintConfig(baseConfig, configForE2E)
-    if (diffE2E) {
-      diffE2E.files = [fileGlob.e2e]
-      diffE2E.name = "effective/e2e"
+    const diffPlaywright = diffLintConfig(baseConfig, configForPlaywright)
+    if (diffPlaywright) {
+      diffPlaywright.files = [fileGlob.playwright]
+      diffPlaywright.name = "effective/playwright"
     }
 
     const configForStorybook = await buildConfig(opts, {
@@ -89,7 +89,7 @@ async function main() {
       diffStorybook.name = "effective/storybook"
     }
 
-    const config = [baseConfig, diffTest, diffE2E, diffStorybook].filter(
+    const config = [baseConfig, diffTest, diffPlaywright, diffStorybook].filter(
       (value) => value != null
     )
 
