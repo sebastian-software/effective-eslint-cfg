@@ -1,14 +1,19 @@
 # @effective/eslint-cfg
 
-[![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![Downloads][npm-downloads-img]][npm] [![License][github-license-img]][github]
+[![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![Downloads][npm-downloads-img]][npm] [![Node][node-img]][npm] [![License][github-license-img]][github] [![TypeScript][ts-img]][ts] [![PRs Welcome][prs-img]][contributing]
 
 [sponsor]: https://www.sebastian-software.de
 [sponsor-img]: https://badgen.net/badge/Sponsored%20by/Sebastian%20Software/c41e54
 [npm]: https://www.npmjs.com/package/@effective/eslint-cfg
 [npm-downloads-img]: https://badgen.net/npm/dm/@effective/eslint-cfg
 [npm-version-img]: https://badgen.net/npm/v/@effective/eslint-cfg
+[node-img]: https://badgen.net/badge/node/%3E=22/green
 [github]: https://github.com/sebastian-software/effective-eslint-cfg
 [github-license-img]: https://badgen.net/github/license/sebastian-software/effective-eslint-cfg
+[ts]: https://www.typescriptlang.org
+[ts-img]: https://badgen.net/badge/Built%20with/TypeScript/blue
+[contributing]: https://github.com/sebastian-software/effective-eslint-cfg/blob/main/CONTRIBUTING.md
+[prs-img]: https://badgen.net/badge/PRs/welcome/green
 
 **Pre-generated, opinionated ESLint configurations for TypeScript projects. Zero runtime overhead. Full type-checking. AI-ready.**
 
@@ -335,4 +340,4 @@ export default [
 
 <img src="https://cdn.rawgit.com/sebastian-software/sebastian-software-brand/0d4ec9d6/sebastiansoftware-en.svg" alt="Sebastian Software GmbH" width="460" height="160"/>
 
-Copyright 2024-2025 [Sebastian Software GmbH](https://www.sebastian-software.de)
+Copyright 2024-2026 [Sebastian Software GmbH](https://www.sebastian-software.de)

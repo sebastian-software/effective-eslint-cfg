@@ -2,14 +2,19 @@
   "name": "@effective/eslint-cfg",
   "version": "0.8.3",
   "private": false,
-  "description": "A library for generating ESLint Flat Configs with React and TypeScript support.",
+  "description": "Pre-generated, opinionated ESLint configurations for TypeScript projects. Zero runtime overhead. Full type-checking. AI-ready.",
   "keywords": [
     "eslint",
     "eslint-config",
+    "eslint-flat-config",
     "typescript",
     "react",
-    "flat-config",
-    "linting"
+    "vitest",
+    "playwright",
+    "storybook",
+    "ai",
+    "linting",
+    "type-checking"
   ],
   "license": "Apache-2.0",
   "author": {
@@ -17,9 +22,28 @@
     "email": "s.werner@sebastian-software.de",
     "url": "http://sebastian-software.de/werner"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebastian-software/effective-eslint-cfg.git"
+  },
+  "homepage": "https://github.com/sebastian-software/effective-eslint-cfg#readme",
+  "bugs": {
+    "url": "https://github.com/sebastian-software/effective-eslint-cfg/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/sebastian-software"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -52,7 +76,6 @@
     "typescript-eslint": "^8.54.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.13",
     "@eslint/js": "^9.39.2",
     "@types/node": "^25.0.10",
     "@vitest/eslint-plugin": "^1.6.6",
