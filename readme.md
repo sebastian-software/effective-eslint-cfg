@@ -12,14 +12,58 @@
 
 **Pre-generated, opinionated ESLint configurations for TypeScript projects. Zero runtime overhead. Full type-checking. AI-ready.**
 
-## Why?
+## Why This Exists
 
-ESLint is powerful but slow to configure. Most config packages generate rules at runtime, parsing dozens of plugins on every lint run. This package takes a different approach:
+Setting up ESLint for a modern TypeScript project is surprisingly painful. You need to:
+- Choose between dozens of plugins
+- Figure out which rules overlap or conflict
+- Configure TypeScript parser settings correctly
+- Wait for config generation on every lint run
 
-- **Pre-generated configs** - All 16 possible configurations are built at publish time. Your editor loads instantly.
-- **Type-checked by default** - Every config uses `projectService` for full TypeScript type information.
-- **Curated rule sets** - Battle-tested combinations of ESLint, TypeScript-ESLint, React, and more. No decision fatigue.
-- **AI-optimized mode** - Strict maintainability rules that push AI to iterate until the code is actually good.
+**We solved this.** This package gives you a single function call that returns a battle-tested, pre-generated configuration. Your editor loads instantly. Your CI doesn't waste time. You get type-aware linting that actually works.
+
+```ts
+import { getConfig } from "@effective/eslint-cfg"
+
+export default [
+  { ignores: ["node_modules", "dist"] },
+  ...(await getConfig({ strict: true, react: true }))
+]
+```
+
+That's your entire ESLint config. Done.
+
+## What Makes This Different
+
+### Pre-Generated Configs
+
+Most ESLint config packages generate rules at runtime - parsing plugins, merging configs, resolving conflicts. Every. Single. Time.
+
+We do the heavy lifting once at publish time. All 16 possible configurations ship as static JavaScript. When you import them, they're just... there. No parsing, no merging, no waiting.
+
+### Full Type-Checking, Always
+
+Every configuration uses TypeScript's `projectService` for full type information. Rules like `@typescript-eslint/no-floating-promises` or `@typescript-eslint/await-thenable` actually work. No compromises.
+
+### Designed for AI Workflows
+
+The `ai` flag isn't about validating code after it's written. It's about **making AI iterate until the code is good**. When Claude or Copilot writes a 200-line function with nested callbacks, ESLint fails, and the AI tries again. And again. Until it gets it right.
+
+### Easy Customization
+
+Don't agree with a rule? Change it:
+
+```ts
+import { getConfig, setRuleSeverity, disableRule } from "@effective/eslint-cfg"
+
+const config = await getConfig({ strict: true })
+
+// Downgrade to warning
+setRuleSeverity(config, "no-console", "warn")
+
+// Turn off completely
+disableRule(config, "@typescript-eslint/no-explicit-any")
+```
 
 ## Installation
 
@@ -29,76 +73,48 @@ npm install @effective/eslint-cfg
 pnpm add @effective/eslint-cfg
 ```
 
-**Note:** Requires ESLint v9+ and TypeScript. For TypeScript config files, install `jiti`.
-
-## Quick Start
-
-```ts
-// eslint.config.ts
-import { getConfig } from "@effective/eslint-cfg"
-
-export default [
-  { ignores: ["node_modules", "dist"] },
-  ...(await getConfig({ strict: true }))
-]
-```
-
-That's it. You get a fully configured, type-aware ESLint setup.
+Requires ESLint v9+ and TypeScript. For TypeScript config files, also install `jiti`.
 
 ## Configuration Options
 
-Only 4 flags. Each one is intentional.
+Four flags. Each one is intentional.
 
-| Option | Description |
-|--------|-------------|
-| `strict` | Enables stricter TypeScript rules (`strictTypeChecked` instead of `recommendedTypeChecked`) |
-| `node` | Adds Node.js-specific rules (ESM modules, proper imports) |
-| `react` | Adds React, Hooks, JSX-A11y, and Storybook rules |
-| `ai` | Strict maintainability rules that make AI write better code |
+| Option | What You Get |
+|--------|--------------|
+| `strict` | Stricter TypeScript rules via `strictTypeChecked` (recommended) |
+| `node` | Node.js rules for ESM modules, imports, and built-ins |
+| `react` | React, Hooks, Compiler, JSX-A11y, and Storybook rules |
+| `ai` | Maintainability rules + stylistic consistency for AI workflows |
 
-### Examples
+### Common Combinations
 
-**TypeScript library:**
 ```ts
+// TypeScript library
 await getConfig({ strict: true, node: true })
-```
 
-**React application:**
-```ts
+// React application
 await getConfig({ strict: true, react: true })
-```
 
-**Validating AI-generated code:**
-```ts
+// AI-assisted development
 await getConfig({ strict: true, ai: true })
-```
 
-**Full stack with AI validation:**
-```ts
+// Full stack with AI
 await getConfig({ strict: true, node: true, react: true, ai: true })
 ```
 
 ## The AI Mode
 
-The `ai` option is designed for a specific use case: **making AI iterate until the code is actually good**.
-
-When you use ESLint with strict rules in your AI coding workflow, the AI doesn't just write code once - it keeps refactoring until all rules pass. Without guardrails, AI tends to:
-- Create overly complex functions
-- Nest logic too deeply
-- Duplicate code instead of abstracting
-- Ignore stylistic consistency
-
-The `ai` flag enforces standards that push AI to do better:
+When you code with AI assistants, quality depends on feedback loops. The `ai` flag creates a strict feedback loop that pushes AI to write better code:
 
 ### Complexity Limits
 
 | Rule | Limit | Why |
 |------|-------|-----|
 | `complexity` | 10 | Cyclomatic complexity - too many branches = hard to test |
-| `max-depth` | 3 | Nesting depth - deeply nested code is hard to read |
+| `max-depth` | 3 | Deep nesting = hard to read |
 | `max-nested-callbacks` | 2 | Callback hell prevention |
 | `max-params` | 4 | Too many params = function does too much |
-| `sonarjs/cognitive-complexity` | 10 | Mental burden score - better than cyclomatic |
+| `sonarjs/cognitive-complexity` | 10 | Mental burden score |
 
 ### Size Limits
 
@@ -106,143 +122,123 @@ The `ai` flag enforces standards that push AI to do better:
 |------|-------|-----|
 | `max-lines` | 300 | Files should be focused |
 | `max-lines-per-function` | 50 | Functions should do one thing |
-| `max-statements` | 15 | Statement count correlates with complexity |
+| `max-statements` | 15 | Fewer statements = clearer logic |
 | `max-statements-per-line` | 1 | One thing per line |
 
-### Code Quality
+### Code Quality (SonarJS)
 
 | Rule | Why |
 |------|-----|
-| `sonarjs/no-duplicate-string` | Extract repeated strings to constants |
-| `sonarjs/no-identical-functions` | DRY - don't repeat yourself |
-| `sonarjs/no-collapsible-if` | Simplify nested conditions |
-| `sonarjs/prefer-immediate-return` | Don't store values just to return them |
+| `sonarjs/no-duplicate-string` | Extract repeated strings |
+| `sonarjs/no-identical-functions` | DRY principle |
+| `sonarjs/no-collapsible-if` | Simplify conditions |
+| `sonarjs/prefer-immediate-return` | Don't store just to return |
 | `sonarjs/prefer-single-boolean-return` | Simplify boolean returns |
 | `no-nested-ternary` | Ternaries in ternaries are unreadable |
 | `no-param-reassign` | Mutations cause bugs |
 
-### Style (also included with `ai`)
+### Style & Consistency
 
 The `ai` flag also enables:
-- **TypeScript stylistic rules** (`@typescript-eslint/prefer-nullish-coalescing`, etc.)
-- **Import sorting** (via `simple-import-sort`)
-- **Jest style rules** (for test files)
+- **TypeScript stylistic rules** - `prefer-nullish-coalescing`, `prefer-optional-chain`, `consistent-type-definitions`, and more
+- **Import sorting** - Automatic, consistent import order via `simple-import-sort`
+- **Jest style rules** - Consistent test file patterns
 
-Why bundle style with AI? Because AI-generated code should be stylistically consistent too. If you're validating AI output, you want the full package.
+Why bundle style with AI? Because inconsistent code is harder to maintain. If AI writes your code, it should follow your style.
 
-## What's Included
+## What's Included (Always)
 
 Every configuration includes:
 
-- **ESLint recommended** - The basics
-- **TypeScript-ESLint** - Full type-aware linting
-- **JSDoc** - Documentation quality (TypeScript-aware)
+- **ESLint recommended** - The foundation
+- **TypeScript-ESLint type-checked** - Full type-aware rules
+- **JSDoc** - Documentation quality checks (TypeScript-aware)
 - **RegExp** - Regex best practices
-- **Prettier compat** - Disables rules that conflict with Prettier
+- **Jest + Testing Library** - Test file rules
+- **Playwright** - E2E test rules
+- **Prettier compat** - Rules that conflict with Prettier are disabled
 
 With `react: true`:
-- **React** - Core React rules
-- **React Hooks** - All 18 recommended hook rules
-- **React Compiler** - Future-proof React optimization
-- **JSX-A11y** - Accessibility
+- **React recommended** - Core React rules
+- **React Hooks** - All 18 rules from `recommended-latest`
+- **React Compiler** - Future-proof optimization rules
+- **JSX-A11y** - Accessibility rules
 - **Storybook** - Story file linting
 
 With `node: true`:
-- **Node.js** - ESM module rules, import resolution
-
-With `ai: true`:
-- **SonarJS** - Cognitive complexity, code smells
-- **Stylistic** - Consistent code style
-- **Import sorting** - Clean imports
-
-## Pre-generation: How It Works
-
-Most ESLint config packages do this at runtime:
-```
-Your config → Parse plugins → Merge rules → Generate config → Lint
-```
-
-This package does the heavy lifting at publish time:
-```
-Build time: Generate all 16 combinations → Publish as static JS
-
-Runtime: Load pre-built config → Lint
-```
-
-The result? Your editor doesn't choke when opening a file. CI doesn't waste seconds on config generation. The config is just... there.
+- **Node.js ESM** - Proper module resolution and import rules
 
 ## Helper Functions
 
-Need to tweak the config? We've got you covered.
+The config is yours to customize.
 
 ### `setRuleSeverity(config, ruleName, severity)`
 
-```ts
-import { getConfig, setRuleSeverity } from "@effective/eslint-cfg"
+Change a rule's severity without touching its options:
 
-const config = await getConfig({ strict: true })
+```ts
 setRuleSeverity(config, "no-console", "warn")
+setRuleSeverity(config, "@typescript-eslint/no-explicit-any", "off")
 ```
 
 ### `configureRule(config, ruleName, options)`
 
-```ts
-import { getConfig, configureRule } from "@effective/eslint-cfg"
+Update a rule's options while keeping its severity:
 
-const config = await getConfig({ strict: true })
-configureRule(config, "max-len", [{ code: 120 }])
+```ts
+configureRule(config, "max-lines-per-function", [{ max: 80 }])
+configureRule(config, "complexity", [{ max: 15 }])
 ```
 
 ### `disableRule(config, ruleName)`
 
-```ts
-import { getConfig, disableRule } from "@effective/eslint-cfg"
+Remove a rule entirely:
 
-const config = await getConfig({ strict: true })
-disableRule(config, "complexity")
+```ts
+disableRule(config, "sonarjs/no-duplicate-string")
 ```
 
-### `addRule(config, ruleName, severity, options)`
+### `addRule(config, ruleName, severity, options?)`
+
+Add a rule that isn't in the config:
 
 ```ts
-import { getConfig, addRule } from "@effective/eslint-cfg"
-
-const config = await getConfig({ strict: true })
 addRule(config, "no-console", "error")
+addRule(config, "max-len", "warn", [{ code: 120 }])
+```
+
+### `disableAllRulesBut(config, ruleName)`
+
+Focus on a single rule (useful for debugging):
+
+```ts
+disableAllRulesBut(config, "@typescript-eslint/no-floating-promises")
 ```
 
 ## Full Example
 
 ```ts
 // eslint.config.ts
-import { getConfig, setRuleSeverity, disableRule } from "@effective/eslint-cfg"
+import { getConfig, setRuleSeverity, configureRule } from "@effective/eslint-cfg"
 
-const base = await getConfig({
+const config = await getConfig({
   strict: true,
   react: true,
   ai: true
 })
 
+// Customize for your project
+setRuleSeverity(config, "no-console", "warn")
+configureRule(config, "max-lines-per-function", [{ max: 80 }])
+
 export default [
   { ignores: ["node_modules", "dist", "coverage"] },
-
-  // React version for jsx-runtime
   {
     settings: {
       react: { version: "19.0" }
     }
   },
-
-  // The pre-generated config
-  ...base,
-
-  // Your overrides
-  {
-    rules: {
-      // Relax some rules for your codebase
-      "max-lines-per-function": ["error", { max: 80 }]
-    }
-  }
+  ...config
 ]
 ```
 
