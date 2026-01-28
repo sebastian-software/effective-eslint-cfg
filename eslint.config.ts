@@ -5,7 +5,7 @@ import { getConfig } from "./src/index"
 const base = await getConfig({
   node: true,
   strict: true,
-  style: true
+  ai: true
 })
 
 const config: Linter.Config[] = [

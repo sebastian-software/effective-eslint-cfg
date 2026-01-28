@@ -1,7 +1,6 @@
 import { promises as fs } from "fs"
 import { join } from "path"
 
-import { getBiomeRules } from "./biome.js"
 import { buildConfig, configToModule } from "./generator.js"
 import { flags, numberToShortHash, Options } from "./util.js"
 import { diffLintConfig } from "./diff.js"
@@ -47,7 +46,6 @@ async function main() {
   const outputDir = join(process.cwd(), "dist", "configs")
   await fs.mkdir(outputDir, { recursive: true })
 
-  const biomeRules = await getBiomeRules()
   const numPermutations = 1 << flags.length
 
   for (let i = 0; i < numPermutations; i++) {
@@ -60,13 +58,11 @@ async function main() {
     const hasReact = enabledOpts.has("react")
 
     const baseConfig = await buildConfig(opts, {
-      biomeRules,
       fileName: getFileName({ react: hasReact })
     })
     baseConfig.name = "effective/base"
 
     const configForTest = await buildConfig(opts, {
-      biomeRules,
       fileName: getFileName({ test: true, react: hasReact })
     })
     const diffTest = diffLintConfig(baseConfig, configForTest)
@@ -76,7 +72,6 @@ async function main() {
     }
 
     const configForE2E = await buildConfig(opts, {
-      biomeRules,
       fileName: getFileName({ e2e: true, react: hasReact })
     })
     const diffE2E = diffLintConfig(baseConfig, configForE2E)
@@ -86,7 +81,6 @@ async function main() {
     }
 
     const configForStorybook = await buildConfig(opts, {
-      biomeRules,
       fileName: getFileName({ storybook: true, react: hasReact })
     })
     const diffStorybook = diffLintConfig(baseConfig, configForStorybook)

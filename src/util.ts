@@ -4,16 +4,10 @@ import { Linter } from "eslint"
 export interface Options {
   // mode options
   strict?: boolean
-  style?: boolean
 
   // additional rules options
   node?: boolean
   react?: boolean
-
-  // output options
-  disabled?: boolean
-  fast?: boolean
-  biome?: boolean
 
   // ai mode
   ai?: boolean
@@ -22,16 +16,10 @@ export interface Options {
 export const flags = [
   // mode options
   "strict",
-  "style",
 
   // additional rules options
   "node",
   "react",
-
-  // output options
-  "disabled",
-  "fast",
-  "biome",
 
   // ai mode
   "ai"

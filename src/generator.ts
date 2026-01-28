@@ -27,18 +27,6 @@ interface RuleOptions {
   /* enable strict checks - recommended */
   strict?: boolean
 
-  /* opinionated, best practice, preferring simpler code bases */
-  style?: boolean
-
-  /** disable type-based rules for fast execution */
-  fast?: boolean
-
-  /** whether biome matched rules should be disabled */
-  biome?: boolean
-
-  /** return only disabled rules e.g. by prettier/typescript */
-  disabled?: boolean
-
   /** enable strict maintainability rules for AI-generated code */
   ai?: boolean
 }
@@ -49,36 +37,15 @@ export type ConfigParam = ESLint.Options["overrideConfig"]
 
 const reactFlat = eslintReact.configs.flat
 
-interface BiomeRule {
-  category: string
-  originalRule?: string
-}
-
-type BiomeRules = Record<string, BiomeRule>
-
 interface Settings {
-  biomeRules?: BiomeRules
   fileName?: string
-}
-
-function createBiomePreset(biomeRules: BiomeRules) {
-  const rules: Record<string, "off"> = {}
-  for (const [_ruleName, { originalRule }] of Object.entries(biomeRules)) {
-    if (originalRule) {
-      rules[originalRule] = "off"
-    }
-  }
-
-  return {
-    rules
-  }
 }
 
 export async function buildConfig(
   options: RuleOptions,
-  { biomeRules, fileName }: Settings = {}
+  { fileName }: Settings = {}
 ): Promise<ConfigWithModuleRefs> {
-  const { fast, node, react, strict, style, biome, disabled, ai } = options
+  const { node, react, strict, ai } = options
 
   const presets: ExtendsList = [eslint.configs.recommended]
 
@@ -92,24 +59,6 @@ export async function buildConfig(
         // are similarly useful to those in recommended.
         tseslint.configs.recommendedTypeChecked
   )
-
-  if (style) {
-    // Rules considered to be best practice for modern TypeScript codebases,
-    // but that do not impact program logic. These rules are generally opinionated
-    // about enforcing simpler code patterns.
-    presets.push(tseslint.configs.stylisticTypeChecked)
-
-    // Conventional sorting of imports, far leaner and more to the point than "eslint-plugin-import/order"
-    presets.push({
-      plugins: {
-        "simple-import-sort": simpleImportSort
-      },
-      rules: {
-        "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error"
-      }
-    })
-  }
 
   if (react) {
     // React core recommended rules
@@ -226,7 +175,7 @@ export async function buildConfig(
 
   presets.push({
     ...jestRecommended,
-    ...(style ? jestStyle : {}),
+    ...(ai ? jestStyle : {}),
     files: [testFiles]
   })
 
@@ -255,11 +204,6 @@ export async function buildConfig(
     })
   }
 
-  // Disable all type checked rules for faster runtime of the config e.g. for editor usage etc.
-  if (fast) {
-    presets.push(tseslint.configs.disableTypeChecked)
-  }
-
   // Configure TS parser
   presets.push({
     languageOptions: {
@@ -268,9 +212,7 @@ export async function buildConfig(
         ecmaFeatures: {
           jsx: react
         },
-        // Note from docs:
-        // We now recommend using projectService instead of project for easier configuration and faster linting.
-        projectService: !fast
+        projectService: true
       }
     }
   })
@@ -278,15 +220,18 @@ export async function buildConfig(
   // Always disable rules which are better enforced by Prettier
   presets.push(eslintConfigPrettier)
 
-  if (biome) {
-    if (!biomeRules) {
-      throw new Error("Unexpected missing biome rules")
-    }
-
-    presets.push(createBiomePreset(biomeRules))
-  }
-
   if (ai) {
+    // Stylistic rules for clean, consistent code
+    presets.push(tseslint.configs.stylisticTypeChecked)
+    presets.push({
+      plugins: { "simple-import-sort": simpleImportSort },
+      rules: {
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error"
+      }
+    })
+
+    // Complexity & maintainability rules
     presets.push({
       plugins: { sonarjs: eslintSonarjs },
       rules: {
@@ -341,7 +286,7 @@ export async function buildConfig(
     fileName ?? "index.ts"
   )) as Linter.Config
 
-  cleanupRules(generatedConfig, disabled ?? false)
+  cleanupRules(generatedConfig)
 
   // Tweak some defaults which are injected but somehow not configurable via API.
   if (generatedConfig.linterOptions) {
@@ -411,53 +356,43 @@ function getRulePackage(ruleName: string) {
   }
 }
 
-function cleanupRules(generatedConfig: Linter.Config, disabled: boolean) {
+function cleanupRules(generatedConfig: Linter.Config) {
   const rules = generatedConfig.rules
   if (!rules) {
     return generatedConfig
   }
 
   const ruleNames = Object.keys(rules).sort(ruleSorter)
-  const disabledPlugins = new Set([
+  const ignoredPlugins = new Set([
     "@babel",
     "babel",
     "vue",
     "flowtype",
     "@stylistic"
   ])
-  const disabledOffPlugins = new Set(["jsdoc"])
 
   const cleanRules: typeof rules = {}
 
   for (const ruleName of ruleNames) {
     const rulePackage = getRulePackage(ruleName)
-    if (rulePackage && disabledPlugins.has(rulePackage)) {
+    if (rulePackage && ignoredPlugins.has(rulePackage)) {
       continue
     }
 
     const value = rules[ruleName]
     if (value != null && Array.isArray(value)) {
       const level = value[0]
+      // Skip disabled rules (level 0)
       if (level === 0) {
-        if (disabled) {
-          if (!rulePackage || !disabledOffPlugins.has(rulePackage)) {
-            cleanRules[ruleName] = "off"
-          }
-        }
-
-        // else: pass, ignore
+        continue
       }
 
-      // ignore when asked for disabled rules only
-      else if (!disabled) {
-        const levelStr = level === 2 ? "error" : "warn"
-
-        if (value.length === 1) {
-          cleanRules[ruleName] = levelStr
-        } else {
-          const ruleOptions = value.slice(1) as unknown[]
-          cleanRules[ruleName] = [levelStr, ...ruleOptions]
-        }
+      const levelStr = level === 2 ? "error" : "warn"
+      if (value.length === 1) {
+        cleanRules[ruleName] = levelStr
+      } else {
+        const ruleOptions = value.slice(1) as unknown[]
+        cleanRules[ruleName] = [levelStr, ...ruleOptions]
       }
     }
   }
