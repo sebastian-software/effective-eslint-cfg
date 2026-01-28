@@ -14,6 +14,9 @@ export interface Options {
   disabled?: boolean
   fast?: boolean
   biome?: boolean
+
+  // ai mode
+  ai?: boolean
 }
 
 export const flags = [
@@ -28,7 +31,10 @@ export const flags = [
   // output options
   "disabled",
   "fast",
-  "biome"
+  "biome",
+
+  // ai mode
+  "ai"
 ] as const
 
 export function optionsToNumber(opts: Options): number {

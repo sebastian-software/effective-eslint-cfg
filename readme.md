@@ -30,6 +30,7 @@ A TypeScript-based library for generating ESLint configurations in the Flat Conf
 - `disabled`: Only return disabled rules. Helpful to add to the end when using custom rules.
 - `react`: Add all recommended ReactJS/Hooks/Storybook checks
 - `node`: Add all recommended NodeJS checks
+- `ai`: Enable strict maintainability rules for AI-generated code
 
 ## Installation
 
@@ -72,6 +73,50 @@ export default [
 ```
 
 Note: Using TS configuration files work perfectly fine since ESLint v9 but requires installing `jiti`.
+
+## AI Mode
+
+The `ai: true` option enables strict maintainability rules specifically designed for AI-generated code. It uses `eslint-plugin-sonarjs` and additional complexity rules to ensure code remains clean, readable, and maintainable.
+
+### Rules Overview
+
+| Category | Rule | Setting |
+|----------|------|---------|
+| Complexity | `complexity` | max: 10 |
+| Complexity | `max-depth` | max: 3 |
+| Complexity | `max-nested-callbacks` | max: 2 |
+| Complexity | `max-params` | max: 4 |
+| Size | `max-lines` | max: 300 |
+| Size | `max-lines-per-function` | max: 50 |
+| Size | `max-statements` | max: 15 |
+| Size | `max-statements-per-line` | max: 1 |
+| SonarJS | `sonarjs/cognitive-complexity` | max: 10 |
+| SonarJS | `sonarjs/no-duplicate-string` | threshold: 3 |
+| SonarJS | `sonarjs/no-identical-functions` | error |
+| SonarJS | `sonarjs/no-collapsible-if` | error |
+| SonarJS | `sonarjs/no-collection-size-mischeck` | error |
+| SonarJS | `sonarjs/no-redundant-boolean` | error |
+| SonarJS | `sonarjs/no-unused-collection` | error |
+| SonarJS | `sonarjs/prefer-immediate-return` | error |
+| SonarJS | `sonarjs/prefer-single-boolean-return` | error |
+| Style | `no-nested-ternary` | error |
+| Style | `no-unneeded-ternary` | error |
+| Style | `prefer-template` | error |
+| Style | `object-shorthand` | always |
+| Style | `prefer-arrow-callback` | error |
+| Style | `no-param-reassign` | error |
+
+### Example
+
+```ts
+import { getConfig } from "@effective/eslint-cfg"
+
+const config = getConfig({
+  ai: true,
+  strict: true,
+  style: true
+})
+```
 
 ## API
 

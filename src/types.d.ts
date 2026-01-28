@@ -27,3 +27,9 @@ declare module "eslint-plugin-jsx-a11y" {
   export const rules: Linter.Rules
   export const flatConfigs: Record<string, ConfigWithExtends>
 }
+
+declare module "eslint-plugin-sonarjs" {
+  import type { ESLint } from "eslint"
+  const plugin: ESLint.Plugin
+  export default plugin
+}

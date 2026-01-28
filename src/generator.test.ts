@@ -123,4 +123,18 @@ describe("createConfig", () => {
     )
     expect(config).toMatchSnapshot()
   })
+
+  //
+  // AI MODE...
+  //
+
+  it("includes AI maintainability rules", async () => {
+    const config = await buildConfig({ ai: true })
+    expect(config).toMatchSnapshot()
+  })
+
+  it("combines ai with react and node", async () => {
+    const config = await buildConfig({ ai: true, react: true, node: true })
+    expect(config).toMatchSnapshot()
+  })
 })

@@ -9,6 +9,7 @@ import eslintReactCompiler from "eslint-plugin-react-compiler"
 import eslintReactHooks from "eslint-plugin-react-hooks"
 import eslintRegexp from "eslint-plugin-regexp"
 import simpleImportSort from "eslint-plugin-simple-import-sort"
+import eslintSonarjs from "eslint-plugin-sonarjs"
 import eslintTestingLib from "eslint-plugin-testing-library"
 import eslintPlaywright from "eslint-plugin-playwright"
 import eslintJest from "eslint-plugin-jest"
@@ -37,6 +38,9 @@ interface RuleOptions {
 
   /** return only disabled rules e.g. by prettier/typescript */
   disabled?: boolean
+
+  /** enable strict maintainability rules for AI-generated code */
+  ai?: boolean
 }
 
 export type FlatConfig = ReturnType<typeof tseslint.config>
@@ -74,7 +78,7 @@ export async function buildConfig(
   options: RuleOptions,
   { biomeRules, fileName }: Settings = {}
 ): Promise<ConfigWithModuleRefs> {
-  const { fast, node, react, strict, style, biome, disabled } = options
+  const { fast, node, react, strict, style, biome, disabled, ai } = options
 
   const presets: ExtendsList = [eslint.configs.recommended]
 
@@ -293,6 +297,50 @@ export async function buildConfig(
     }
 
     presets.push(createBiomePreset(biomeRules))
+  }
+
+  if (ai) {
+    presets.push({
+      plugins: { sonarjs: eslintSonarjs },
+      rules: {
+        // Complexity Limits
+        complexity: ["error", { max: 10 }],
+        "max-depth": ["error", { max: 3 }],
+        "max-nested-callbacks": ["error", { max: 2 }],
+        "max-params": ["error", { max: 4 }],
+
+        // Size Limits
+        "max-lines": [
+          "error",
+          { max: 300, skipBlankLines: true, skipComments: true }
+        ],
+        "max-lines-per-function": [
+          "error",
+          { max: 50, skipBlankLines: true, skipComments: true }
+        ],
+        "max-statements": ["error", { max: 15 }],
+        "max-statements-per-line": ["error", { max: 1 }],
+
+        // SonarJS Rules
+        "sonarjs/cognitive-complexity": ["error", 10],
+        "sonarjs/no-duplicate-string": ["error", { threshold: 3 }],
+        "sonarjs/no-identical-functions": "error",
+        "sonarjs/no-collapsible-if": "error",
+        "sonarjs/no-collection-size-mischeck": "error",
+        "sonarjs/no-redundant-boolean": "error",
+        "sonarjs/no-unused-collection": "error",
+        "sonarjs/prefer-immediate-return": "error",
+        "sonarjs/prefer-single-boolean-return": "error",
+
+        // Additional Strict Rules
+        "no-nested-ternary": "error",
+        "no-unneeded-ternary": "error",
+        "prefer-template": "error",
+        "object-shorthand": ["error", "always"],
+        "prefer-arrow-callback": "error",
+        "no-param-reassign": "error"
+      }
+    })
   }
 
   const config = tseslint.config(presets)
