@@ -38,8 +38,8 @@ export function getFileName({
 const fileGlob = {
   react: "**/*.{ts,tsx}",
   test: "**/*.test.{ts,tsx}",
-  e2e: "**/*.spec.{ts}",
-  storybook: "**/*.stories.tsx"
+  e2e: "**/*.spec.ts",
+  storybook: "**/*.stories.{ts,tsx}"
 }
 
 async function main() {

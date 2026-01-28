@@ -154,7 +154,7 @@ Each configuration automatically includes **4 rule sets** that apply to differen
 | `effective/base` | All `.ts`/`.tsx` | Your main rules |
 | `effective/test` | `**/*.test.{ts,tsx}` | + Vitest rules, relaxed type rules |
 | `effective/e2e` | `**/*.spec.ts` | + Playwright rules |
-| `effective/storybook` | `**/*.stories.tsx` | + Storybook rules |
+| `effective/storybook` | `**/*.stories.{ts,tsx}` | + Storybook rules |
 
 The test/e2e/storybook configs only contain the **differences** from base - ESLint merges them automatically. This means test files get Vitest rules without you having to configure anything.
 
