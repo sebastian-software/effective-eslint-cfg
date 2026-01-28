@@ -51,15 +51,15 @@ The `ai` flag isn't about validating code after it's written. It's about **makin
 
 ### Easy Customization
 
-Don't agree with a rule? Change it:
+Don't agree with a rule? Change it. Our helper functions let you adjust severity while keeping the rule's configuration intact - something that's annoyingly hard to do in ESLint otherwise:
 
 ```ts
 import { getConfig, setRuleSeverity, disableRule } from "@effective/eslint-cfg"
 
 const config = await getConfig({ strict: true })
 
-// Downgrade to warning
-setRuleSeverity(config, "no-console", "warn")
+// Downgrade to warning - keeps all the rule's options intact
+setRuleSeverity(config, "@typescript-eslint/no-unused-vars", "warn")
 
 // Turn off completely
 disableRule(config, "@typescript-eslint/no-explicit-any")
@@ -174,11 +174,12 @@ The config is yours to customize.
 
 ### `setRuleSeverity(config, ruleName, severity)`
 
-Change a rule's severity without touching its options:
+Change a rule's severity while **preserving its configuration**. This is surprisingly hard to do in ESLint normally - you'd have to copy all the options manually. This function handles it:
 
 ```ts
-setRuleSeverity(config, "no-console", "warn")
-setRuleSeverity(config, "@typescript-eslint/no-explicit-any", "off")
+// The rule keeps its configured options, only severity changes
+setRuleSeverity(config, "@typescript-eslint/no-unused-vars", "warn")
+setRuleSeverity(config, "complexity", "off")
 ```
 
 ### `configureRule(config, ruleName, options)`
