@@ -145,6 +145,24 @@ The `ai` flag also enables:
 
 Why bundle style with AI? Because inconsistent code is harder to maintain. If AI writes your code, it should follow your style.
 
+## File-Specific Rules
+
+Each configuration automatically includes **4 rule sets** that apply to different file types:
+
+| Config Block | Files | What's Different |
+|--------------|-------|------------------|
+| `effective/base` | All `.ts`/`.tsx` | Your main rules |
+| `effective/test` | `**/*.test.{ts,tsx}` | + Vitest rules, relaxed type rules |
+| `effective/e2e` | `**/*.spec.ts` | + Playwright rules |
+| `effective/storybook` | `**/*.stories.tsx` | + Storybook rules |
+
+The test/e2e/storybook configs only contain the **differences** from base - ESLint merges them automatically. This means test files get Vitest rules without you having to configure anything.
+
+```ts
+// This just works - Vitest rules apply automatically to .test.ts files
+await getConfig({ strict: true })
+```
+
 ## What's Included (Always)
 
 Every configuration includes:
