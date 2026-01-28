@@ -112,93 +112,87 @@ export async function buildConfig(
   }
 
   if (react) {
-    // Note: The cast is required, because of some TS voodoo with the recommended config from React
+    // React core recommended rules
     presets.push(reactFlat.recommended)
+    presets.push({ rules: reactFlat["jsx-runtime"].rules })
 
+    // React Hooks - use preset rules but register plugin manually (preset is eslintrc format)
+    const hooksPresetRules = eslintReactHooks.configs["recommended-latest"].rules
     presets.push({
-      plugins: {
-        "react-hooks": eslintReactHooks,
-        "react-compiler": eslintReactCompiler
-      },
+      plugins: { "react-hooks": eslintReactHooks },
       rules: {
-        ...reactFlat["jsx-runtime"].rules,
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "error",
-        "react-compiler/react-compiler": "error"
+        ...hooksPresetRules,
+        // Preset has this as "warn", we want "error"
+        "react-hooks/exhaustive-deps": "error"
       }
     })
 
-    presets.push(...eslintStorybook.configs["flat/recommended"])
-  }
+    // React Compiler
+    presets.push(eslintReactCompiler.configs.recommended)
 
-  // Always enable basic a11y checks... not responsible when not doing so.
-  if (react) {
+    // Storybook
+    presets.push(...eslintStorybook.configs["flat/recommended"])
+
+    // A11y - always enable, not responsible when not doing so
     presets.push(eslintJsxA11y.flatConfigs.recommended)
   }
 
-  // We like JSDoc but for nothing which can be done better with TypeScript
-  presets.push(
-    // 1. rules that check names and descriptions
-    eslintJsdoc.configs["flat/contents-typescript-error"],
+  // JSDoc: Full TypeScript-aware preset
+  presets.push(eslintJsdoc.configs["flat/recommended-typescript-error"])
 
-    // 2. rules that enforce proper tag values
-    eslintJsdoc.configs["flat/logical-typescript-error"],
-
-    // 3. rules that enforce clear, consistent tag formatting and styles
-    eslintJsdoc.configs["flat/stylistic-typescript-error"]
-
-    // 4. rules that enforce tags exist (unused... would not enforce jsdoc usage globally)
-    // eslintJsdoc.configs["flat/requirements-typescript-error"]
-  )
-
+  // JSDoc: Rules that are simply wrong or too noisy
   presets.push({
     rules: {
-      // In TypeScript we typically don't need to document all destructed props
-      // as complexer object are defined by their interface/type already.
-      "jsdoc/check-param-names": [
-        "error",
-        {
-          checkDestructured: false
-        }
-      ],
-
-      // Unified according common best practices. Auto-fixable!
-      "jsdoc/tag-lines": [
-        "error",
-        "never",
-        {
-          startLines: 1
-        }
-      ],
-
-      // Saw too many false positives where the description actually was okay.
+      // Too many false positives where the description was actually fine
       "jsdoc/informative-docs": "off",
-
-      // Making JSDoc compatible with TSDoc where the hyphen is required.
-      "jsdoc/require-hyphen-before-param-description": ["error", "always"],
-
-      // Making JSDoc using the uniform formatting which is common but might be accidentally not used in some cases.
-      "jsdoc/require-asterisk-prefix": "error",
-
-      // We are fine with using raw HTML in JSDoc and also having stuff like Array<string> in there.
+      // We're fine with raw HTML and Array<string> syntax in JSDoc
       "jsdoc/text-escaping": "off",
-
-      // We want to use 2 spaces for indentation in JSDoc. But this randomly
-      // breaks in many cases where the previous human-written content has actually been better.
+      // Breaks often where human-written content was better
       "jsdoc/check-line-alignment": "off",
+      // Unwanted side-effects, better use a generic line-before-comments rule
+      "jsdoc/lines-before-block": "off"
+    }
+  })
 
-      // Has some unwanted side-effects... probably better use a more generic
-      // rule for line before comments.
-      "jsdoc/lines-before-block": "off",
+  // JSDoc: Style tweaks
+  presets.push({
+    rules: {
+      // Don't check destructured props - types handle this better
+      "jsdoc/check-param-names": ["error", { checkDestructured: false }],
+      // Consistent tag formatting
+      "jsdoc/tag-lines": ["error", "never", { startLines: 1 }],
+      // TSDoc compatibility: hyphen before param description
+      "jsdoc/require-hyphen-before-param-description": ["error", "always"],
+      // Uniform asterisk formatting
+      "jsdoc/require-asterisk-prefix": "error"
+    }
+  })
 
-      // Disable prop-type checks. These are better validated by strict TypeScript
-      // anyway and also have quite of long standing bug related to using `React.memo`:
+  // JSDoc: Disable require-* rules unless ai mode is enabled
+  if (!ai) {
+    presets.push({
+      rules: {
+        // Don't enforce JSDoc presence globally - only when ai mode is on
+        "jsdoc/require-jsdoc": "off",
+        "jsdoc/require-param": "off",
+        "jsdoc/require-param-description": "off",
+        "jsdoc/require-returns": "off",
+        "jsdoc/require-returns-description": "off",
+        "jsdoc/require-property": "off",
+        "jsdoc/require-property-description": "off"
+      }
+    })
+  }
+
+  // TypeScript & React tweaks
+  presets.push({
+    rules: {
+      // Disable prop-type checks - strict TypeScript handles this better
+      // Also has a long-standing bug with React.memo:
       // https://github.com/jsx-eslint/eslint-plugin-react/issues/2760
       "react/prop-types": "off",
 
-      // Interestingly the rule is enabled in the recommended presets but
-      // differs in behavior from the standard TSC handling. They even document
-      // the different... wonder why not just use the sensible default in TSC.
+      // Match TSC behavior for unused vars (preset differs from TSC defaults)
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -212,15 +206,8 @@ export async function buildConfig(
         }
       ],
 
-      // The default is defined without any options leading to simplify even complex
-      // array constructions which effectively makes it harder to read than the
-      // wrapping nature of `Array<>`. Using the XO/Sindre preferred style instead.
-      "@typescript-eslint/array-type": [
-        "error",
-        {
-          default: "array-simple"
-        }
-      ]
+      // Use array-simple style (XO/Sindre preference) - complex arrays stay as Array<>
+      "@typescript-eslint/array-type": ["error", { default: "array-simple" }]
     }
   })
 

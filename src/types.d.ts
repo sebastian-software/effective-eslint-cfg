@@ -7,13 +7,27 @@ declare module "eslint-config-prettier" {
 }
 
 declare module "eslint-plugin-react-hooks" {
-  import { Linter } from "eslint"
-  export const rules: Linter.Rules
+  import type { ESLint, Linter } from "eslint"
+  const plugin: ESLint.Plugin & {
+    configs: {
+      recommended: { plugins: string[]; rules: Linter.RulesRecord }
+      "recommended-latest": { plugins: string[]; rules: Linter.RulesRecord }
+    }
+  }
+  export = plugin
 }
 
 declare module "eslint-plugin-react-compiler" {
-  import { Linter } from "eslint"
-  export const rules: Linter.Rules
+  import type { ESLint, Linter } from "eslint"
+  const plugin: ESLint.Plugin & {
+    configs: {
+      recommended: {
+        plugins: Record<string, ESLint.Plugin>
+        rules: Linter.RulesRecord
+      }
+    }
+  }
+  export = plugin
 }
 
 declare module "eslint-plugin-check-file" {
