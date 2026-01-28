@@ -17,9 +17,9 @@
 ESLint is powerful but slow to configure. Most config packages generate rules at runtime, parsing dozens of plugins on every lint run. This package takes a different approach:
 
 - **Pre-generated configs** - All 16 possible configurations are built at publish time. Your editor loads instantly.
-- **Type-checked by default** - Every config uses `projectService` for full TypeScript type information. No "fast mode" that defeats the purpose.
+- **Type-checked by default** - Every config uses `projectService` for full TypeScript type information.
 - **Curated rule sets** - Battle-tested combinations of ESLint, TypeScript-ESLint, React, and more. No decision fatigue.
-- **AI-optimized mode** - Strict maintainability rules designed specifically for validating AI-generated code.
+- **AI-optimized mode** - Strict maintainability rules that push AI to iterate until the code is actually good.
 
 ## Installation
 
@@ -54,7 +54,7 @@ Only 4 flags. Each one is intentional.
 | `strict` | Enables stricter TypeScript rules (`strictTypeChecked` instead of `recommendedTypeChecked`) |
 | `node` | Adds Node.js-specific rules (ESM modules, proper imports) |
 | `react` | Adds React, Hooks, JSX-A11y, and Storybook rules |
-| `ai` | Enables strict maintainability rules for AI-generated code |
+| `ai` | Strict maintainability rules that make AI write better code |
 
 ### Examples
 
@@ -80,15 +80,15 @@ await getConfig({ strict: true, node: true, react: true, ai: true })
 
 ## The AI Mode
 
-The `ai` option is designed for a specific use case: **ensuring AI-generated code stays maintainable**.
+The `ai` option is designed for a specific use case: **making AI iterate until the code is actually good**.
 
-When AI writes code, it tends to:
+When you use ESLint with strict rules in your AI coding workflow, the AI doesn't just write code once - it keeps refactoring until all rules pass. Without guardrails, AI tends to:
 - Create overly complex functions
 - Nest logic too deeply
 - Duplicate code instead of abstracting
 - Ignore stylistic consistency
 
-The `ai` flag fights this with three categories of rules:
+The `ai` flag enforces standards that push AI to do better:
 
 ### Complexity Limits
 
