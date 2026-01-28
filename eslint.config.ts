@@ -8,7 +8,7 @@ const base = await getConfig({
   style: true
 })
 
-export default [
+const config: Linter.Config[] = [
   { ignores: ["node_modules", "dist"] },
 
   {
@@ -20,4 +20,6 @@ export default [
   },
 
   ...base
-] satisfies Linter.Config[]
+]
+
+export default config

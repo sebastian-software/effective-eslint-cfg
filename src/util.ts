@@ -50,7 +50,7 @@ export type ConfigName = "base" | "test" | "e2e" | "storybook"
 export function getConfigObject(
   config: Linter.Config[],
   objectName: ConfigName = "base"
-) {
+): Linter.Config {
   const obj = config.find((c) => c.name === `effective/${objectName}`)
   if (!obj) {
     throw new Error(`Config ${objectName} not found!`)

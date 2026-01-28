@@ -15,7 +15,7 @@ import {
  * @param options - The configuration options
  * @returns The loaded ESLint configuration
  */
-export async function getConfig(options: Options) {
+export async function getConfig(options: Options): Promise<Linter.Config[]> {
   const num = optionsToNumber(options)
   const hash = numberToShortHash(num)
 
