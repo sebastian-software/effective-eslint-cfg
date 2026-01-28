@@ -186,6 +186,49 @@ export async function buildConfig(
     files: [specFiles]
   })
 
+  // Relax size limits for test files - tests are often long
+  presets.push({
+    files: [testFiles, specFiles],
+    rules: {
+      "max-lines": "off",
+      "max-lines-per-function": "off",
+      "max-statements": "off"
+    }
+  })
+
+  // Config files (vite.config.ts, vitest.config.ts, etc.) - be lenient
+  const configFiles = "**/*.config.{ts,mts,cts}"
+  presets.push({
+    files: [configFiles],
+    rules: {
+      // Config files often need require() for CJS plugins
+      "@typescript-eslint/no-require-imports": "off",
+      // Default exports are standard in config files
+      "import/no-default-export": "off",
+      // Config files can be complex
+      "max-lines": "off",
+      "max-lines-per-function": "off",
+      complexity: "off",
+      // Console in build scripts is fine
+      "no-console": "off"
+    }
+  })
+
+  // Type definition files (*.d.ts) - declarations only
+  const dtsFiles = "**/*.d.ts"
+  presets.push({
+    files: [dtsFiles],
+    rules: {
+      // Declarations don't use the types they declare
+      "@typescript-eslint/no-unused-vars": "off",
+      // Empty interfaces are common for declaration merging
+      "@typescript-eslint/no-empty-interface": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      // Triple-slash references are standard in d.ts
+      "@typescript-eslint/triple-slash-reference": "off"
+    }
+  })
+
   // Check NodeJS things (ESM mode)
   if (node) {
     presets.push(nodePlugin.configs["flat/recommended-module"])

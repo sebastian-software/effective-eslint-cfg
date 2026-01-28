@@ -147,41 +147,60 @@ Why bundle style with AI? Because inconsistent code is harder to maintain. If AI
 
 ## File-Specific Rules
 
-Each configuration automatically includes **4 rule sets** that apply to different file types:
+Each configuration automatically applies different rules to different file types:
 
-| Config Block | Files | What's Different |
-|--------------|-------|------------------|
-| `effective/base` | All `.ts`/`.tsx` | Your main rules |
-| `effective/test` | `**/*.test.{ts,tsx}` | + Vitest rules |
-| `effective/playwright` | `**/*.spec.ts` | + Playwright rules |
-| `effective/storybook` | `**/*.stories.{ts,tsx}` | + Storybook rules |
+| Files | What's Different |
+|-------|------------------|
+| `**/*.test.{ts,tsx}` | + Vitest rules, size limits disabled |
+| `**/*.spec.ts` | + Playwright rules, size limits disabled |
+| `**/*.stories.{ts,tsx}` | + Storybook rules |
+| `**/*.config.{ts,mts,cts}` | Lenient rules for config files |
+| `**/*.d.ts` | Relaxed rules for type declarations |
 
-The test/playwright/storybook configs only contain the **differences** from base - ESLint merges them automatically. This means test files get Vitest rules without you having to configure anything.
+### Test Files
+
+Test files get Vitest and Testing Library rules automatically. Size limits (`max-lines`, `max-lines-per-function`, `max-statements`) are disabled because tests are often long.
 
 ```ts
-// This just works - Vitest rules apply automatically to .test.ts files
+// This just works - Vitest rules apply automatically
 await getConfig({ strict: true })
 ```
 
+### Config Files
+
+Config files (`vite.config.ts`, `vitest.config.ts`, `eslint.config.ts`, etc.) have relaxed rules:
+- `@typescript-eslint/no-require-imports`: off (CJS plugins)
+- `no-console`: off (build output)
+- Size/complexity limits: off
+
+### Type Declaration Files
+
+`*.d.ts` files have rules adjusted for declaration-only code:
+- `@typescript-eslint/no-unused-vars`: off (declarations don't "use" types)
+- `@typescript-eslint/no-empty-object-type`: off (declaration merging)
+- `@typescript-eslint/triple-slash-reference`: off (standard in d.ts)
+
 ### Why `.test` vs `.spec`?
 
-We use `.test.ts` for unit tests (Vitest) and `.spec.ts` for end-to-end tests (Playwright). This follows [Playwright's documentation](https://playwright.dev/docs/test-configuration) which consistently uses `.spec.ts`.
+We use `.test.ts` for unit tests (Vitest) and `.spec.ts` for E2E tests (Playwright). This follows [Playwright's documentation](https://playwright.dev/docs/test-configuration) which consistently uses `.spec.ts`.
 
-Some projects use `.spec` for unit tests too - if that's you, you'll need to adjust the file patterns in your config.
+Some projects use `.spec` for unit tests too - if that's you, you'll need to adjust the file patterns.
 
 ### Co-located Tests
 
-We match by file name pattern (`**/*.test.ts`), not by directory (`__tests__/**`). This supports the modern practice of co-locating tests next to the code they test:
+We match by file name pattern, not by directory (`__tests__/**`). This supports co-locating tests next to the code they test:
 
 ```
 src/
   utils/
     dateUtils.ts
-    dateUtils.test.ts   ← Vitest rules apply here
+    dateUtils.test.ts     ← Vitest rules, no size limits
   components/
     Button.tsx
-    Button.test.tsx     ← Vitest rules apply here
-    Button.stories.tsx  ← Storybook rules apply here
+    Button.test.tsx       ← Vitest rules, no size limits
+    Button.stories.tsx    ← Storybook rules
+vite.config.ts            ← Lenient config rules
+global.d.ts               ← Declaration rules
 ```
 
 ## What's Included (Always)
